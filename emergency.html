@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Emergency Help | ResQLink</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#10213d}
+.hero{background:#101a30;color:#fff;text-align:center;padding:42px 20px}.hero h1{margin:0 0 10px;font-size:40px}.hero p{margin:0;color:#dce4f2}
+.container{width:min(760px,92%);margin:35px auto 60px}.card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 8px 30px #10213d18}
+.warning{background:#fff4e3;border-left:4px solid #ff9800;padding:15px;margin-bottom:26px;color:#7a4a00}
+h2{margin:0 0 7px}.intro{color:#64748b;margin-bottom:28px}.group{margin-bottom:22px}
+.title{display:block;font-weight:bold;margin-bottom:9px}input,textarea{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:7px;font-size:15px;font-family:inherit}
+input:focus,textarea:focus{outline:none;border-color:#ef3340;box-shadow:0 0 0 3px #ef33401a}textarea{min-height:110px;resize:vertical}
+.location{display:flex;gap:10px}.location input{flex:1}.location button{background:#101a30;color:#fff;border:0;border-radius:7px;padding:0 18px;font-weight:bold;cursor:pointer}.location button:disabled{opacity:.6}
+.status{display:none;margin-top:8px;font-size:13px;color:#64748b}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{position:relative}.choice input{position:absolute;opacity:0}.choice label{min-height:52px;border:1px solid #cbd5e1;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;font-weight:bold;text-align:center;padding:8px}
+.choice input:checked+label{border:2px solid #ef3340;background:#fff0f1;color:#c81e2a}
+.submit{width:100%;border:0;background:#ef3340;color:white;padding:17px;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer}.submit:hover{background:#d92330}
+.result{display:none;margin-top:20px;padding:18px;border-radius:8px;background:#eaf8ef;border:1px solid #a8d8b8;color:#155d2c;line-height:1.6}.back{text-align:center;display:block;margin-top:20px;color:#ef3340;font-weight:bold;text-decoration:none}
+@media(max-width:650px){.hero h1{font-size:30px}.card{padding:22px}.grid{grid-template-columns:1fr}.location{flex-direction:column}.location button{padding:13px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<h1>🆘 Request Emergency Help</h1>
+<p>Tell us what you need and help will be coordinated with nearby volunteers and organizations.</p>
+</header>
+
+<main class="container"><div class="card">
+<div class="warning">⚠️ <b>Life-threatening emergency?</b> If you are in immediate danger, contact your local emergency services first.</div>
+<h2>Emergency Request</h2>
+<p class="intro">Please provide accurate information so responders can reach you quickly.</p>
+
+<form id="emergencyForm">
+<div class="group"><label class="title" for="name">Your Name</label><input id="name" required placeholder="Enter your name"></div>
+<div class="group"><label class="title" for="phone">Phone Number</label><input id="phone" type="tel" required placeholder="Enter your phone number"></div>
+
+<div class="group">
+<label class="title" for="location">📍 Your Location</label>
+<div class="location">
+<input id="location" required placeholder="Click Use My Location to detect automatically">
+<button type="button" id="locationBtn" onclick="findMyLocation()">📍 Use My Location</button>
+</div>
+<div class="status" id="locationStatus"></div>
+</div>
+
+<div class="group"><label class="title" for="people">Number of People Needing Help</label><input id="people" type="number" min="1" required placeholder="Example: 4"></div>
+
+<div class="group"><label class="title">What type of help do you need?</label>
+<div class="grid">
+<div class="choice"><input type="checkbox" id="food" name="help" value="Food"><label for="food">🍛 Food</label></div>
+<div class="choice"><input type="checkbox" id="water" name="help" value="Water"><label for="water">💧 Water</label></div>
+<div class="choice"><input type="checkbox" id="medicine" name="help" value="Medicine"><label for="medicine">💊 Medicine</label></div>
+<div class="choice"><input type="checkbox" id="shelter" name="help" value="Shelter"><label for="shelter">🏠 Shelter</label></div>
+<div class="choice"><input type="checkbox" id="medical" name="help" value="Medical"><label for="medical">🚑 Medical</label></div>
+<div class="choice"><input type="checkbox" id="rescue" name="help" value="Rescue"><label for="rescue">🚨 Rescue</label></div>
+</div></div>
+
+<div class="group"><label class="title">Urgency Level</label>
+<div class="grid">
+<div class="choice"><input type="radio" id="critical" name="urgency" value="Critical"><label for="critical">🔴 Critical</label></div>
+<div class="choice"><input type="radio" id="urgent" name="urgency" value="Urgent"><label for="urgent">🟠 Urgent</label></div>
+<div class="choice"><input type="radio" id="normal" name="urgency" value="Normal"><label for="normal">🟡 Normal</label></div>
+</div></div>
+
+<div class="group"><label class="title" for="description">Describe your situation</label><textarea id="description" required placeholder="Tell responders anything important about your situation..."></textarea></div>
+
+<button type="submit" class="submit">🆘 SEND EMERGENCY REQUEST</button>
+</form>
+
+<div class="result" id="result"></div>
+<a class="back" href="index.html">← Back to ResQLink Home</a>
+</div></main>
+
+<script>
+function findMyLocation(){
+    const input=document.getElementById("location");
+    const btn=document.getElementById("locationBtn");
+    const status=document.getElementById("locationStatus");
+
+    if(!navigator.geolocation){
+        alert("Your browser does not support location detection.");
+        return;
+    }
+
+    btn.disabled=true;
+    btn.textContent="📍 Detecting...";
+    status.style.display="block";
+    status.textContent="Requesting your current location...";
+
+    navigator.geolocation.getCurrentPosition(async function(pos){
+        const lat=pos.coords.latitude;
+        const lon=pos.coords.longitude;
+
+        input.value="Lat: "+lat.toFixed(6)+", Lng: "+lon.toFixed(6);
+        input.dataset.latitude=lat;
+        input.dataset.longitude=lon;
+        status.textContent="✓ Location detected. Finding address...";
+
+        try{
+            const r=await fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+encodeURIComponent(lat)+"&lon="+encodeURIComponent(lon));
+            if(r.ok){
+                const data=await r.json();
+                if(data.display_name) input.value=data.display_name;
+            }
+        }catch(e){}
+
+        status.textContent="✓ Current location detected automatically.";
+        btn.disabled=false;
+        btn.textContent="📍 Update Location";
+    },function(error){
+        btn.disabled=false;
+        btn.textContent="📍 Use My Location";
+        status.style.display="block";
+        if(error.code===1){
+            status.textContent="Location permission denied. Allow location access and try again.";
+            alert("Location permission was denied. Please allow location access in Chrome and try again.");
+        }else if(error.code===2){
+            status.textContent="Your location is unavailable.";
+            alert("Your current location could not be detected.");
+        }else if(error.code===3){
+            status.textContent="Location detection timed out.";
+            alert("Location detection timed out. Please try again.");
+        }else{
+            status.textContent="Unable to detect your location.";
+            alert("Unable to detect your current location.");
+        }
+    },{enableHighAccuracy:true,timeout:20000,maximumAge:0});
+}
+
+document.getElementById("emergencyForm").addEventListener("submit",function(e){
+    e.preventDefault();
+
+    const help=[...document.querySelectorAll('input[name="help"]:checked')].map(x=>x.value);
+    const urgency=document.querySelector('input[name="urgency"]:checked');
+
+    if(help.length===0){alert("Please select at least one type of help.");return;}
+    if(!urgency){alert("Please select an urgency level.");return;}
+
+    const request={
+        id:"REQ-"+Date.now().toString().slice(-8),
+        name:document.getElementById("name").value.trim(),
+        phone:document.getElementById("phone").value.trim(),
+        location:document.getElementById("location").value.trim(),
+        latitude:document.getElementById("location").dataset.latitude||null,
+        longitude:document.getElementById("location").dataset.longitude||null,
+        people:Number(document.getElementById("people").value),
+        helpTypes:help,
+        urgency:urgency.value,
+        description:document.getElementById("description").value.trim(),
+        status:"Pending",
+        createdAt:new Date().toISOString()
+    };
+
+    let requests=JSON.parse(localStorage.getItem("resqlinkEmergencyRequests")||"[]");
+    requests.push(request);
+    localStorage.setItem("resqlinkEmergencyRequests",JSON.stringify(requests));
+
+    const result=document.getElementById("result");
+    result.style.display="block";
+    result.innerHTML="<b>✓ Emergency request submitted successfully!</b><br><br>"+
+        "Request ID: <b>"+request.id+"</b><br>"+
+        "Urgency: <b>"+request.urgency+"</b><br>"+
+        "Help needed: <b>"+request.helpTypes.join(", ")+"</b><br>"+
+        "People needing help: <b>"+request.people+"</b>";
+
+    result.scrollIntoView({behavior:"smooth",block:"center"});
+    document.getElementById("emergencyForm").reset();
+});
+</script>
+</body>
+</html>
