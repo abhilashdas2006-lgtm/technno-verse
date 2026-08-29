@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Live Disaster Map | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+            padding: 10px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 35px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* MAP */
+
+        .map-container {
+            display: grid;
+            grid-template-columns: 1fr 330px;
+            gap: 20px;
+            padding: 25px 7%;
+        }
+
+        #map {
+            width: 100%;
+            height: 600px;
+            border-radius: 14px;
+            border: 1px solid #d0d5dd;
+        }
+
+        /* SIDE PANEL */
+
+        .side-panel {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .side-panel h2 {
+            margin-bottom: 20px;
+        }
+
+        .legend {
+            margin-bottom: 25px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 0;
+            color: #475467;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #e63946;
+        }
+
+        .green {
+            background: #12b76a;
+        }
+
+        .blue {
+            background: #1570ef;
+        }
+
+        .yellow {
+            background: #f79009;
+        }
+
+        .purple {
+            background: #7f56d9;
+        }
+
+        .alert {
+            background: #fff4e5;
+            border-left: 4px solid #f79009;
+            padding: 14px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .alert strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .location-card {
+            border: 1px solid #eaecf0;
+            padding: 15px;
+            border-radius: 9px;
+            margin-bottom: 12px;
+        }
+
+        .location-card h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .location-card p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .view-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: #e63946;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* LOCATION BUTTON */
+
+        .location-button {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+
+            background: #101828;
+            color: white;
+
+            border: none;
+            border-radius: 7px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .location-button:hover {
+            background: #1d2939;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .map-container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            #map {
+                height: 500px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>🗺️ Live Disaster Map</h1>
+
+        <p>
+            Find emergency requests, volunteers,
+            shelters and supply centers.
+        </p>
+
+    </section>
+
+
+    <!-- MAP -->
+
+    <main class="map-container">
+
+        <div id="map"></div>
+
+
+        <!-- SIDE PANEL -->
+
+        <aside class="side-panel">
+
+            <h2>Relief Map</h2>
+
+
+            <button
+                class="location-button"
+                onclick="findMyLocation()">
+
+                📍 Find My Location
+
+            </button>
+
+
+            <div class="alert">
+
+                <strong>⚠️ Active Disaster</strong>
+
+                Flooding has been reported in
+                multiple locations.
+
+            </div>
+
+
+            <h3>Map Legend</h3>
+
+            <div class="legend">
+
+                <div class="legend-item">
+                    <span class="dot red"></span>
+                    Emergency Request
+                </div>
+
+                <div class="legend-item">
+                    <span class="dot green"></span>
+                    Volunteer
+                </div>
+
+                <div class="legend-item">
+                    <span class="dot blue"></span>
+                    NGO / Authority
+                </div>
+
+                <div class="legend-item">
+                    <span class="dot yellow"></span>
+                    Supply Center
+                </div>
+
+                <div class="legend-item">
+                    <span class="dot purple"></span>
+                    Relief Shelter
+                </div>
+
+            </div>
+
+
+            <h3>Nearby Help</h3>
+
+            <br>
+
+
+            <div class="location-card">
+
+                <h3>🆘 Emergency Request</h3>
+
+                <p>
+                    5 people need drinking water
+                    and food.
+                </p>
+
+                <a href="requests.html" class="view-btn">
+                    View Request →
+                </a>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <h3>🏕️ Relief Shelter</h3>
+
+                <p>
+                    Capacity: 73 / 100
+                </p>
+
+                <a href="shelters.html" class="view-btn">
+                    View Shelter →
+                </a>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <h3>📦 Supply Center</h3>
+
+                <p>
+                    Food and water available.
+                </p>
+
+                <a href="supplies.html" class="view-btn">
+                    View Supplies →
+                </a>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <!-- GOOGLE MAPS -->
+
+    <script>
+
+        let map;
+
+        function initMap() {
+
+            // Initial location: Guwahati
+            const guwahati = {
+                lat: 26.1445,
+                lng: 91.7362
+            };
+
+            map = new google.maps.Map(
+                document.getElementById("map"),
+                {
+                    center: guwahati,
+                    zoom: 12,
+
+                    mapTypeControl: true,
+                    streetViewControl: true,
+                    fullscreenControl: true,
+                    zoomControl: true
+                }
+            );
+
+
+            // Emergency marker
+            new google.maps.Marker({
+
+                position: {
+                    lat: 26.1500,
+                    lng: 91.7400
+                },
+
+                map: map,
+
+                title: "Emergency Request",
+
+                label: "🆘"
+
+            });
+
+
+            // Volunteer marker
+            new google.maps.Marker({
+
+                position: {
+                    lat: 26.1350,
+                    lng: 91.7250
+                },
+
+                map: map,
+
+                title: "Volunteer",
+
+                label: "🙋"
+
+            });
+
+
+            // NGO marker
+            new google.maps.Marker({
+
+                position: {
+                    lat: 26.1600,
+                    lng: 91.7500
+                },
+
+                map: map,
+
+                title: "NGO / Authority",
+
+                label: "🏢"
+
+            });
+
+
+            // Supply center
+            new google.maps.Marker({
+
+                position: {
+                    lat: 26.1250,
+                    lng: 91.7450
+                },
+
+                map: map,
+
+                title: "Supply Center",
+
+                label: "📦"
+
+            });
+
+
+            // Shelter
+            new google.maps.Marker({
+
+                position: {
+                    lat: 26.1400,
+                    lng: 91.7550
+                },
+
+                map: map,
+
+                title: "Relief Shelter",
+
+                label: "🏕️"
+
+            });
+
+        }
+
+
+        // FIND MY LOCATION
+
+        function findMyLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert("Your browser does not support location.");
+
+                return;
+
+            }
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    const location = {
+
+                        lat: position.coords.latitude,
+
+                        lng: position.coords.longitude
+
+                    };
+
+
+                    map.setCenter(location);
+
+                    map.setZoom(16);
+
+
+                    new google.maps.Marker({
+
+                        position: location,
+
+                        map: map,
+
+                        title: "Your Location"
+
+                    });
+
+                },
+
+
+                function() {
+
+                    alert(
+                        "Unable to get your location. Please allow location permission."
+                    );
+
+                }
+
+            );
+
+        }
+
+    </script>
+
+
+    <!-- GOOGLE MAPS API -->
+
+    <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOMFaT8P8vvSMlXLpS25hICYONYJ8awrc&loading=async&callback=initMap">
+    </script>
+
+
+</body>
+
+</html>
