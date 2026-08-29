@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Volunteer | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+            padding: 10px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: 35px auto;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .stat {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+        }
+
+        .stat h2 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .stat p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* CONTENT */
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 25px;
+        }
+
+        /* REQUESTS */
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+        }
+
+        /* REQUEST CARD */
+
+        .request {
+            border: 1px solid #eaecf0;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .request-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .request h3 {
+            font-size: 17px;
+        }
+
+        .urgent {
+            background: #fee4e2;
+            color: #d92d20;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .medium {
+            background: #fff4e5;
+            color: #b54708;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .request p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .request-info {
+            margin-top: 10px;
+            color: #475467;
+            font-size: 13px;
+        }
+
+        .help-btn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 11px;
+
+            background: #12b76a;
+            color: white;
+
+            border: none;
+            border-radius: 7px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .help-btn:hover {
+            background: #079455;
+        }
+
+        /* REGISTRATION */
+
+        .register {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+        }
+
+        .register h2 {
+            margin-bottom: 8px;
+        }
+
+        .register > p {
+            color: #667085;
+            font-size: 14px;
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+
+            border: 1px solid #d0d5dd;
+            border-radius: 7px;
+
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #12b76a;
+        }
+
+        textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 13px;
+
+            background: #101828;
+            color: white;
+
+            border: none;
+            border-radius: 7px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background: #1d2939;
+        }
+
+        /* VOLUNTEER STATUS */
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+
+            background: #ecfdf3;
+
+            border-left: 4px solid #12b76a;
+
+            border-radius: 6px;
+
+            color: #027a48;
+
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>🙋 Volunteer Dashboard</h1>
+
+        <p>
+            Help people affected by disasters
+            and coordinate relief operations.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <h2>248</h2>
+
+                <p>
+                    Active Volunteers
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>36</h2>
+
+                <p>
+                    Requests Nearby
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>18</h2>
+
+                <p>
+                    Requests Resolved
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>12</h2>
+
+                <p>
+                    Relief Teams
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT -->
+
+        <section class="content">
+
+
+            <!-- AVAILABLE REQUESTS -->
+
+            <div class="section">
+
+                <h2>
+                    🆘 Help Needed Nearby
+                </h2>
+
+
+                <!-- REQUEST 1 -->
+
+                <div class="request">
+
+                    <div class="request-top">
+
+                        <h3>
+                            Drinking Water Required
+                        </h3>
+
+                        <span class="urgent">
+                            URGENT
+                        </span>
+
+                    </div>
+
+                    <p>
+                        A family affected by flooding
+                        requires drinking water and food.
+                    </p>
+
+                    <div class="request-info">
+
+                        📍 Guwahati, Assam
+                        <br>
+
+                        👥 5 people
+                        <br>
+
+                        📏 2.4 km away
+
+                    </div>
+
+
+                    <button
+                        class="help-btn"
+                        onclick="acceptRequest('Drinking Water Required')">
+
+                        🤝 I Can Help
+
+                    </button>
+
+                </div>
+
+
+                <!-- REQUEST 2 -->
+
+                <div class="request">
+
+                    <div class="request-top">
+
+                        <h3>
+                            Medical Assistance
+                        </h3>
+
+                        <span class="urgent">
+                            URGENT
+                        </span>
+
+                    </div>
+
+                    <p>
+                        An elderly person needs
+                        basic medical assistance.
+                    </p>
+
+                    <div class="request-info">
+
+                        📍 Dispur, Assam
+                        <br>
+
+                        👥 2 people
+                        <br>
+
+                        📏 4.1 km away
+
+                    </div>
+
+
+                    <button
+                        class="help-btn"
+                        onclick="acceptRequest('Medical Assistance')">
+
+                        🤝 I Can Help
+
+                    </button>
+
+                </div>
+
+
+                <!-- REQUEST 3 -->
+
+                <div class="request">
+
+                    <div class="request-top">
+
+                        <h3>
+                            Shelter Needed
+                        </h3>
+
+                        <span class="medium">
+                            MEDIUM
+                        </span>
+
+                    </div>
+
+                    <p>
+                        A family requires temporary
+                        shelter for tonight.
+                    </p>
+
+                    <div class="request-info">
+
+                        📍 Jalukbari, Assam
+                        <br>
+
+                        👥 3 people
+                        <br>
+
+                        📏 5.2 km away
+
+                    </div>
+
+
+                    <button
+                        class="help-btn"
+                        onclick="acceptRequest('Shelter Needed')">
+
+                        🤝 I Can Help
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- VOLUNTEER REGISTRATION -->
+
+            <div>
+
+
+                <section class="register">
+
+                    <h2>
+                        🙋 Become a Volunteer
+                    </h2>
+
+                    <p>
+                        Register yourself to help
+                        people during emergencies.
+                    </p>
+
+
+                    <form
+                        onsubmit="registerVolunteer(event)">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Enter your name"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                placeholder="Enter phone number"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Your current location"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                How can you help?
+                            </label>
+
+                            <select required>
+
+                                <option value="">
+                                    Select skill
+                                </option>
+
+                                <option>
+                                    🚑 Medical Help
+                                </option>
+
+                                <option>
+                                    🚗 Transportation
+                                </option>
+
+                                <option>
+                                    🍚 Food Distribution
+                                </option>
+
+                                <option>
+                                    💧 Water Distribution
+                                </option>
+
+                                <option>
+                                    🏠 Shelter Support
+                                </option>
+
+                                <option>
+                                    🔧 Rescue / Technical Help
+                                </option>
+
+                                <option>
+                                    🧑‍🤝‍🧑 General Volunteer
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Availability
+                            </label>
+
+                            <select required>
+
+                                <option value="">
+                                    Select availability
+                                </option>
+
+                                <option>
+                                    Available Now
+                                </option>
+
+                                <option>
+                                    Available Today
+                                </option>
+
+                                <option>
+                                    Available This Week
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Additional Information
+                            </label>
+
+                            <textarea
+                                placeholder="Tell us about your skills or vehicle, equipment, etc.">
+                            </textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="register-btn">
+
+                            Register as Volunteer
+
+                        </button>
+
+
+                    </form>
+
+
+                    <div
+                        id="status"
+                        class="status"
+                        style="display:none;">
+
+                        ✅ You are now registered
+                        as a volunteer!
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function acceptRequest(requestName) {
+
+            alert(
+                "Thank you! You have accepted the request: "
+                + requestName
+            );
+
+        }
+
+
+        function registerVolunteer(event) {
+
+            event.preventDefault();
+
+            document.getElementById("status").style.display =
+                "block";
+
+            event.target.reset();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
