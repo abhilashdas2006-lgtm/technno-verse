@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            text-decoration: none;
+
+            padding: 10px 17px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+        }
+
+        /* PAGE */
+
+        .page {
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 900px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        /* LEFT */
+
+        .left {
+            background: #101828;
+            color: white;
+
+            padding: 45px 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left h1 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .left h1 span {
+            color: #ff4d4d;
+        }
+
+        .left p {
+            color: #d0d5dd;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+        }
+
+        .feature h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .feature p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        /* RIGHT */
+
+        .right {
+            padding: 40px 35px;
+        }
+
+        .right h2 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        /* ROLE */
+
+        .roles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            margin-bottom: 22px;
+        }
+
+        .role {
+            border: 1px solid #d0d5dd;
+
+            border-radius: 8px;
+
+            padding: 13px;
+
+            background: white;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            transition: 0.2s;
+        }
+
+        .role:hover {
+            border-color: #175cd3;
+        }
+
+        .role.selected {
+            border: 2px solid #175cd3;
+            background: #eef4ff;
+        }
+
+        .role-icon {
+            font-size: 23px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #175cd3;
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .show-password {
+            position: absolute;
+
+            right: 12px;
+            top: 12px;
+
+            font-size: 12px;
+
+            color: #175cd3;
+
+            cursor: pointer;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            font-size: 12px;
+        }
+
+        .remember {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .remember input {
+            width: auto;
+        }
+
+        .forgot {
+            color: #175cd3;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 13px;
+
+            background: #d92d20;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin: 23px 0;
+
+            color: #98a2b3;
+
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            background: #eaecf0;
+            flex: 1;
+        }
+
+        .signup {
+            text-align: center;
+
+            color: #667085;
+
+            font-size: 13px;
+        }
+
+        .signup span {
+            color: #175cd3;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 20px;
+
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 750px) {
+
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+
+            .left {
+                display: none;
+            }
+
+            .right {
+                padding: 35px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- PAGE -->
+
+    <main class="page">
+
+        <div class="login-container">
+
+
+            <!-- LEFT SIDE -->
+
+            <section class="left">
+
+                <h1>
+                    ResQ<span>Link</span>
+                </h1>
+
+                <p>
+                    One platform connecting citizens,
+                    volunteers, NGOs and emergency
+                    response teams during disasters.
+                </p>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🚨
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Report Emergencies
+                        </h3>
+
+                        <p>
+                            Quickly report disasters and
+                            emergency situations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🗺️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Track Live Situations
+                        </h3>
+
+                        <p>
+                            Monitor incidents, shelters
+                            and relief operations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🤝
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Coordinate Relief
+                        </h3>
+
+                        <p>
+                            Connect available resources
+                            with people who need help.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+
+            <section class="right">
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+                <p class="subtitle">
+                    Sign in to access your ResQLink account.
+                </p>
+
+
+                <!-- ROLE -->
+
+                <label>
+                    Select your role
+                </label>
+
+                <div class="roles">
+
+
+                    <div class="role selected"
+                         onclick="selectRole(this, 'Citizen')">
+
+                        <span class="role-icon">
+                            👤
+                        </span>
+
+                        Citizen
+
+                    </div>
+
+
+                    <div class="role"
+                         onclick="selectRole(this, 'Volunteer')">
+
+                        <span class="role-icon">
+                            🙋
+                        </span>
+
+                        Volunteer
+
+                    </div>
+
+
+                    <div class="role"
+                         onclick="selectRole(this, 'NGO')">
+
+                        <span class="role-icon">
+                            🏢
+                        </span>
+
+                        NGO / Organization
+
+                    </div>
+
+
+                    <div class="role"
+                         onclick="selectRole(this, 'Admin')">
+
+                        <span class="role-icon">
+                            🛡️
+                        </span>
+
+                        Administrator
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <form onsubmit="login(event)">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email / Phone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="email"
+                            required
+                            placeholder="Enter email or phone number">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Password
+                        </label>
+
+                        <div class="password-box">
+
+                            <input
+                                type="password"
+                                id="password"
+                                required
+                                placeholder="Enter password">
+
+                            <span
+                                class="show-password"
+                                onclick="togglePassword()">
+
+                                Show
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox">
+
+                            Remember me
+
+                        </label>
+
+                        <span
+                            class="forgot"
+                            onclick="forgotPassword()">
+
+                            Forgot password?
+
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        🔐 Sign In
+
+                    </button>
+
+
+                </form>
+
+
+                <div class="divider">
+                    OR
+                </div>
+
+
+                <div class="signup">
+
+                    Don't have an account?
+
+                    <span onclick="signup()">
+                        Create Account
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </footer>
+
+
+    <script>
+
+        let selectedRole = "Citizen";
+
+
+        function selectRole(element, role) {
+
+            document
+                .querySelectorAll(".role")
+                .forEach(function(item) {
+
+                    item.classList.remove("selected");
+
+                });
+
+            element.classList.add("selected");
+
+            selectedRole = role;
+
+        }
+
+
+        function togglePassword() {
+
+            let password =
+                document.getElementById("password");
+
+            let button =
+                document.querySelector(".show-password");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                button.innerText = "Hide";
+
+            } else {
+
+                password.type = "password";
+
+                button.innerText = "Show";
+
+            }
+
+        }
+
+
+        function login(event) {
+
+            event.preventDefault();
+
+            alert(
+                "🔐 Login Demo\n\n"
+                + "Role: "
+                + selectedRole
+                + "\n\n"
+                + "Authentication system will be connected later."
+            );
+
+        }
+
+
+        function forgotPassword() {
+
+            alert(
+                "Password recovery\n\n"
+                + "A password recovery system will be connected later."
+            );
+
+        }
+
+
+        function signup() {
+
+            alert(
+                "Create Account\n\n"
+                + "Registration page will be connected later."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
