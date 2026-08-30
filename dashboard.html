@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            padding: 10px 16px;
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+
+            padding: 35px 6%;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        .status {
+            background: #12b76a;
+            padding: 9px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 88%;
+            max-width: 1250px;
+            margin: 30px auto;
+        }
+
+        /* STAT CARDS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-icon {
+            font-size: 25px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 12px 0 5px;
+        }
+
+        .stat-label {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        .red {
+            color: #d92d20;
+        }
+
+        .orange {
+            color: #f79009;
+        }
+
+        .green {
+            color: #12b76a;
+        }
+
+        .blue {
+            color: #175cd3;
+        }
+
+        /* MAIN GRID */
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 22px;
+        }
+
+        .card h2 {
+            font-size: 19px;
+            margin-bottom: 18px;
+        }
+
+        /* MAP */
+
+        .map-box {
+            height: 330px;
+            background: #e8edf3;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(30deg, transparent 48%, #cbd5e1 49%, transparent 50%),
+                linear-gradient(120deg, transparent 48%, #cbd5e1 49%, transparent 50%);
+            background-size: 90px 90px;
+        }
+
+        .map-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            background: white;
+            padding: 10px 14px;
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .marker {
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            border-radius: 50%;
+
+            border: 3px solid white;
+
+            cursor: pointer;
+        }
+
+        .marker-red {
+            background: #d92d20;
+        }
+
+        .marker-orange {
+            background: #f79009;
+        }
+
+        .marker-blue {
+            background: #175cd3;
+        }
+
+        .marker-green {
+            background: #12b76a;
+        }
+
+        .marker-1 {
+            top: 42%;
+            left: 35%;
+        }
+
+        .marker-2 {
+            top: 58%;
+            left: 55%;
+        }
+
+        .marker-3 {
+            top: 32%;
+            left: 70%;
+        }
+
+        .marker-4 {
+            top: 70%;
+            left: 25%;
+        }
+
+        .map-button {
+            position: absolute;
+
+            right: 15px;
+            bottom: 15px;
+
+            background: #101828;
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+        /* INCIDENTS */
+
+        .incident {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .incident:last-child {
+            border-bottom: none;
+        }
+
+        .incident-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .incident-icon {
+            width: 42px;
+            height: 42px;
+
+            background: #f2f4f7;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+        .incident h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .incident p {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .badge {
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .critical {
+            background: #fee4e2;
+            color: #b42318;
+        }
+
+        .warning {
+            background: #fff4e5;
+            color: #b54708;
+        }
+
+        .active {
+            background: #ecfdf3;
+            color: #027a48;
+        }
+
+        /* REQUESTS */
+
+        .request {
+            margin-bottom: 17px;
+        }
+
+        .request-top {
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        .request p {
+            color: #667085;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .progress {
+            height: 8px;
+            background: #eaecf0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #12b76a;
+        }
+
+        /* QUICK ACTIONS */
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .action {
+            border: 1px solid #eaecf0;
+            background: white;
+
+            border-radius: 8px;
+
+            padding: 16px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: #172033;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .action:hover {
+            border-color: #175cd3;
+            background: #f5f8ff;
+        }
+
+        .action-icon {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 35px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .actions {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteers</a>
+            </li>
+
+            <li>
+                <a href="alerts.html">Alerts</a>
+            </li>
+
+            <li>
+                <a href="contacts.html">Emergency</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html"
+           class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <div class="header-content">
+
+            <div>
+
+                <h1>
+                    📊 Disaster Coordination Dashboard
+                </h1>
+
+                <p>
+                    Real-time overview of disaster
+                    response operations.
+                </p>
+
+            </div>
+
+            <div class="status">
+                ● SYSTEM ACTIVE
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Active Incidents
+                    </span>
+
+                    <span class="stat-icon red">
+                        🚨
+                    </span>
+
+                </div>
+
+                <div class="stat-number red">
+                    24
+                </div>
+
+                <div class="stat-label">
+                    7 critical incidents
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Help Requests
+                    </span>
+
+                    <span class="stat-icon orange">
+                        🆘
+                    </span>
+
+                </div>
+
+                <div class="stat-number orange">
+                    186
+                </div>
+
+                <div class="stat-label">
+                    42 awaiting response
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Active Volunteers
+                    </span>
+
+                    <span class="stat-icon green">
+                        🙋
+                    </span>
+
+                </div>
+
+                <div class="stat-number green">
+                    342
+                </div>
+
+                <div class="stat-label">
+                    86 currently deployed
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Safe Shelters
+                    </span>
+
+                    <span class="stat-icon blue">
+                        🏕️
+                    </span>
+
+                </div>
+
+                <div class="stat-number blue">
+                    18
+                </div>
+
+                <div class="stat-label">
+                    2,450 available spaces
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- MAIN GRID -->
+
+        <section class="main-grid">
+
+
+            <!-- LEFT COLUMN -->
+
+            <div>
+
+
+                <!-- MAP -->
+
+                <section class="card">
+
+                    <h2>
+                        🗺️ Live Situation Map
+                    </h2>
+
+                    <div class="map-box">
+
+                        <div class="map-lines"></div>
+
+                        <div class="map-label">
+                            📍 Disaster Activity
+                        </div>
+
+
+                        <div class="marker marker-red marker-1"
+                             title="Flood">
+                        </div>
+
+                        <div class="marker marker-orange marker-2"
+                             title="Landslide">
+                        </div>
+
+                        <div class="marker marker-blue marker-3"
+                             title="Shelter">
+                        </div>
+
+                        <div class="marker marker-green marker-4"
+                             title="Relief Team">
+                        </div>
+
+
+                        <a href="map.html"
+                           class="map-button">
+
+                            Open Full Map →
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- INCIDENTS -->
+
+                <section class="card">
+
+                    <h2>
+                        🚨 Active Incidents
+                    </h2>
+
+
+                    <div class="incident">
+
+                        <div class="incident-left">
+
+                            <div class="incident-icon">
+                                🌊
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Major Flooding
+                                </h3>
+
+                                <p>
+                                    Guwahati • 15 min ago
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="badge critical">
+                            CRITICAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <div class="incident-left">
+
+                            <div class="incident-icon">
+                                ⛰️
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Landslide
+                                </h3>
+
+                                <p>
+                                    Sonapur • 42 min ago
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="badge warning">
+                            WARNING
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <div class="incident-left">
+
+                            <div class="incident-icon">
+                                🔥
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Fire Incident
+                                </h3>
+
+                                <p>
+                                    Dispur • 1 hour ago
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="badge active">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="card">
+
+                    <h2>
+                        ⚡ Quick Actions
+                    </h2>
+
+                    <div class="actions">
+
+
+                        <a href="report.html"
+                           class="action">
+
+                            <span class="action-icon">
+                                🚨
+                            </span>
+
+                            Report Disaster
+
+                        </a>
+
+
+                        <a href="requests.html"
+                           class="action">
+
+                            <span class="action-icon">
+                                🆘
+                            </span>
+
+                            View Requests
+
+                        </a>
+
+
+                        <a href="volunteer.html"
+                           class="action">
+
+                            <span class="action-icon">
+                                🙋
+                            </span>
+
+                            Deploy Volunteer
+
+                        </a>
+
+
+                        <a href="shelters.html"
+                           class="action">
+
+                            <span class="action-icon">
+                                🏕️
+                            </span>
+
+                            Find Shelter
+
+                        </a>
+
+
+                        <a href="missing.html"
+                           class="action">
+
+                            <span class="action-icon">
+                                🔎
+                            </span>
+
+                            Missing Persons
+
+                        </a>
+
+
+                        <a href="donate.html"
+                           class="action">
+
+                            <span class="action-icon">
+                                🤝
+                            </span>
+
+                            Donate Resources
+
+                        </a>
+
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- RIGHT COLUMN -->
+
+            <div>
+
+
+                <!-- HELP REQUESTS -->
+
+                <section class="card">
+
+                    <h2>
+                        🆘 Priority Requests
+                    </h2>
+
+
+                    <div class="request">
+
+                        <div class="request-top">
+
+                            <span>
+                                🚑 Medical Assistance
+                            </span>
+
+                            <span class="red">
+                                CRITICAL
+                            </span>
+
+                        </div>
+
+                        <p>
+                            12 people • Guwahati
+                        </p>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar"
+                                style="width: 25%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="request">
+
+                        <div class="request-top">
+
+                            <span>
+                                💧 Drinking Water
+                            </span>
+
+                            <span class="red">
+                                HIGH
+                            </span>
+
+                        </div>
+
+                        <p>
+                            500 people • Dispur
+                        </p>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar"
+                                style="width: 48%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="request">
+
+                        <div class="request-top">
+
+                            <span>
+                                🍚 Food Supplies
+                            </span>
+
+                            <span class="orange">
+                                MEDIUM
+                            </span>
+
+                        </div>
+
+                        <p>
+                            250 people • Jalukbari
+                        </p>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar"
+                                style="width: 72%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- RESPONSE TEAM -->
+
+                <section class="card">
+
+                    <h2>
+                        🚑 Response Teams
+                    </h2>
+
+
+                    <div class="incident">
+
+                        <div class="incident-left">
+
+                            <div class="incident-icon">
+                                🚑
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Medical Team
+                                </h3>
+
+                                <p>
+                                    12 members deployed
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="badge active">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <div class="incident-left">
+
+                            <div class="incident-icon">
+                                🚒
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Rescue Team
+                                </h3>
+
+                                <p>
+                                    18 members deployed
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="badge active">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <div class="incident-left">
+
+                            <div class="incident-icon">
+                                🚚
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Supply Team
+                                </h3>
+
+                                <p>
+                                    8 vehicles available
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="badge active">
+                            READY
+                        </span>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- SYSTEM STATUS -->
+
+                <section class="card">
+
+                    <h2>
+                        🖥️ System Status
+                    </h2>
+
+
+                    <div class="incident">
+
+                        <span>
+                            Live Map
+                        </span>
+
+                        <span class="badge active">
+                            ONLINE
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <span>
+                            Alert System
+                        </span>
+
+                        <span class="badge active">
+                            ONLINE
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <span>
+                            Emergency Services
+                        </span>
+
+                        <span class="badge active">
+                            CONNECTED
+                        </span>
+
+                    </div>
+
+
+                    <div class="incident">
+
+                        <span>
+                            Database
+                        </span>
+
+                        <span class="badge active">
+                            ONLINE
+                        </span>
+
+                    </div>
+
+
+                </section>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink |
+            Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
