@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Disaster Alerts | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 70px;
+
+            background: #101828;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+
+            list-style: none;
+
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        .home-btn {
+            background: white;
+
+            color: #101828;
+
+            padding: 10px 18px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+            background: #101828;
+
+            color: white;
+
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 86%;
+
+            max-width: 1100px;
+
+            margin: 35px auto;
+        }
+
+
+        /* ================= FILTER ================= */
+
+        .filter-card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+        }
+
+        .filter-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .filter-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        select {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            background: white;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        select:focus {
+            border-color: #175cd3;
+        }
+
+        .filter-buttons {
+            margin-top: 20px;
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .apply-btn {
+            padding: 12px 22px;
+
+            background: #101828;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            background: #1d2939;
+        }
+
+        .reset-btn {
+            padding: 12px 22px;
+
+            background: white;
+
+            color: #101828;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .reset-btn:hover {
+            background: #f2f4f7;
+        }
+
+
+        /* ================= RESULT COUNT ================= */
+
+        .result-count {
+            margin-bottom: 18px;
+
+            color: #667085;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= ALERTS ================= */
+
+        .alerts {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .alert-card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            transition: 0.3s;
+        }
+
+        .alert-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,0.08);
+        }
+
+        .alert-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 12px;
+        }
+
+        .alert-card h3 {
+            font-size: 18px;
+        }
+
+        .severity {
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+        .critical {
+            background: #fee4e2;
+
+            color: #b42318;
+        }
+
+        .high {
+            background: #fff4e5;
+
+            color: #b54708;
+        }
+
+        .medium {
+            background: #eef4ff;
+
+            color: #175cd3;
+        }
+
+        .low {
+            background: #ecfdf3;
+
+            color: #027a48;
+        }
+
+        .alert-card p {
+            color: #667085;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 7px;
+        }
+
+        .alert-info {
+            margin-top: 12px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #eaecf0;
+
+            color: #475467;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ================= NO RESULTS ================= */
+
+        #noResults {
+            display: none;
+
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: #667085;
+        }
+
+        #noResults h2 {
+            margin-bottom: 8px;
+
+            color: #172033;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .alerts {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="map.html">
+                    Live Map
+                </a>
+            </li>
+
+            <li>
+                <a href="requests.html">
+                    Requests
+                </a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">
+                    Volunteer
+                </a>
+            </li>
+
+            <li>
+                <a href="donate.html">
+                    Relief & Donations
+                </a>
+            </li>
+
+        </ul>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- ================= HEADER ================= -->
+
+    <section class="header">
+
+        <h1>
+            🚨 Disaster Alerts
+        </h1>
+
+        <p>
+            Stay informed about active disasters
+            and emergency situations.
+        </p>
+
+    </section>
+
+
+
+    <main class="container">
+
+
+        <!-- ================= FILTER ================= -->
+
+        <section class="filter-card">
+
+            <h2>
+                🔎 Filter Alerts
+            </h2>
+
+
+            <div class="filter-grid">
+
+
+                <!-- DISASTER TYPE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Disaster Type
+                    </label>
+
+                    <select id="typeFilter">
+
+                        <option value="all">
+                            All Disasters
+                        </option>
+
+                        <option value="flood">
+                            Flood
+                        </option>
+
+                        <option value="cyclone">
+                            Cyclone
+                        </option>
+
+                        <option value="earthquake">
+                            Earthquake
+                        </option>
+
+                        <option value="landslide">
+                            Landslide
+                        </option>
+
+                        <option value="fire">
+                            Fire
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SEVERITY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Severity
+                    </label>
+
+                    <select id="severityFilter">
+
+                        <option value="all">
+                            All Severities
+                        </option>
+
+                        <option value="critical">
+                            Critical
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                        <option value="medium">
+                            Medium
+                        </option>
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <select id="locationFilter">
+
+                        <option value="all">
+                            All Locations
+                        </option>
+
+                        <option value="guwahati">
+                            Guwahati
+                        </option>
+
+                        <option value="dispur">
+                            Dispur
+                        </option>
+
+                        <option value="jalukbari">
+                            Jalukbari
+                        </option>
+
+                        <option value="jorhat">
+                            Jorhat
+                        </option>
+
+                        <option value="silchar">
+                            Silchar
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="filter-buttons">
+
+                <button
+                    class="apply-btn"
+                    onclick="applyFilters()">
+
+                    🔎 Apply Filter
+
+                </button>
+
+
+                <button
+                    class="reset-btn"
+                    onclick="resetFilters()">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RESULT COUNT ================= -->
+
+        <div
+            class="result-count"
+            id="resultCount">
+
+            Showing 6 disaster alerts
+
+        </div>
+
+
+
+        <!-- ================= ALERTS ================= -->
+
+        <section
+            class="alerts"
+            id="alertsContainer">
+
+
+            <!-- ALERT 1 -->
+
+            <div
+                class="alert-card"
+                data-type="flood"
+                data-severity="critical"
+                data-location="guwahati">
+
+                <div class="alert-top">
+
+                    <h3>
+                        🌊 Guwahati Flood
+                    </h3>
+
+                    <span class="severity critical">
+                        CRITICAL
+                    </span>
+
+                </div>
+
+                <p>
+                    Heavy rainfall has caused severe
+                    flooding in several areas.
+                </p>
+
+                <div class="alert-info">
+
+                    📍 Guwahati, Assam
+                    <br>
+
+                    🕐 Updated: 10 minutes ago
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ALERT 2 -->
+
+            <div
+                class="alert-card"
+                data-type="flood"
+                data-severity="high"
+                data-location="dispur">
+
+                <div class="alert-top">
+
+                    <h3>
+                        🌊 Dispur Flood Warning
+                    </h3>
+
+                    <span class="severity high">
+                        HIGH
+                    </span>
+
+                </div>
+
+                <p>
+                    Water levels are rising near
+                    residential areas.
+                </p>
+
+                <div class="alert-info">
+
+                    📍 Dispur, Assam
+                    <br>
+
+                    🕐 Updated: 25 minutes ago
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ALERT 3 -->
+
+            <div
+                class="alert-card"
+                data-type="landslide"
+                data-severity="high"
+                data-location="jorhat">
+
+                <div class="alert-top">
+
+                    <h3>
+                        ⛰️ Landslide Warning
+                    </h3>
+
+                    <span class="severity high">
+                        HIGH
+                    </span>
+
+                </div>
+
+                <p>
+                    Landslide risk reported in
+                    hilly areas after heavy rainfall.
+                </p>
+
+                <div class="alert-info">
+
+                    📍 Jorhat, Assam
+                    <br>
+
+                    🕐 Updated: 40 minutes ago
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ALERT 4 -->
+
+            <div
+                class="alert-card"
+                data-type="cyclone"
+                data-severity="critical"
+                data-location="silchar">
+
+                <div class="alert-top">
+
+                    <h3>
+                        🌀 Cyclone Alert
+                    </h3>
+
+                    <span class="severity critical">
+                        CRITICAL
+                    </span>
+
+                </div>
+
+                <p>
+                    Strong winds and heavy rainfall
+                    expected in the region.
+                </p>
+
+                <div class="alert-info">
+
+                    📍 Silchar, Assam
+                    <br>
+
+                    🕐 Updated: 1 hour ago
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ALERT 5 -->
+
+            <div
+                class="alert-card"
+                data-type="fire"
+                data-severity="medium"
+                data-location="jalukbari">
+
+                <div class="alert-top">
+
+                    <h3>
+                        🔥 Fire Emergency
+                    </h3>
+
+                    <span class="severity medium">
+                        MEDIUM
+                    </span>
+
+                </div>
+
+                <p>
+                    Fire reported near a residential
+                    and commercial area.
+                </p>
+
+                <div class="alert-info">
+
+                    📍 Jalukbari, Assam
+                    <br>
+
+                    🕐 Updated: 2 hours ago
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ALERT 6 -->
+
+            <div
+                class="alert-card"
+                data-type="earthquake"
+                data-severity="low"
+                data-location="guwahati">
+
+                <div class="alert-top">
+
+                    <h3>
+                        🌍 Earthquake Advisory
+                    </h3>
+
+                    <span class="severity low">
+                        LOW
+                    </span>
+
+                </div>
+
+                <p>
+                    Minor earthquake detected.
+                    No major damage reported.
+                </p>
+
+                <div class="alert-info">
+
+                    📍 Guwahati, Assam
+                    <br>
+
+                    🕐 Updated: 3 hours ago
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= NO RESULTS ================= -->
+
+        <section id="noResults">
+
+            <h2>
+                🔍 No Alerts Found
+            </h2>
+
+            <p>
+                No disaster alerts match your selected
+                filters.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink |
+            Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+
+    <script>
+
+
+        /* =========================================
+           APPLY FILTERS
+        ========================================= */
+
+        function applyFilters() {
+
+
+            const type =
+                document.getElementById("typeFilter").value;
+
+
+            const severity =
+                document.getElementById("severityFilter").value;
+
+
+            const location =
+                document.getElementById("locationFilter").value;
+
+
+            const cards =
+                document.querySelectorAll(".alert-card");
+
+
+            let visibleCount = 0;
+
+
+            cards.forEach(function(card) {
+
+
+                const cardType =
+                    card.dataset.type;
+
+
+                const cardSeverity =
+                    card.dataset.severity;
+
+
+                const cardLocation =
+                    card.dataset.location;
+
+
+                const typeMatch =
+                    type === "all"
+                    || type === cardType;
+
+
+                const severityMatch =
+                    severity === "all"
+                    || severity === cardSeverity;
+
+
+                const locationMatch =
+                    location === "all"
+                    || location === cardLocation;
+
+
+                if (
+                    typeMatch &&
+                    severityMatch &&
+                    locationMatch
+                ) {
+
+                    card.style.display = "block";
+
+                    visibleCount++;
+
+                }
+
+                else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            /* UPDATE RESULT COUNT */
+
+            document.getElementById("resultCount")
+                .textContent =
+                "Showing "
+                + visibleCount
+                + " disaster alert"
+                + (visibleCount !== 1 ? "s" : "");
+
+
+            /* SHOW / HIDE NO RESULTS */
+
+            if (visibleCount === 0) {
+
+                document.getElementById("noResults")
+                    .style.display = "block";
+
+            }
+
+            else {
+
+                document.getElementById("noResults")
+                    .style.display = "none";
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           RESET FILTERS
+        ========================================= */
+
+        function resetFilters() {
+
+
+            document.getElementById("typeFilter")
+                .value = "all";
+
+
+            document.getElementById("severityFilter")
+                .value = "all";
+
+
+            document.getElementById("locationFilter")
+                .value = "all";
+
+
+            applyFilters();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
