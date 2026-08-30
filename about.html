@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About ResQLink</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #172033;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 70px;
+    background: #101828;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4d4d;
+}
+
+nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.profile {
+    background: white;
+    color: #101828;
+
+    padding: 9px 14px;
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* HERO */
+
+.hero {
+    background: #101828;
+    color: white;
+
+    text-align: center;
+
+    padding: 65px 7%;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #ff4d4d;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+
+    color: #d0d5dd;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 86%;
+    max-width: 1100px;
+
+    margin: 35px auto;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+.section h2 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.section p {
+    color: #667085;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+/* PROBLEM */
+
+.problem-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.problem-card {
+    background: #f9fafb;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 9px;
+
+    padding: 20px;
+}
+
+.problem-icon {
+    font-size: 28px;
+
+    margin-bottom: 12px;
+}
+
+.problem-card h3 {
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.problem-card p {
+    font-size: 10px;
+}
+
+/* SOLUTION */
+
+.solution {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    align-items: center;
+}
+
+.solution-box {
+    background: #eef4ff;
+
+    border-radius: 10px;
+
+    padding: 25px;
+}
+
+.solution-box h3 {
+    color: #175cd3;
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+}
+
+.solution-list {
+    margin-top: 15px;
+
+    list-style: none;
+}
+
+.solution-list li {
+    font-size: 11px;
+
+    margin-bottom: 11px;
+
+    color: #475467;
+}
+
+/* HOW IT WORKS */
+
+.steps {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 22px;
+}
+
+.step {
+    text-align: center;
+
+    padding: 18px;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 9px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+
+    margin: 0 auto 12px;
+
+    background: #175cd3;
+
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+.step h3 {
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.step p {
+    font-size: 10px;
+}
+
+/* FEATURES */
+
+.features {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+.feature {
+    padding: 18px;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 8px;
+}
+
+.feature-icon {
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.feature p {
+    font-size: 10px;
+}
+
+/* MISSION */
+
+.mission {
+    background: #101828;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 35px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+}
+
+.mission h2 {
+    font-size: 23px;
+
+    margin-bottom: 10px;
+}
+
+.mission p {
+    color: #d0d5dd;
+
+    font-size: 12px;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    line-height: 1.7;
+}
+
+/* CTA */
+
+.cta {
+    text-align: center;
+
+    padding: 15px;
+}
+
+.cta h2 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.cta p {
+    color: #667085;
+
+    font-size: 11px;
+
+    margin-bottom: 18px;
+}
+
+.cta a {
+    display: inline-block;
+
+    background: #175cd3;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 20px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+    background: #080c14;
+
+    color: #98a2b3;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 35px;
+
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .problem-grid,
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .solution {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ResQ<span>Link</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="map.html">
+                Live Map
+            </a>
+        </li>
+
+        <li>
+            <a href="requests.html">
+                Requests
+            </a>
+        </li>
+
+        <li>
+            <a href="alerts.html">
+                Alerts
+            </a>
+        </li>
+
+        <li>
+            <a href="reports.html">
+                Reports
+            </a>
+        </li>
+
+    </ul>
+
+    <a href="contact.html" class="profile">
+        📞 Contact
+    </a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        About <span>ResQLink</span>
+    </h1>
+
+    <p>
+        ResQLink is a disaster relief coordination
+        platform designed to connect affected citizens,
+        volunteers, NGOs, emergency responders and
+        authorities through one centralized system.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- PROBLEM -->
+
+<section class="section">
+
+    <h2>
+        🚨 The Problem
+    </h2>
+
+    <p>
+        During disasters, thousands of people may need
+        help at the same time. Information can become
+        scattered between phone calls, social media,
+        messages and different organizations.
+        This makes it difficult to identify who needs
+        help, where help is required and which resources
+        are available.
+    </p>
+
+
+    <div class="problem-grid">
+
+
+        <div class="problem-card">
+
+            <div class="problem-icon">
+                📍
+            </div>
+
+            <h3>
+                Lack of Location Information
+            </h3>
+
+            <p>
+                Emergency teams may struggle to quickly
+                identify the exact locations where help
+                is required.
+            </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+            <div class="problem-icon">
+                📦
+            </div>
+
+            <h3>
+                Resource Mismatch
+            </h3>
+
+            <p>
+                Relief supplies may exist in one location
+                while another affected area urgently
+                needs those resources.
+            </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+            <div class="problem-icon">
+                📢
+            </div>
+
+            <h3>
+                Communication Gaps
+            </h3>
+
+            <p>
+                Citizens, NGOs, volunteers and authorities
+                may not have one centralized platform
+                for coordination.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- SOLUTION -->
+
+<section class="section">
+
+    <div class="solution">
+
+
+        <div>
+
+            <h2>
+                💡 Our Solution
+            </h2>
+
+            <p>
+                ResQLink brings disaster response activities
+                into one centralized digital platform.
+                Citizens can request assistance while
+                responders can monitor requests, resources
+                and emergency situations in real time.
+            </p>
+
+
+            <ul class="solution-list">
+
+                <li>
+                    ✓ Centralized emergency requests
+                </li>
+
+                <li>
+                    ✓ Live disaster mapping
+                </li>
+
+                <li>
+                    ✓ Volunteer coordination
+                </li>
+
+                <li>
+                    ✓ NGO and relief organization coordination
+                </li>
+
+                <li>
+                    ✓ Relief supply tracking
+                </li>
+
+                <li>
+                    ✓ Emergency alerts
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="solution-box">
+
+            <h3>
+                One Platform. One Response.
+            </h3>
+
+            <p>
+                Connect the right people, resources
+                and information at the right place
+                when every second matters.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+    <h2>
+        🔄 How ResQLink Works
+    </h2>
+
+    <p>
+        The platform creates a simple flow between
+        affected citizens and disaster responders.
+    </p>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Report
+            </h3>
+
+            <p>
+                Citizens submit a request
+                for emergency assistance.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Verify
+            </h3>
+
+            <p>
+                Response teams review and
+                prioritize the request.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Coordinate
+            </h3>
+
+            <p>
+                NGOs and volunteers are
+                assigned to the situation.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>
+                Resolve
+            </h3>
+
+            <p>
+                Assistance reaches the
+                affected people.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section">
+
+    <h2>
+        ⭐ Key Features
+    </h2>
+
+    <p>
+        Important features designed to improve
+        disaster response coordination.
+    </p>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🗺️
+            </div>
+
+            <h3>
+                Live Disaster Map
+            </h3>
+
+            <p>
+                Visualize affected areas,
+                emergency requests and
+                relief locations.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🆘
+            </div>
+
+            <h3>
+                Help Requests
+            </h3>
+
+            <p>
+                Allow affected citizens to
+                submit and track assistance
+                requests.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                👥
+            </div>
+
+            <h3>
+                Volunteer Management
+            </h3>
+
+            <p>
+                Coordinate volunteers based
+                on skills, availability and
+                location.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🏢
+            </div>
+
+            <h3>
+                NGO Coordination
+            </h3>
+
+            <p>
+                Connect NGOs and organizations
+                with people who need help.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📦
+            </div>
+
+            <h3>
+                Resource Tracking
+            </h3>
+
+            <p>
+                Monitor food, water, medicine
+                and other relief supplies.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔔
+            </div>
+
+            <h3>
+                Emergency Alerts
+            </h3>
+
+            <p>
+                Share important disaster
+                information with users.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- MISSION -->
+
+<section class="mission">
+
+    <h2>
+        ❤️ Our Mission
+    </h2>
+
+    <p>
+        Our mission is to make disaster response
+        faster, more organized and more transparent
+        by connecting communities with the people
+        and resources capable of helping them.
+    </p>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="section cta">
+
+    <h2>
+        Ready to Respond?
+    </h2>
+
+    <p>
+        Explore the ResQLink platform and
+        become part of the disaster response network.
+    </p>
+
+    <a href="dashboard.html">
+        Open Dashboard →
+    </a>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 ResQLink |
+Disaster Relief Coordination Platform
+
+</footer>
+
+
+</body>
+
+</html>
