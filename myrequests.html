@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Requests | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            padding: 10px 16px;
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+
+            padding: 35px 7%;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+            font-size: 14px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        /* TOP */
+
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 22px;
+        }
+
+        .request-count {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        .new-btn {
+            background: #d92d20;
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 17px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 10px;
+
+            padding: 18px;
+        }
+
+        .stat-number {
+            font-size: 27px;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #667085;
+
+            font-size: 12px;
+        }
+
+        .blue {
+            color: #175cd3;
+        }
+
+        .orange {
+            color: #f79009;
+        }
+
+        .green {
+            color: #12b76a;
+        }
+
+        .red {
+            color: #d92d20;
+        }
+
+        /* REQUEST CARD */
+
+        .request-card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            margin-bottom: 16px;
+        }
+
+        .request-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            margin-bottom: 17px;
+        }
+
+        .request-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .request-icon {
+            width: 45px;
+            height: 45px;
+
+            background: #f2f4f7;
+
+            border-radius: 9px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .request-title h2 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .request-id {
+            color: #667085;
+            font-size: 11px;
+        }
+
+        .status {
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+        .pending {
+            background: #fff4e5;
+            color: #b54708;
+        }
+
+        .assigned {
+            background: #eef4ff;
+            color: #175cd3;
+        }
+
+        .progress-status {
+            background: #ecfdf3;
+            color: #027a48;
+        }
+
+        .resolved {
+            background: #f2f4f7;
+            color: #475467;
+        }
+
+        /* DETAILS */
+
+        .details {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .detail-label {
+            color: #667085;
+
+            font-size: 11px;
+
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            display: flex;
+
+            align-items: center;
+
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            min-width: 85px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .circle {
+            width: 30px;
+            height: 30px;
+
+            border-radius: 50%;
+
+            background: #eaecf0;
+
+            color: #667085;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        .step.completed .circle {
+            background: #12b76a;
+            color: white;
+        }
+
+        .step.current .circle {
+            background: #175cd3;
+            color: white;
+        }
+
+        .step span {
+            font-size: 10px;
+            color: #667085;
+            text-align: center;
+        }
+
+        .line {
+            height: 3px;
+
+            background: #eaecf0;
+
+            flex: 1;
+
+            margin-top: -24px;
+        }
+
+        .line.completed {
+            background: #12b76a;
+        }
+
+        /* ACTIONS */
+
+        .actions {
+            display: flex;
+
+            gap: 10px;
+
+            border-top: 1px solid #eaecf0;
+
+            padding-top: 17px;
+        }
+
+        .action-btn {
+            padding: 9px 14px;
+
+            border-radius: 6px;
+
+            border: 1px solid #d0d5dd;
+
+            background: white;
+
+            color: #172033;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .action-btn.primary {
+            background: #175cd3;
+            color: white;
+            border-color: #175cd3;
+        }
+
+        .action-btn.danger {
+            color: #d92d20;
+        }
+
+        /* INFO */
+
+        .info {
+            background: #eef4ff;
+
+            border: 1px solid #c7d7fe;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            margin-top: 25px;
+        }
+
+        .info h3 {
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        .info p {
+            color: #475467;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .details {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .top-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .request-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .timeline {
+                overflow-x: auto;
+                min-width: 500px;
+            }
+
+            .actions {
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="notifications.html">Notifications</a>
+            </li>
+
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            📋 My Help Requests
+        </h1>
+
+        <p>
+            Track the status of emergency assistance
+            requests submitted by you.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- TOP -->
+
+        <div class="top-section">
+
+            <div class="request-count">
+                Showing 3 recent requests
+            </div>
+
+            <a href="requests.html"
+               class="new-btn">
+
+                + New Help Request
+
+            </a>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+
+            <div class="stat">
+
+                <div class="stat-number blue">
+                    3
+                </div>
+
+                <div class="stat-label">
+                    Total Requests
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number orange">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    Pending
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number blue">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    In Progress
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number green">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    Resolved
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- REQUEST 1 -->
+
+        <section class="request-card">
+
+
+            <div class="request-header">
+
+                <div class="request-title">
+
+                    <div class="request-icon">
+                        💧
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Drinking Water
+                        </h2>
+
+                        <div class="request-id">
+                            Request ID: RL-10245
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <span class="status pending">
+                    PENDING
+                </span>
+
+            </div>
+
+
+            <div class="details">
+
+                <div>
+
+                    <div class="detail-label">
+                        Location
+                    </div>
+
+                    <div class="detail-value">
+                        Dispur, Assam
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="detail-label">
+                        People Affected
+                    </div>
+
+                    <div class="detail-value">
+                        8 People
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="detail-label">
+                        Submitted
+                    </div>
+
+                    <div class="detail-value">
+                        Today, 8:30 PM
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE -->
+
+            <div class="timeline">
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Submitted
+                    </span>
+
+                </div>
+
+
+                <div class="line completed"></div>
+
+
+                <div class="step current">
+
+                    <div class="circle">
+                        2
+                    </div>
+
+                    <span>
+                        Reviewing
+                    </span>
+
+                </div>
+
+
+                <div class="line"></div>
+
+
+                <div class="step">
+
+                    <div class="circle">
+                        3
+                    </div>
+
+                    <span>
+                        Assigned
+                    </span>
+
+                </div>
+
+
+                <div class="line"></div>
+
+
+                <div class="step">
+
+                    <div class="circle">
+                        4
+                    </div>
+
+                    <span>
+                        Resolved
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="action-btn primary"
+                    onclick="viewRequest('RL-10245')">
+
+                    View Details
+
+                </button>
+
+                <button
+                    class="action-btn danger"
+                    onclick="cancelRequest('RL-10245')">
+
+                    Cancel Request
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- REQUEST 2 -->
+
+        <section class="request-card">
+
+
+            <div class="request-header">
+
+                <div class="request-title">
+
+                    <div class="request-icon">
+                        🚑
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Medical Assistance
+                        </h2>
+
+                        <div class="request-id">
+                            Request ID: RL-10198
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <span class="status progress-status">
+                    IN PROGRESS
+                </span>
+
+            </div>
+
+
+            <div class="details">
+
+                <div>
+
+                    <div class="detail-label">
+                        Location
+                    </div>
+
+                    <div class="detail-value">
+                        Guwahati, Assam
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="detail-label">
+                        People Affected
+                    </div>
+
+                    <div class="detail-value">
+                        3 People
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="detail-label">
+                        Submitted
+                    </div>
+
+                    <div class="detail-value">
+                        Yesterday
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Submitted
+                    </span>
+
+                </div>
+
+
+                <div class="line completed"></div>
+
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Reviewing
+                    </span>
+
+                </div>
+
+
+                <div class="line completed"></div>
+
+
+                <div class="step current">
+
+                    <div class="circle">
+                        3
+                    </div>
+
+                    <span>
+                        Assigned
+                    </span>
+
+                </div>
+
+
+                <div class="line"></div>
+
+
+                <div class="step">
+
+                    <div class="circle">
+                        4
+                    </div>
+
+                    <span>
+                        Resolved
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="action-btn primary"
+                    onclick="viewRequest('RL-10198')">
+
+                    Track Response
+
+                </button>
+
+                <button
+                    class="action-btn"
+                    onclick="contactTeam()">
+
+                    Contact Team
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- REQUEST 3 -->
+
+        <section class="request-card">
+
+
+            <div class="request-header">
+
+                <div class="request-title">
+
+                    <div class="request-icon">
+                        🍚
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Food Supplies
+                        </h2>
+
+                        <div class="request-id">
+                            Request ID: RL-10072
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <span class="status resolved">
+                    RESOLVED
+                </span>
+
+            </div>
+
+
+            <div class="details">
+
+                <div>
+
+                    <div class="detail-label">
+                        Location
+                    </div>
+
+                    <div class="detail-value">
+                        Jalukbari, Assam
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="detail-label">
+                        People Affected
+                    </div>
+
+                    <div class="detail-value">
+                        15 People
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="detail-label">
+                        Resolved
+                    </div>
+
+                    <div class="detail-value">
+                        2 days ago
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Submitted
+                    </span>
+
+                </div>
+
+
+                <div class="line completed"></div>
+
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Reviewing
+                    </span>
+
+                </div>
+
+
+                <div class="line completed"></div>
+
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Assigned
+                    </span>
+
+                </div>
+
+
+                <div class="line completed"></div>
+
+
+                <div class="step completed">
+
+                    <div class="circle">
+                        ✓
+                    </div>
+
+                    <span>
+                        Resolved
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="action-btn primary"
+                    onclick="viewRequest('RL-10072')">
+
+                    View Details
+
+                </button>
+
+                <button
+                    class="action-btn"
+                    onclick="giveFeedback()">
+
+                    Give Feedback
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- INFORMATION -->
+
+        <section class="info">
+
+            <h3>
+                ℹ️ How request tracking works
+            </h3>
+
+            <p>
+                Your request moves through four stages:
+                Submitted → Reviewing → Assigned →
+                Resolved. You will receive a notification
+                whenever the status changes.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </footer>
+
+
+    <script>
+
+        function viewRequest(id) {
+
+            alert(
+                "📋 Request Details\n\n"
+                + "Request ID: "
+                + id
+                + "\n\n"
+                + "Detailed tracking will be connected "
+                + "to the backend later."
+            );
+
+        }
+
+
+        function cancelRequest(id) {
+
+            let confirmCancel =
+                confirm(
+                    "Are you sure you want to cancel request "
+                    + id
+                    + "?"
+                );
+
+            if (confirmCancel) {
+
+                alert(
+                    "Request "
+                    + id
+                    + " has been cancelled."
+                );
+
+            }
+
+        }
+
+
+        function contactTeam() {
+
+            alert(
+                "📞 Response Team\n\n"
+                + "The coordinator contact system "
+                + "will be connected later."
+            );
+
+        }
+
+
+        function giveFeedback() {
+
+            alert(
+                "⭐ Thank you!\n\n"
+                + "Feedback system will be connected later."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
