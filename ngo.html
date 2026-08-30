@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NGO Dashboard | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+            padding: 10px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .stat h2 {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .stat p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+        }
+
+        /* REQUEST */
+
+        .request {
+            border: 1px solid #eaecf0;
+            padding: 17px;
+            border-radius: 9px;
+            margin-bottom: 15px;
+        }
+
+        .request-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .request h3 {
+            font-size: 17px;
+        }
+
+        .urgent {
+            background: #fee4e2;
+            color: #d92d20;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .normal {
+            background: #ecfdf3;
+            color: #027a48;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .request p {
+            color: #667085;
+            margin-top: 10px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .location {
+            color: #475467;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .accept {
+            background: #12b76a;
+            color: white;
+        }
+
+        .map {
+            background: #eef4ff;
+            color: #175cd3;
+        }
+
+        .accept:hover {
+            background: #079455;
+        }
+
+        /* RESOURCE FORM */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+
+            border: 1px solid #d0d5dd;
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #175cd3;
+        }
+
+        .submit {
+            width: 100%;
+            background: #101828;
+            color: white;
+            padding: 12px;
+        }
+
+        .submit:hover {
+            background: #1d2939;
+        }
+
+        /* RESOURCE LIST */
+
+        .resource {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid #eaecf0;
+            padding: 14px 0;
+        }
+
+        .resource:last-child {
+            border-bottom: none;
+        }
+
+        .resource-name {
+            font-weight: bold;
+        }
+
+        .resource-small {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .available {
+            color: #027a48;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* VOLUNTEERS */
+
+        .volunteer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 13px 0;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .volunteer:last-child {
+            border-bottom: none;
+        }
+
+        .volunteer-name {
+            font-weight: bold;
+        }
+
+        .volunteer-skill {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .online {
+            width: 9px;
+            height: 9px;
+            background: #12b76a;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width:500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+            <li>
+                <a href="ngo.html">NGO</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            🏢 NGO Dashboard
+        </h1>
+
+        <p>
+            Coordinate relief operations,
+            resources and volunteers in affected areas.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <h2>42</h2>
+
+                <p>
+                    Active Relief Requests
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>18</h2>
+
+                <p>
+                    Volunteers Available
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>1,240</h2>
+
+                <p>
+                    Food Packets
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>86</h2>
+
+                <p>
+                    Families Helped
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="grid">
+
+
+            <!-- LEFT SIDE -->
+
+            <div>
+
+
+                <!-- RELIEF REQUESTS -->
+
+                <section class="card">
+
+                    <h2>
+                        🆘 Active Relief Requests
+                    </h2>
+
+
+                    <div class="request">
+
+                        <div class="request-top">
+
+                            <h3>
+                                Food & Water Required
+                            </h3>
+
+                            <span class="urgent">
+                                URGENT
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Flood affected families
+                            require drinking water and
+                            food packets.
+                        </p>
+
+                        <div class="location">
+                            📍 Guwahati, Assam
+                            <br>
+                            👥 25 people
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="accept"
+                                onclick="takeRequest('Food & Water')">
+
+                                Accept Request
+
+                            </button>
+
+                            <button
+                                class="map"
+                                onclick="openMap()">
+
+                                📍 View Map
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="request">
+
+                        <div class="request-top">
+
+                            <h3>
+                                Temporary Shelter
+                            </h3>
+
+                            <span class="normal">
+                                NORMAL
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Several families need
+                            temporary accommodation
+                            after flooding.
+                        </p>
+
+                        <div class="location">
+                            📍 Dispur, Assam
+                            <br>
+                            👥 12 people
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="accept"
+                                onclick="takeRequest('Temporary Shelter')">
+
+                                Accept Request
+
+                            </button>
+
+                            <button
+                                class="map"
+                                onclick="openMap()">
+
+                                📍 View Map
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="request">
+
+                        <div class="request-top">
+
+                            <h3>
+                                Medical Supplies
+                            </h3>
+
+                            <span class="urgent">
+                                URGENT
+                            </span>
+
+                        </div>
+
+                        <p>
+                            First-aid medicines and
+                            medical supplies are required.
+                        </p>
+
+                        <div class="location">
+                            📍 Jalukbari, Assam
+                            <br>
+                            👥 40 people
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="accept"
+                                onclick="takeRequest('Medical Supplies')">
+
+                                Accept Request
+
+                            </button>
+
+                            <button
+                                class="map"
+                                onclick="openMap()">
+
+                                📍 View Map
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- AVAILABLE RESOURCES -->
+
+                <section class="card">
+
+                    <h2>
+                        📦 Available Resources
+                    </h2>
+
+
+                    <div class="resource">
+
+                        <div>
+
+                            <div class="resource-name">
+                                Drinking Water
+                            </div>
+
+                            <div class="resource-small">
+                                850 bottles
+                            </div>
+
+                        </div>
+
+                        <div class="available">
+                            Available
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource">
+
+                        <div>
+
+                            <div class="resource-name">
+                                Food Packets
+                            </div>
+
+                            <div class="resource-small">
+                                1,240 packets
+                            </div>
+
+                        </div>
+
+                        <div class="available">
+                            Available
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource">
+
+                        <div>
+
+                            <div class="resource-name">
+                                Blankets
+                            </div>
+
+                            <div class="resource-small">
+                                320 blankets
+                            </div>
+
+                        </div>
+
+                        <div class="available">
+                            Available
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div>
+
+
+                <!-- ADD RESOURCE -->
+
+                <section class="card">
+
+                    <h2>
+                        ➕ Add Resources
+                    </h2>
+
+                    <form
+                        onsubmit="addResource(event)">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Resource Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="resourceName"
+                                placeholder="e.g. Food Packets"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Quantity
+                            </label>
+
+                            <input
+                                type="number"
+                                placeholder="Enter quantity"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Resource Type
+                            </label>
+
+                            <select required>
+
+                                <option value="">
+                                    Select type
+                                </option>
+
+                                <option>
+                                    Food
+                                </option>
+
+                                <option>
+                                    Water
+                                </option>
+
+                                <option>
+                                    Medicine
+                                </option>
+
+                                <option>
+                                    Shelter
+                                </option>
+
+                                <option>
+                                    Clothing
+                                </option>
+
+                                <option>
+                                    Transportation
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            class="submit"
+                            type="submit">
+
+                            Add Resource
+
+                        </button>
+
+                    </form>
+
+                </section>
+
+
+                <!-- VOLUNTEERS -->
+
+                <section class="card">
+
+                    <h2>
+                        👥 Available Volunteers
+                    </h2>
+
+
+                    <div class="volunteer">
+
+                        <div>
+
+                            <div class="volunteer-name">
+                                Rahul Sharma
+                            </div>
+
+                            <div class="volunteer-skill">
+                                🚗 Transportation
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <span class="online"></span>
+                            Online
+                        </div>
+
+                    </div>
+
+
+                    <div class="volunteer">
+
+                        <div>
+
+                            <div class="volunteer-name">
+                                Priya Das
+                            </div>
+
+                            <div class="volunteer-skill">
+                                🚑 Medical Help
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <span class="online"></span>
+                            Online
+                        </div>
+
+                    </div>
+
+
+                    <div class="volunteer">
+
+                        <div>
+
+                            <div class="volunteer-name">
+                                Arjun Singh
+                            </div>
+
+                            <div class="volunteer-skill">
+                                🍚 Food Distribution
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <span class="online"></span>
+                            Online
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function takeRequest(name) {
+
+            alert(
+                "Request accepted by your NGO:\n\n"
+                + name
+            );
+
+        }
+
+
+        function openMap() {
+
+            window.location.href = "map.html";
+
+        }
+
+
+        function addResource(event) {
+
+            event.preventDefault();
+
+            let name =
+                document.getElementById("resourceName").value;
+
+            alert(
+                "Resource added successfully:\n\n"
+                + name
+            );
+
+            event.target.reset();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
