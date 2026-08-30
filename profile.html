@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            padding: 10px 16px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 35px 7%;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+            font-size: 14px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        /* PROFILE */
+
+        .profile-card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 22px;
+
+            margin-bottom: 22px;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+
+            border-radius: 50%;
+
+            background: #eef4ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+
+            border: 3px solid #d0d5dd;
+        }
+
+        .profile-info h2 {
+            margin-bottom: 7px;
+        }
+
+        .profile-info p {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .role-badge {
+            display: inline-block;
+
+            background: #ecfdf3;
+            color: #027a48;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .verified {
+            color: #027a48;
+            font-size: 12px;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-bottom: 22px;
+        }
+
+        .card h2 {
+            font-size: 19px;
+            margin-bottom: 20px;
+        }
+
+        /* DETAILS */
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eaecf0;
+
+            font-size: 13px;
+        }
+
+        .detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #667085;
+        }
+
+        .detail-value {
+            font-weight: bold;
+        }
+
+        /* STATISTICS */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+        .stat {
+            background: #f9fafb;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 25px;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #667085;
+
+            font-size: 11px;
+        }
+
+        /* ACTIVITY */
+
+        .activity {
+            display: flex;
+
+            gap: 12px;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 38px;
+            height: 38px;
+
+            background: #f2f4f7;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+        }
+
+        .activity h3 {
+            font-size: 13px;
+
+            margin-bottom: 4px;
+        }
+
+        .activity p {
+            color: #667085;
+
+            font-size: 11px;
+        }
+
+        /* BUTTONS */
+
+        .edit-btn {
+            margin-left: auto;
+
+            background: #175cd3;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 17px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .edit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .settings-btn {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 12px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            color: #172033;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-top: 10px;
+        }
+
+        .logout-btn {
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+
+            background: #fee4e2;
+
+            color: #b42318;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 20px;
+
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .edit-btn {
+                margin-left: 0;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="alerts.html">Alerts</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            👤 My Profile
+        </h1>
+
+        <p>
+            Manage your ResQLink account and
+            view your disaster-response activity.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- PROFILE HEADER -->
+
+        <section class="profile-card">
+
+            <div class="avatar">
+                👤
+            </div>
+
+            <div class="profile-info">
+
+                <h2>
+                    Abhilash Das
+                </h2>
+
+                <p>
+                    📧 abhilash@example.com
+                </p>
+
+                <p>
+                    📍 Assam, India
+                </p>
+
+                <span class="role-badge">
+                    CITIZEN
+                </span>
+
+                <span class="verified">
+                    ✓ Verified Account
+                </span>
+
+            </div>
+
+            <button
+                class="edit-btn"
+                onclick="editProfile()">
+
+                ✏️ Edit Profile
+
+            </button>
+
+        </section>
+
+
+        <!-- TWO COLUMNS -->
+
+        <section class="grid">
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="card">
+
+                <h2>
+                    📋 Personal Information
+                </h2>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Full Name
+                    </span>
+
+                    <span class="detail-value">
+                        Abhilash Das
+                    </span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Email
+                    </span>
+
+                    <span class="detail-value">
+                        abhilash@example.com
+                    </span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Phone
+                    </span>
+
+                    <span class="detail-value">
+                        +91 XXXXX XXXXX
+                    </span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Location
+                    </span>
+
+                    <span class="detail-value">
+                        Assam, India
+                    </span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Account Type
+                    </span>
+
+                    <span class="detail-value">
+                        Citizen
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVITY STATISTICS -->
+
+            <div class="card">
+
+                <h2>
+                    📊 My Activity
+                </h2>
+
+
+                <div class="stats">
+
+
+                    <div class="stat">
+
+                        <div class="stat-number">
+                            8
+                        </div>
+
+                        <div class="stat-label">
+                            Reports
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number">
+                            5
+                        </div>
+
+                        <div class="stat-label">
+                            Help Requests
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number">
+                            12
+                        </div>
+
+                        <div class="stat-label">
+                            Contributions
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT ACTIVITY -->
+
+            <div class="card">
+
+                <h2>
+                    🕒 Recent Activity
+                </h2>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        🚨
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Disaster Report Submitted
+                        </h3>
+
+                        <p>
+                            Flood reported in your area
+                            • 2 hours ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        🆘
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Help Request Created
+                        </h3>
+
+                        <p>
+                            Requested drinking water
+                            • Yesterday
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        🤝
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Resource Contribution
+                        </h3>
+
+                        <p>
+                            Offered food supplies
+                            • 3 days ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+
+            <div class="card">
+
+                <h2>
+                    ⚙️ Account
+                </h2>
+
+
+                <a href="settings.html"
+                   class="settings-btn">
+
+                    ⚙️ Account Settings
+
+                </a>
+
+
+                <a href="notifications.html"
+                   class="settings-btn">
+
+                    🔔 Notification Settings
+
+                </a>
+
+
+                <button
+                    class="logout-btn"
+                    onclick="logout()">
+
+                    🚪 Log Out
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </footer>
+
+
+    <script>
+
+        function editProfile() {
+
+            alert(
+                "✏️ Edit Profile\n\n"
+                + "Profile editing will be connected "
+                + "to the database later."
+            );
+
+        }
+
+
+        function logout() {
+
+            let confirmLogout =
+                confirm(
+                    "Are you sure you want to log out?"
+                );
+
+            if (confirmLogout) {
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
