@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relief Shelters | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+            padding: 10px 17px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 13px;
+
+            border: 1px solid #d0d5dd;
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        .search-btn {
+            background: #101828;
+            color: white;
+
+            border: none;
+            border-radius: 7px;
+
+            padding: 0 22px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background: white;
+            padding: 22px;
+
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+        }
+
+        .stat h2 {
+            font-size: 27px;
+            margin-bottom: 6px;
+        }
+
+        .stat p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* SHELTER GRID */
+
+        .shelters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .shelter {
+            background: white;
+
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+
+            padding: 22px;
+        }
+
+        .shelter-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 12px;
+        }
+
+        .shelter h2 {
+            font-size: 19px;
+        }
+
+        .open {
+            background: #ecfdf3;
+            color: #027a48;
+
+            padding: 5px 9px;
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .limited {
+            background: #fff4e5;
+            color: #b54708;
+
+            padding: 5px 9px;
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .full {
+            background: #fee4e2;
+            color: #b42318;
+
+            padding: 5px 9px;
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .location {
+            color: #667085;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* CAPACITY */
+
+        .capacity-text {
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .capacity-text span:last-child {
+            font-weight: bold;
+        }
+
+        .bar {
+            width: 100%;
+            height: 9px;
+
+            background: #eaecf0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            border-radius: 20px;
+            background: #12b76a;
+        }
+
+        .fill.medium {
+            background: #f79009;
+        }
+
+        .fill.fullbar {
+            background: #d92d20;
+        }
+
+        /* FACILITIES */
+
+        .facilities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 16px;
+        }
+
+        .facility {
+            background: #f2f4f7;
+            padding: 6px 9px;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+            color: #475467;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 18px;
+        }
+
+        button {
+            border: none;
+            border-radius: 7px;
+            padding: 10px 13px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .direction {
+            background: #175cd3;
+            color: white;
+        }
+
+        .details {
+            background: #eef4ff;
+            color: #175cd3;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+
+            text-align: center;
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .shelters {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width:550px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-btn {
+                padding: 12px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+            <li>
+                <a href="ngo.html">NGO</a>
+            </li>
+
+            <li>
+                <a href="shelters.html">Shelters</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            🏕️ Relief Shelters
+        </h1>
+
+        <p>
+            Find nearby emergency shelters and
+            check real-time availability.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- SEARCH -->
+
+        <section class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by location or shelter name...">
+
+            <button
+                class="search-btn"
+                onclick="searchShelters()">
+
+                🔍 Search
+
+            </button>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <h2>18</h2>
+
+                <p>
+                    Active Shelters
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>1,240</h2>
+
+                <p>
+                    Total Capacity
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>736</h2>
+
+                <p>
+                    People Sheltered
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>504</h2>
+
+                <p>
+                    Spaces Available
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SHELTERS -->
+
+        <section class="shelters">
+
+
+            <!-- SHELTER 1 -->
+
+            <div class="shelter" data-lat="26.1445" data-lng="91.7362">
+
+                <div class="shelter-top">
+
+                    <h2>
+                        🏫 Guwahati Relief Center
+                    </h2>
+
+                    <span class="open">
+                        OPEN
+                    </span>
+
+                </div>
+
+                <div class="location">
+                    📍 Guwahati, Assam
+                    <br>
+                    📏 <span class="dist-text">Calculating distance...</span>
+                </div>
+
+
+                <div class="capacity-text">
+
+                    <span>
+                        Occupancy
+                    </span>
+
+                    <span>
+                        120 / 250
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="fill"
+                        style="width:48%;">
+                    </div>
+
+                </div>
+
+
+                <div class="facilities">
+
+                    <span class="facility">
+                        🚿 Water
+                    </span>
+
+                    <span class="facility">
+                        🍚 Food
+                    </span>
+
+                    <span class="facility">
+                        🚑 Medical
+                    </span>
+
+                    <span class="facility">
+                        🚻 Toilets
+                    </span>
+
+                    <span class="facility">
+                        ⚡ Electricity
+                    </span>
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="direction"
+                        onclick="openMap(this)">
+
+                        🗺️ Directions
+
+                    </button>
+
+                    <button
+                        class="details"
+                        onclick="showDetails('Guwahati Relief Center')">
+
+                        View Details
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHELTER 2 -->
+
+            <div class="shelter" data-lat="26.1433" data-lng="91.7898">
+
+                <div class="shelter-top">
+
+                    <h2>
+                        🏢 Dispur Community Hall
+                    </h2>
+
+                    <span class="limited">
+                        LIMITED
+                    </span>
+
+                </div>
+
+                <div class="location">
+                    📍 Dispur, Assam
+                    <br>
+                    📏 <span class="dist-text">Calculating distance...</span>
+                </div>
+
+
+                <div class="capacity-text">
+
+                    <span>
+                        Occupancy
+                    </span>
+
+                    <span>
+                        180 / 220
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="fill medium"
+                        style="width:82%;">
+                    </div>
+
+                </div>
+
+
+                <div class="facilities">
+
+                    <span class="facility">
+                        🚿 Water
+                    </span>
+
+                    <span class="facility">
+                        🍚 Food
+                    </span>
+
+                    <span class="facility">
+                        🚻 Toilets
+                    </span>
+
+                    <span class="facility">
+                        ⚡ Electricity
+                    </span>
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="direction"
+                        onclick="openMap(this)">
+
+                        🗺️ Directions
+
+                    </button>
+
+                    <button
+                        class="details"
+                        onclick="showDetails('Dispur Community Hall')">
+
+                        View Details
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHELTER 3 -->
+
+            <div class="shelter" data-lat="26.1618" data-lng="91.6624">
+
+                <div class="shelter-top">
+
+                    <h2>
+                        🏫 Jalukbari School Shelter
+                    </h2>
+
+                    <span class="open">
+                        OPEN
+                    </span>
+
+                </div>
+
+                <div class="location">
+                    📍 Jalukbari, Assam
+                    <br>
+                    📏 <span class="dist-text">Calculating distance...</span>
+                </div>
+
+
+                <div class="capacity-text">
+
+                    <span>
+                        Occupancy
+                    </span>
+
+                    <span>
+                        75 / 200
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="fill"
+                        style="width:37.5%;">
+                    </div>
+
+                </div>
+
+
+                <div class="facilities">
+
+                    <span class="facility">
+                        🚿 Water
+                    </span>
+
+                    <span class="facility">
+                        🍚 Food
+                    </span>
+
+                    <span class="facility">
+                        🚑 Medical
+                    </span>
+
+                    <span class="facility">
+                        🚻 Toilets
+                    </span>
+
+                    <span class="facility">
+                        🛏️ Beds
+                    </span>
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="direction"
+                        onclick="openMap(this)">
+
+                        🗺️ Directions
+
+                    </button>
+
+                    <button
+                        class="details"
+                        onclick="showDetails('Jalukbari School Shelter')">
+
+                        View Details
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHELTER 4 -->
+
+            <div class="shelter" data-lat="26.1094" data-lng="91.8258">
+
+                <div class="shelter-top">
+
+                    <h2>
+                        🏟️ Khanapara Relief Camp
+                    </h2>
+
+                    <span class="full">
+                        FULL
+                    </span>
+
+                </div>
+
+                <div class="location">
+                    📍 Khanapara, Assam
+                    <br>
+                    📏 <span class="dist-text">Calculating distance...</span>
+                </div>
+
+
+                <div class="capacity-text">
+
+                    <span>
+                        Occupancy
+                    </span>
+
+                    <span>
+                        300 / 300
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="fill fullbar"
+                        style="width:100%;">
+                    </div>
+
+                </div>
+
+
+                <div class="facilities">
+
+                    <span class="facility">
+                        🚿 Water
+                    </span>
+
+                    <span class="facility">
+                        🍚 Food
+                    </span>
+
+                    <span class="facility">
+                        🚑 Medical
+                    </span>
+
+                    <span class="facility">
+                        🚻 Toilets
+                    </span>
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="direction"
+                        onclick="openMap(this)">
+
+                        🗺️ Directions
+
+                    </button>
+
+                    <button
+                        class="details"
+                        onclick="showDetails('Khanapara Relief Camp')">
+
+                        View Details
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        // Radius of Earth in km
+        const EARTH_RADIUS_KM = 6371;
+
+        function toRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+
+        // Haversine formula - real distance between two lat/lng points
+        function getDistanceKm(lat1, lng1, lat2, lng2) {
+
+            const dLat = toRadians(lat2 - lat1);
+            const dLng = toRadians(lng2 - lng1);
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return EARTH_RADIUS_KM * c;
+        }
+
+        function updateShelterDistances(userLat, userLng) {
+
+            document.querySelectorAll(".shelter").forEach(function(shelter) {
+
+                const lat = parseFloat(shelter.dataset.lat);
+                const lng = parseFloat(shelter.dataset.lng);
+                const distEl = shelter.querySelector(".dist-text");
+
+                if (!distEl || isNaN(lat) || isNaN(lng)) {
+                    return;
+                }
+
+                const dist = getDistanceKm(userLat, userLng, lat, lng);
+                distEl.textContent = dist.toFixed(1) + " km from your location";
+
+            });
+
+        }
+
+        function loadRealDistances() {
+
+            if (!navigator.geolocation) {
+
+                document.querySelectorAll(".dist-text").forEach(function(el) {
+                    el.textContent = "Location not supported";
+                });
+
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+                    updateShelterDistances(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    );
+                },
+
+                function() {
+                    document.querySelectorAll(".dist-text").forEach(function(el) {
+                        el.textContent = "Enable location for distance";
+                    });
+                }
+            );
+
+        }
+
+        window.addEventListener("DOMContentLoaded", loadRealDistances);
+
+
+        function openMap(button) {
+
+            const shelter = button.closest(".shelter");
+            const lat = parseFloat(shelter.dataset.lat);
+            const lng = parseFloat(shelter.dataset.lng);
+
+            if (isNaN(lat) || isNaN(lng)) {
+                window.location.href = "map.html";
+                return;
+            }
+
+            function openDirections(originLat, originLng) {
+
+                let url = "https://www.google.com/maps/dir/?api=1"
+                    + "&destination=" + lat + "," + lng
+                    + "&travelmode=driving";
+
+                if (originLat !== undefined && originLng !== undefined) {
+                    url += "&origin=" + originLat + "," + originLng;
+                }
+
+                window.open(url, "_blank");
+            }
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(
+
+                    function(position) {
+                        openDirections(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        );
+                    },
+
+                    function() {
+                        // user denied location, still open directions to shelter
+                        openDirections();
+                    }
+                );
+
+            } else {
+                openDirections();
+            }
+
+        }
+
+
+        function showDetails(name) {
+
+            alert(
+                "Shelter Details\n\n"
+                + name
+                + "\n\n"
+                + "Facilities: Food, Water, Toilets and Emergency Support."
+            );
+
+        }
+
+
+        function searchShelters() {
+
+            let search =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            let shelters =
+                document.querySelectorAll(".shelter");
+
+            shelters.forEach(function(shelter) {
+
+                let text =
+                    shelter.innerText.toLowerCase();
+
+                if (text.includes(search)) {
+
+                    shelter.style.display = "block";
+
+                } else {
+
+                    shelter.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
