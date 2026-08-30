@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            padding: 10px 16px;
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 35px 7%;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+            font-size: 14px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1050px;
+            margin: 30px auto;
+        }
+
+        /* TOP BAR */
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .notification-count {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        .mark-btn {
+            border: none;
+            background: transparent;
+            color: #175cd3;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* NOTIFICATION CARD */
+
+        .notification {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            display: flex;
+
+            gap: 15px;
+
+            margin-bottom: 12px;
+
+            transition: 0.2s;
+        }
+
+        .notification:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .notification.unread {
+            border-left: 4px solid #175cd3;
+            background: #f8fbff;
+        }
+
+        .notification.critical {
+            border-left: 4px solid #d92d20;
+        }
+
+        .notification.warning {
+            border-left: 4px solid #f79009;
+        }
+
+        .notification.success {
+            border-left: 4px solid #12b76a;
+        }
+
+        .notification-icon {
+            width: 45px;
+            height: 45px;
+
+            min-width: 45px;
+
+            background: #f2f4f7;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .notification h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .notification p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .time {
+            color: #98a2b3;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .notification-action {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            color: #175cd3;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            display: none;
+
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 10px;
+
+            padding: 50px 20px;
+
+            text-align: center;
+        }
+
+        .empty-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .empty p {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        /* SETTINGS */
+
+        .settings {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 10px;
+
+            padding: 22px;
+
+            margin-top: 25px;
+        }
+
+        .settings h2 {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-text h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .setting-text p {
+            color: #667085;
+            font-size: 11px;
+        }
+
+        /* TOGGLE */
+
+        .toggle {
+            width: 42px;
+            height: 23px;
+
+            background: #d0d5dd;
+
+            border-radius: 20px;
+
+            position: relative;
+
+            cursor: pointer;
+        }
+
+        .toggle::after {
+            content: "";
+
+            width: 17px;
+            height: 17px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            top: 3px;
+            left: 3px;
+
+            transition: 0.2s;
+        }
+
+        .toggle.active {
+            background: #12b76a;
+        }
+
+        .toggle.active::after {
+            left: 22px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 750px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .notification-top {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .time {
+                white-space: normal;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="alerts.html">Alerts</a>
+            </li>
+
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            🔔 Notifications
+        </h1>
+
+        <p>
+            Stay updated with emergency alerts,
+            requests and relief operations.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- TOP BAR -->
+
+        <div class="top-bar">
+
+            <div class="notification-count"
+                 id="notificationCount">
+
+                4 unread notifications
+
+            </div>
+
+            <button
+                class="mark-btn"
+                onclick="markAllRead()">
+
+                ✓ Mark all as read
+
+            </button>
+
+        </div>
+
+
+        <!-- NOTIFICATIONS -->
+
+
+        <div id="notificationList">
+
+
+            <!-- EMERGENCY -->
+
+            <div class="notification unread critical">
+
+                <div class="notification-icon">
+                    🚨
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <h3>
+                            Emergency Alert: Flood Risk
+                        </h3>
+
+                        <span class="time">
+                            10 minutes ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Heavy rainfall has increased
+                        flood risk in several areas.
+                        Residents near low-lying areas
+                        are advised to move to safer
+                        locations.
+                    </p>
+
+                    <a href="alerts.html"
+                       class="notification-action">
+
+                        View Emergency Alert →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- REQUEST -->
+
+            <div class="notification unread warning">
+
+                <div class="notification-icon">
+                    🆘
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <h3>
+                            New Help Request Nearby
+                        </h3>
+
+                        <span class="time">
+                            32 minutes ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        A request for drinking water
+                        has been reported near Dispur
+                        Relief Center.
+                    </p>
+
+                    <a href="requests.html"
+                       class="notification-action">
+
+                        View Request →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHELTER -->
+
+            <div class="notification unread">
+
+                <div class="notification-icon">
+                    🏕️
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <h3>
+                            Shelter Availability Updated
+                        </h3>
+
+                        <span class="time">
+                            1 hour ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        250 new spaces are currently
+                        available at nearby emergency
+                        shelters.
+                    </p>
+
+                    <a href="shelters.html"
+                       class="notification-action">
+
+                        Find Shelters →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- VOLUNTEER -->
+
+            <div class="notification unread success">
+
+                <div class="notification-icon">
+                    🙋
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <h3>
+                            Volunteer Registration Approved
+                        </h3>
+
+                        <span class="time">
+                            3 hours ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Your volunteer profile has been
+                        successfully registered with
+                        ResQLink.
+                    </p>
+
+                    <a href="volunteer.html"
+                       class="notification-action">
+
+                        View Volunteer Dashboard →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- DONATION -->
+
+            <div class="notification">
+
+                <div class="notification-icon">
+                    🤝
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <h3>
+                            Relief Contribution Received
+                        </h3>
+
+                        <span class="time">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Your resource contribution has
+                        been received by the relief
+                        coordination team.
+                    </p>
+
+                    <a href="donate.html"
+                       class="notification-action">
+
+                        View Contributions →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM -->
+
+            <div class="notification">
+
+                <div class="notification-icon">
+                    🖥️
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <h3>
+                            ResQLink System Update
+                        </h3>
+
+                        <span class="time">
+                            2 days ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        The disaster coordination platform
+                        has been updated with improved
+                        emergency response features.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- EMPTY STATE -->
+
+        <div class="empty"
+             id="emptyState">
+
+            <div class="empty-icon">
+                🔔
+            </div>
+
+            <h3>
+                You're all caught up!
+            </h3>
+
+            <p>
+                There are no unread notifications.
+            </p>
+
+        </div>
+
+
+        <!-- NOTIFICATION SETTINGS -->
+
+        <section class="settings">
+
+            <h2>
+                ⚙️ Notification Preferences
+            </h2>
+
+
+            <div class="setting-row">
+
+                <div class="setting-text">
+
+                    <h3>
+                        🚨 Emergency Alerts
+                    </h3>
+
+                    <p>
+                        Receive critical disaster
+                        and safety notifications.
+                    </p>
+
+                </div>
+
+                <div class="toggle active"
+                     onclick="toggleSetting(this)">
+                </div>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-text">
+
+                    <h3>
+                        🆘 Help Requests
+                    </h3>
+
+                    <p>
+                        Get notified about nearby
+                        requests for assistance.
+                    </p>
+
+                </div>
+
+                <div class="toggle active"
+                     onclick="toggleSetting(this)">
+                </div>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-text">
+
+                    <h3>
+                        🙋 Volunteer Updates
+                    </h3>
+
+                    <p>
+                        Receive volunteer assignments
+                        and operation updates.
+                    </p>
+
+                </div>
+
+                <div class="toggle active"
+                     onclick="toggleSetting(this)">
+                </div>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-text">
+
+                    <h3>
+                        📢 System Updates
+                    </h3>
+
+                    <p>
+                        Receive information about
+                        ResQLink platform updates.
+                    </p>
+
+                </div>
+
+                <div class="toggle"
+                     onclick="toggleSetting(this)">
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </footer>
+
+
+    <script>
+
+
+        function markAllRead() {
+
+            let notifications =
+                document.querySelectorAll(
+                    ".notification.unread"
+                );
+
+            notifications.forEach(function(notification) {
+
+                notification.classList.remove("unread");
+
+            });
+
+
+            document.getElementById(
+                "notificationCount"
+            ).innerText =
+                "0 unread notifications";
+
+
+            alert(
+                "✓ All notifications marked as read."
+            );
+
+        }
+
+
+        function toggleSetting(element) {
+
+            element.classList.toggle("active");
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
