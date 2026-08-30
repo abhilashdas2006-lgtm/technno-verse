@@ -5,10 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login | ResQLink</title>
+
 
     <style>
 
@@ -16,349 +16,622 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
+
 
         body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #0d1729;
+
             min-height: 100vh;
-            background: #f5f7fa;
+
             display: flex;
-            flex-direction: column;
-        }
 
-        /* NAVBAR */
+            align-items: center;
 
-        nav {
-            height: 70px;
-            background: #101828;
+            justify-content: center;
+
             color: white;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 7%;
         }
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-        }
 
-        .logo span {
-            color: #ff4d4d;
-        }
-
-        .home-btn {
-            background: white;
-            color: #101828;
-
-            text-decoration: none;
-
-            padding: 10px 17px;
-
-            border-radius: 7px;
-
-            font-weight: bold;
-        }
-
-        /* PAGE */
-
-        .page {
-            flex: 1;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 40px 20px;
-        }
+        /* =========================
+           LOGIN CONTAINER
+        ========================= */
 
         .login-container {
-            width: 100%;
-            max-width: 900px;
 
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            background: white;
-
-            border-radius: 15px;
-
-            overflow: hidden;
-
-            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-        }
-
-        /* LEFT */
-
-        .left {
-            background: #101828;
-            color: white;
-
-            padding: 45px 35px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .left h1 {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .left h1 span {
-            color: #ff4d4d;
-        }
-
-        .left p {
-            color: #d0d5dd;
-            line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-
-        .feature {
-            display: flex;
-            gap: 13px;
-
-            margin-bottom: 20px;
-        }
-
-        .feature-icon {
-            font-size: 24px;
-        }
-
-        .feature h3 {
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .feature p {
-            margin: 0;
-            font-size: 12px;
-        }
-
-        /* RIGHT */
-
-        .right {
-            padding: 40px 35px;
-        }
-
-        .right h2 {
-            font-size: 27px;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #667085;
-            font-size: 13px;
-            margin-bottom: 25px;
-        }
-
-        /* ROLE */
-
-        .roles {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            gap: 10px;
-
-            margin-bottom: 22px;
-        }
-
-        .role {
-            border: 1px solid #d0d5dd;
-
-            border-radius: 8px;
-
-            padding: 13px;
-
-            background: white;
-
-            cursor: pointer;
-
-            text-align: center;
-
-            font-size: 12px;
-
-            transition: 0.2s;
-        }
-
-        .role:hover {
-            border-color: #175cd3;
-        }
-
-        .role.selected {
-            border: 2px solid #175cd3;
-            background: #eef4ff;
-        }
-
-        .role-icon {
-            font-size: 23px;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        /* FORM */
-
-        .form-group {
-            margin-bottom: 17px;
-        }
-
-        label {
-            display: block;
-
-            font-size: 13px;
-
-            font-weight: bold;
-
-            margin-bottom: 7px;
-        }
-
-        input {
             width: 100%;
 
-            padding: 12px;
-
-            border: 1px solid #d0d5dd;
-
-            border-radius: 7px;
-
-            outline: none;
-        }
-
-        input:focus {
-            border-color: #175cd3;
-        }
-
-        .password-box {
-            position: relative;
-        }
-
-        .show-password {
-            position: absolute;
-
-            right: 12px;
-            top: 12px;
-
-            font-size: 12px;
-
-            color: #175cd3;
-
-            cursor: pointer;
-        }
-
-        .options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            margin-bottom: 20px;
-
-            font-size: 12px;
-        }
-
-        .remember {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-        }
-
-        .remember input {
-            width: auto;
-        }
-
-        .forgot {
-            color: #175cd3;
-            cursor: pointer;
-        }
-
-        .login-btn {
-            width: 100%;
-
-            padding: 13px;
-
-            background: #d92d20;
-
-            color: white;
-
-            border: none;
-
-            border-radius: 7px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            margin: 23px 0;
-
-            color: #98a2b3;
-
-            font-size: 12px;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: "";
-            height: 1px;
-            background: #eaecf0;
-            flex: 1;
-        }
-
-        .signup {
-            text-align: center;
-
-            color: #667085;
-
-            font-size: 13px;
-        }
-
-        .signup span {
-            color: #175cd3;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #080c14;
-
-            color: #98a2b3;
-
-            text-align: center;
+            max-width: 430px;
 
             padding: 20px;
 
-            font-size: 12px;
         }
 
-        /* MOBILE */
 
-        @media(max-width: 750px) {
+        /* =========================
+           BRAND
+        ========================= */
 
-            .login-container {
-                grid-template-columns: 1fr;
+        .brand {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .brand h1 {
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .brand h1 span {
+
+            color: #ef3340;
+
+        }
+
+
+        .brand p {
+
+            color: #aeb8c8;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           LOGIN CARD
+        ========================= */
+
+        .login-card {
+
+            background: #17243a;
+
+            border: 1px solid #293852;
+
+            border-radius: 18px;
+
+            padding: 32px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.3);
+
+        }
+
+
+        .login-card h2 {
+
+            text-align: center;
+
+            margin-bottom: 8px;
+
+            font-size: 26px;
+
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #aeb8c8;
+
+            margin-bottom: 28px;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-group {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+        }
+
+
+        .input-box {
+
+            position: relative;
+
+        }
+
+
+        .input-box input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            padding-right: 45px;
+
+            border-radius: 8px;
+
+            border: 1px solid #3a4962;
+
+            background: #101b2e;
+
+            color: white;
+
+            font-size: 15px;
+
+            outline: none;
+
+        }
+
+
+        .input-box input:focus {
+
+            border-color: #ef3340;
+
+        }
+
+
+        .input-box input::placeholder {
+
+            color: #758198;
+
+        }
+
+
+        /* =========================
+           SHOW PASSWORD
+        ========================= */
+
+        .password-toggle {
+
+            position: absolute;
+
+            right: 13px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            cursor: pointer;
+
+            color: #9ca8ba;
+
+            font-size: 18px;
+
+        }
+
+
+        /* =========================
+           OPTIONS
+        ========================= */
+
+        .options {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 22px;
+
+            font-size: 13px;
+
+        }
+
+
+        .remember {
+
+            display: flex;
+
+            gap: 7px;
+
+            align-items: center;
+
+            color: #b8c1d0;
+
+        }
+
+
+        .forgot {
+
+            color: #ef3340;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================
+           SIGN IN BUTTON
+        ========================= */
+
+        .signin-btn {
+
+            width: 100%;
+
+            border: none;
+
+            background: #ef3340;
+
+            color: white;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .signin-btn:hover {
+
+            background: #d92330;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* =========================
+           DIVIDER
+        ========================= */
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 25px 0;
+
+            color: #778399;
+
+            font-size: 13px;
+
+        }
+
+
+        .divider::before,
+        .divider::after {
+
+            content: "";
+
+            height: 1px;
+
+            background: #35445c;
+
+            flex: 1;
+
+        }
+
+
+        /* =========================
+           GOOGLE BUTTON
+        ========================= */
+
+        .google-btn {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 8px;
+
+            border: 1px solid #45546b;
+
+            background: white;
+
+            color: #222;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+        }
+
+
+        .google-icon {
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+        }
+
+
+        .google-btn:hover {
+
+            background: #f1f1f1;
+
+        }
+
+
+        /* =========================
+           CREATE ACCOUNT
+        ========================= */
+
+        .create-account {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #aeb8c8;
+
+            font-size: 14px;
+
+        }
+
+
+        .create-account a {
+
+            color: #ef3340;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+        }
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        .success-overlay {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 100;
+
+        }
+
+
+        .success-box {
+
+            background: white;
+
+            color: #17243a;
+
+            width: 330px;
+
+            max-width: 90%;
+
+            padding: 35px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            animation: successPop 0.35s ease;
+
+        }
+
+
+        .success-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            background: #20b15a;
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 18px;
+
+            font-size: 38px;
+
+            font-weight: bold;
+
+        }
+
+
+        .success-box h2 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .success-box p {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+        }
+
+
+        @keyframes successPop {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0.8);
+
             }
 
-            .left {
-                display: none;
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+
             }
 
-            .right {
-                padding: 35px 25px;
+        }
+
+
+        /* =========================
+           CREATE ACCOUNT MODAL
+        ========================= */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.7);
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 90;
+
+        }
+
+
+        .modal-card {
+
+            background: #17243a;
+
+            width: 400px;
+
+            max-width: 90%;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid #33435d;
+
+        }
+
+
+        .modal-card h2 {
+
+            margin-bottom: 20px;
+
+            text-align: center;
+
+        }
+
+
+        .modal-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .modal-buttons button {
+
+            flex: 1;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .create-btn {
+
+            background: #ef3340;
+
+            border: none;
+
+            color: white;
+
+        }
+
+
+        .cancel-btn {
+
+            background: transparent;
+
+            border: 1px solid #506079;
+
+            color: white;
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .login-card {
+
+                padding: 24px;
+
             }
 
         }
@@ -371,384 +644,545 @@
 <body>
 
 
-    <!-- NAVBAR -->
+<div class="login-container">
 
-    <nav>
 
-        <div class="logo">
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <h1>
             ResQ<span>Link</span>
-        </div>
+        </h1>
 
-        <a href="index.html"
-           class="home-btn">
+        <p>
+            Disaster Relief Coordination Platform
+        </p>
 
-            Home
+    </div>
 
-        </a>
 
-    </nav>
 
+    <!-- LOGIN CARD -->
 
-    <!-- PAGE -->
+    <div class="login-card">
 
-    <main class="page">
 
-        <div class="login-container">
+        <h2>
+            Welcome Back
+        </h2>
 
+        <p class="subtitle">
+            Sign in to continue to ResQLink
+        </p>
 
-            <!-- LEFT SIDE -->
 
-            <section class="left">
 
-                <h1>
-                    ResQ<span>Link</span>
-                </h1>
+        <!-- EMAIL -->
 
-                <p>
-                    One platform connecting citizens,
-                    volunteers, NGOs and emergency
-                    response teams during disasters.
-                </p>
+        <div class="input-group">
 
+            <label for="email">
+                Email Address
+            </label>
 
-                <div class="feature">
+            <div class="input-box">
 
-                    <div class="feature-icon">
-                        🚨
-                    </div>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
 
-                    <div>
-
-                        <h3>
-                            Report Emergencies
-                        </h3>
-
-                        <p>
-                            Quickly report disasters and
-                            emergency situations.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">
-                        🗺️
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Track Live Situations
-                        </h3>
-
-                        <p>
-                            Monitor incidents, shelters
-                            and relief operations.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">
-                        🤝
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Coordinate Relief
-                        </h3>
-
-                        <p>
-                            Connect available resources
-                            with people who need help.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- RIGHT SIDE -->
-
-            <section class="right">
-
-                <h2>
-                    Welcome Back
-                </h2>
-
-                <p class="subtitle">
-                    Sign in to access your ResQLink account.
-                </p>
-
-
-                <!-- ROLE -->
-
-                <label>
-                    Select your role
-                </label>
-
-                <div class="roles">
-
-
-                    <div class="role selected"
-                         onclick="selectRole(this, 'Citizen')">
-
-                        <span class="role-icon">
-                            👤
-                        </span>
-
-                        Citizen
-
-                    </div>
-
-
-                    <div class="role"
-                         onclick="selectRole(this, 'Volunteer')">
-
-                        <span class="role-icon">
-                            🙋
-                        </span>
-
-                        Volunteer
-
-                    </div>
-
-
-                    <div class="role"
-                         onclick="selectRole(this, 'NGO')">
-
-                        <span class="role-icon">
-                            🏢
-                        </span>
-
-                        NGO / Organization
-
-                    </div>
-
-
-                    <div class="role"
-                         onclick="selectRole(this, 'Admin')">
-
-                        <span class="role-icon">
-                            🛡️
-                        </span>
-
-                        Administrator
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- FORM -->
-
-                <form onsubmit="login(event)">
-
-
-                    <div class="form-group">
-
-                        <label>
-                            Email / Phone
-                        </label>
-
-                        <input
-                            type="text"
-                            id="email"
-                            required
-                            placeholder="Enter email or phone number">
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>
-                            Password
-                        </label>
-
-                        <div class="password-box">
-
-                            <input
-                                type="password"
-                                id="password"
-                                required
-                                placeholder="Enter password">
-
-                            <span
-                                class="show-password"
-                                onclick="togglePassword()">
-
-                                Show
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="options">
-
-                        <label class="remember">
-
-                            <input
-                                type="checkbox">
-
-                            Remember me
-
-                        </label>
-
-                        <span
-                            class="forgot"
-                            onclick="forgotPassword()">
-
-                            Forgot password?
-
-                        </span>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="login-btn">
-
-                        🔐 Sign In
-
-                    </button>
-
-
-                </form>
-
-
-                <div class="divider">
-                    OR
-                </div>
-
-
-                <div class="signup">
-
-                    Don't have an account?
-
-                    <span onclick="signup()">
-                        Create Account
-                    </span>
-
-                </div>
-
-
-            </section>
-
+            </div>
 
         </div>
 
-    </main>
 
 
-    <!-- FOOTER -->
+        <!-- PASSWORD -->
 
-    <footer>
+        <div class="input-group">
 
-        © 2026 ResQLink |
-        Disaster Relief Coordination Platform
+            <label for="password">
+                Password
+            </label>
 
-    </footer>
+            <div class="input-box">
 
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required>
 
-    <script>
+                <span
+                    class="password-toggle"
+                    onclick="togglePassword()">
 
-        let selectedRole = "Citizen";
+                    👁
 
+                </span>
 
-        function selectRole(element, role) {
+            </div>
 
-            document
-                .querySelectorAll(".role")
-                .forEach(function(item) {
-
-                    item.classList.remove("selected");
-
-                });
-
-            element.classList.add("selected");
-
-            selectedRole = role;
-
-        }
+        </div>
 
 
-        function togglePassword() {
 
-            let password =
-                document.getElementById("password");
+        <!-- OPTIONS -->
 
-            let button =
-                document.querySelector(".show-password");
+        <div class="options">
 
-            if (password.type === "password") {
+            <label class="remember">
 
-                password.type = "text";
+                <input
+                    type="checkbox"
+                    id="remember">
 
-                button.innerText = "Hide";
+                Remember me
 
-            } else {
-
-                password.type = "password";
-
-                button.innerText = "Show";
-
-            }
-
-        }
+            </label>
 
 
-        function login(event) {
+            <span
+                class="forgot"
+                onclick="forgotPassword()">
 
-            event.preventDefault();
+                Forgot password?
 
-            alert(
-                "🔐 Login Demo\n\n"
-                + "Role: "
-                + selectedRole
-                + "\n\n"
-                + "Authentication system will be connected later."
-            );
+            </span>
 
-        }
+        </div>
 
 
-        function forgotPassword() {
 
-            alert(
-                "Password recovery\n\n"
-                + "A password recovery system will be connected later."
-            );
+        <!-- SIGN IN -->
 
-        }
+        <button
+            class="signin-btn"
+            onclick="signIn()">
+
+            Sign In
+
+        </button>
 
 
-        function signup() {
 
-            alert(
-                "Create Account\n\n"
-                + "Registration page will be connected later."
-            );
+        <!-- DIVIDER -->
 
-        }
+        <div class="divider">
 
-    </script>
+            OR
+
+        </div>
+
+
+
+        <!-- GOOGLE -->
+
+        <button
+            class="google-btn"
+            onclick="googleSignIn()">
+
+            <span class="google-icon">
+                G
+            </span>
+
+            Continue with Google
+
+        </button>
+
+
+
+        <!-- CREATE ACCOUNT -->
+
+        <div class="create-account">
+
+            Don't have an account?
+
+            <a onclick="openCreateAccount()">
+                Create Account
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUCCESS POPUP
+========================= -->
+
+<div
+    class="success-overlay"
+    id="successOverlay">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Successfully Signed In!
+        </h2>
+
+        <p id="successText">
+            Welcome to ResQLink.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CREATE ACCOUNT MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="createModal">
+
+    <div class="modal-card">
+
+        <h2>
+            Create Account
+        </h2>
+
+
+        <div class="input-group">
+
+            <label>
+                Name
+            </label>
+
+            <div class="input-box">
+
+                <input
+                    type="text"
+                    id="newName"
+                    placeholder="Your name">
+
+            </div>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                Email
+            </label>
+
+            <div class="input-box">
+
+                <input
+                    type="email"
+                    id="newEmail"
+                    placeholder="Your email">
+
+            </div>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                Password
+            </label>
+
+            <div class="input-box">
+
+                <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Create password">
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel-btn"
+                onclick="closeCreateAccount()">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="create-btn"
+                onclick="createAccount()">
+
+                Create Account
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   SHOW / HIDE PASSWORD
+========================= */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+    } else {
+
+        password.type = "password";
+
+    }
+
+}
+
+
+
+/* =========================
+   SIGN IN
+========================= */
+
+function signIn() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+
+    if (email === "") {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+
+    if (password === "") {
+
+        alert("Please enter your password.");
+
+        return;
+
+    }
+
+
+    /*
+       Demo login.
+
+       Later this can be replaced
+       with Firebase Authentication.
+    */
+
+    showSuccess("Welcome back to ResQLink!");
+
+
+}
+
+
+
+/* =========================
+   GOOGLE SIGN IN
+========================= */
+
+function googleSignIn() {
+
+    /*
+       REAL GOOGLE LOGIN REQUIRES
+       FIREBASE / GOOGLE IDENTITY SERVICES.
+
+       This button currently displays
+       a setup message so that you know
+       the authentication is not fake.
+    */
+
+    alert(
+        "Google Sign-In needs to be connected to Firebase Authentication first."
+    );
+
+}
+
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+function showSuccess(message) {
+
+    document.getElementById(
+        "successText"
+    ).textContent = message;
+
+
+    document.getElementById(
+        "successOverlay"
+    ).style.display = "flex";
+
+
+    /*
+       Automatically redirect after
+       successful login.
+    */
+
+    setTimeout(function() {
+
+        window.location.href = "index.html";
+
+    }, 2000);
+
+}
+
+
+
+/* =========================
+   CREATE ACCOUNT MODAL
+========================= */
+
+function openCreateAccount() {
+
+    document.getElementById(
+        "createModal"
+    ).style.display = "flex";
+
+}
+
+
+function closeCreateAccount() {
+
+    document.getElementById(
+        "createModal"
+    ).style.display = "none";
+
+}
+
+
+
+/* =========================
+   CREATE ACCOUNT
+========================= */
+
+function createAccount() {
+
+    const name =
+        document.getElementById("newName").value.trim();
+
+    const email =
+        document.getElementById("newEmail").value.trim();
+
+    const password =
+        document.getElementById("newPassword").value.trim();
+
+
+    if (name === "") {
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+
+    if (email === "") {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+
+    if (password.length < 6) {
+
+        alert("Password must be at least 6 characters.");
+
+        return;
+
+    }
+
+
+    /*
+       Demo account creation.
+
+       Store only demo information.
+       For a real website use Firebase.
+    */
+
+    localStorage.setItem(
+        "resqlinkUser",
+        JSON.stringify({
+            name: name,
+            email: email
+        })
+    );
+
+
+    closeCreateAccount();
+
+
+    showSuccess(
+        "Your ResQLink account has been created!"
+    );
+
+}
+
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function forgotPassword() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+
+    if (email === "") {
+
+        alert(
+            "Enter your email address first."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Password reset will be available after Firebase Authentication is connected."
+    );
+
+}
+
+</script>
 
 
 </body>
