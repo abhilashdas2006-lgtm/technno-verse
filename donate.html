@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Relief & Donations | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            padding: 10px 17px;
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #eef4ff;
+
+            border: 1px solid #c7d7fe;
+
+            border-radius: 10px;
+
+            padding: 22px;
+
+            margin-bottom: 25px;
+        }
+
+        .intro h2 {
+            margin-bottom: 8px;
+        }
+
+        .intro p {
+            color: #475467;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .resource-card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            text-align: center;
+        }
+
+        .resource-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .resource-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .resource-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* MAIN GRID */
+
+        .main-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+        }
+
+        .form-card,
+        .needs-card {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 25px;
+        }
+
+        .form-card h2,
+        .needs-card h2 {
+            margin-bottom: 20px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+
+            background: #12b76a;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* =========================
+           DONOR STATUS
+        ========================= */
+
+        .donor-status {
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 15px;
+
+            background: #ecfdf3;
+
+            border: 1px solid #abefc6;
+
+            border-left: 5px solid #12b76a;
+
+            border-radius: 8px;
+
+            color: #027a48;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .donor-status .green-tick {
+            font-size: 28px;
+
+            margin-right: 8px;
+
+            vertical-align: middle;
+        }
+
+        /* NEEDS */
+
+        .need {
+            border: 1px solid #eaecf0;
+
+            border-radius: 9px;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+        }
+
+        .need-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 8px;
+        }
+
+        .need h3 {
+            font-size: 15px;
+        }
+
+        .priority {
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+        .high {
+            background: #fee4e2;
+            color: #b42318;
+        }
+
+        .medium {
+            background: #fff4e5;
+            color: #b54708;
+        }
+
+        .need p {
+            color: #667085;
+
+            font-size: 12px;
+
+            margin-bottom: 7px;
+        }
+
+        .progress {
+            height: 7px;
+
+            background: #eaecf0;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+
+            background: #12b76a;
+        }
+
+        /* =========================
+           I CAN HELP BUTTON
+        ========================= */
+
+        .need button {
+            margin-top: 12px;
+
+            width: 100%;
+
+            padding: 9px;
+
+            border: 1px solid #175cd3;
+
+            background: white;
+
+            color: #175cd3;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        /* BEFORE DETAILS */
+
+        .need button.disabled-help {
+            opacity: 0.55;
+
+            cursor: not-allowed;
+
+            background: #f2f4f7;
+
+            color: #667085;
+
+            border-color: #d0d5dd;
+        }
+
+        /* AFTER DETAILS */
+
+        .need button.active-help {
+            background: #12b76a;
+
+            border-color: #12b76a;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .need button.active-help:hover {
+            background: #079455;
+
+            border-color: #079455;
+        }
+
+        /* SUCCESS MESSAGE */
+
+        .help-success {
+            display: none;
+
+            margin-top: 10px;
+
+            padding: 10px;
+
+            background: #ecfdf3;
+
+            border-radius: 6px;
+
+            color: #027a48;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+        }
+
+        /* TRUST */
+
+        .trust {
+            background: #f9fafb;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            margin-top: 25px;
+        }
+
+        .trust h3 {
+            margin-bottom: 10px;
+        }
+
+        .trust p {
+            color: #667085;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+
+        @media(max-width: 550px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+            <li>
+                <a href="shelters.html">Shelters</a>
+            </li>
+
+            <li>
+                <a href="alerts.html">Alerts</a>
+            </li>
+
+            <li>
+                <a href="contacts.html">Emergency</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            🤝 Relief & Donations
+        </h1>
+
+        <p>
+            Contribute essential resources and help
+            communities affected by disasters.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- INTRO -->
+
+        <section class="intro">
+
+            <h2>
+                Every contribution can make a difference.
+            </h2>
+
+            <p>
+                Donate essential supplies or offer your
+                resources to verified relief organizations
+                working in affected areas.
+            </p>
+
+        </section>
+
+
+        <!-- RESOURCE TYPES -->
+
+        <section class="cards">
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🍚
+                </div>
+
+                <h3>
+                    Food
+                </h3>
+
+                <p>
+                    Rice, packaged food, baby food
+                    and other essentials.
+                </p>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    💧
+                </div>
+
+                <h3>
+                    Drinking Water
+                </h3>
+
+                <p>
+                    Bottled water and clean drinking
+                    water supplies.
+                </p>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    👕
+                </div>
+
+                <h3>
+                    Clothing
+                </h3>
+
+                <p>
+                    Clean clothes, blankets and
+                    essential clothing.
+                </p>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🏕️
+                </div>
+
+                <h3>
+                    Shelter Supplies
+                </h3>
+
+                <p>
+                    Tents, blankets, sleeping materials
+                    and temporary shelter items.
+                </p>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🚚
+                </div>
+
+                <h3>
+                    Transport
+                </h3>
+
+                <p>
+                    Vehicles and transportation support
+                    for relief operations.
+                </p>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Financial Support
+                </h3>
+
+                <p>
+                    Financial contributions to verified
+                    relief organizations.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- MAIN -->
+
+        <section class="main-grid">
+
+
+            <!-- OFFER FORM -->
+
+            <div class="form-card">
+
+                <h2>
+                    📦 Offer Resources
+                </h2>
+
+
+                <form onsubmit="submitDonation(event)">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Your Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="donorName"
+                            required
+                            placeholder="Enter your name">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Resource Type *
+                        </label>
+
+                        <select
+                            id="resourceType"
+                            required>
+
+                            <option value="">
+                                Select resource
+                            </option>
+
+                            <option>
+                                Food
+                            </option>
+
+                            <option>
+                                Drinking Water
+                            </option>
+
+                            <option>
+                                Clothing
+                            </option>
+
+                            <option>
+                                Blankets
+                            </option>
+
+                            <option>
+                                Shelter Materials
+                            </option>
+
+                            <option>
+                                Transport
+                            </option>
+
+                            <option>
+                                Financial Support
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Quantity
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="e.g. 50 food packets">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Location *
+                        </label>
+
+                        <input
+                            type="text"
+                            required
+                            placeholder="Where is the resource available?">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Contact Number *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="donorPhone"
+                            required
+                            placeholder="Enter phone number">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Additional Information
+                        </label>
+
+                        <textarea
+                            placeholder="Add any useful information..."></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        🤝 Submit Resource Offer
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- GREEN STATUS -->
+
+                <div id="donorStatus"
+                     class="donor-status">
+
+                    <span class="green-tick">
+                        ✅
+                    </span>
+
+                    <strong>
+                        Your details have been registered!
+                    </strong>
+
+                    <br>
+
+                    You can now click
+                    <strong>I Can Help</strong>
+                    on any current relief need.
+
+                </div>
+
+            </div>
+
+
+            <!-- CURRENT NEEDS -->
+
+            <div class="needs-card">
+
+                <h2>
+                    📋 Current Relief Needs
+                </h2>
+
+
+                <!-- NEED 1 -->
+
+                <div class="need">
+
+                    <div class="need-top">
+
+                        <h3>
+                            💧 Drinking Water
+                        </h3>
+
+                        <span class="priority high">
+                            HIGH PRIORITY
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Guwahati Flood Relief Center
+                    </p>
+
+                    <p>
+                        Required: 5,000 bottles
+                    </p>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:35%;">
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="disabled-help"
+                        onclick="supportNeed('Drinking Water')">
+
+                        🔒 I Can Help
+
+                    </button>
+
+                    <div class="help-success">
+                    </div>
+
+                </div>
+
+
+                <!-- NEED 2 -->
+
+                <div class="need">
+
+                    <div class="need-top">
+
+                        <h3>
+                            🍚 Food Packets
+                        </h3>
+
+                        <span class="priority high">
+                            HIGH PRIORITY
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Relief Camp — Dispur
+                    </p>
+
+                    <p>
+                        Required: 2,000 packets
+                    </p>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:55%;">
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="disabled-help"
+                        onclick="supportNeed('Food Packets')">
+
+                        🔒 I Can Help
+
+                    </button>
+
+                    <div class="help-success">
+                    </div>
+
+                </div>
+
+
+                <!-- NEED 3 -->
+
+                <div class="need">
+
+                    <div class="need-top">
+
+                        <h3>
+                            🏕️ Blankets
+                        </h3>
+
+                        <span class="priority medium">
+                            MEDIUM
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Temporary Shelter — Jalukbari
+                    </p>
+
+                    <p>
+                        Required: 500 blankets
+                    </p>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:70%;">
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="disabled-help"
+                        onclick="supportNeed('Blankets')">
+
+                        🔒 I Can Help
+
+                    </button>
+
+                    <div class="help-success">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- TRUST -->
+
+        <section class="trust">
+
+            <h3>
+                🔐 Donation Safety
+            </h3>
+
+            <p>
+                ResQLink should connect donors with
+                verified NGOs, government agencies and
+                authorized relief organizations. Always
+                verify the organization before making
+                financial contributions.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink |
+            Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <script>
+
+
+        /* =========================================
+           CHECK WHETHER USER HAS REGISTERED
+        ========================================= */
+
+        let detailsSubmitted = false;
+
+
+
+        /* =========================================
+           SUBMIT RESOURCE DETAILS
+        ========================================= */
+
+        function submitDonation(event) {
+
+            event.preventDefault();
+
+
+            let name =
+                document.getElementById("donorName").value.trim();
+
+            let phone =
+                document.getElementById("donorPhone").value.trim();
+
+
+            /*
+               Make sure details actually exist
+            */
+
+            if (name === "" || phone === "") {
+
+                alert(
+                    "⚠️ Please enter your name and contact number first."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Mark details as submitted
+            */
+
+            detailsSubmitted = true;
+
+
+            /*
+               Show green confirmation
+            */
+
+            document.getElementById(
+                "donorStatus"
+            ).style.display = "block";
+
+
+            /*
+               Activate all I CAN HELP buttons
+            */
+
+            document
+                .querySelectorAll(".need button")
+                .forEach(function(button) {
+
+                    button.classList.remove(
+                        "disabled-help"
+                    );
+
+                    button.classList.add(
+                        "active-help"
+                    );
+
+                    button.innerHTML =
+                        "✅ I Can Help";
+
+                });
+
+
+            /*
+               Existing submission confirmation
+            */
+
+            let id =
+                Math.floor(
+                    Math.random() * 90000 + 10000
+                );
+
+
+            alert(
+                "🤝 RESOURCE OFFER SUBMITTED!\n\n"
+                + "Offer ID: RL-"
+                + id
+                + "\n\n"
+                + "Your details are now registered.\n"
+                + "You can help with the current relief needs."
+            );
+
+
+            /*
+               Do NOT reset the form.
+               User details remain visible.
+            */
+
+        }
+
+
+
+        /* =========================================
+           I CAN HELP
+        ========================================= */
+
+        function supportNeed(resource) {
+
+
+            /*
+               If details are NOT submitted
+            */
+
+            if (!detailsSubmitted) {
+
+                alert(
+                    "⚠️ Please enter your details first.\n\n"
+                    + "Fill the Offer Resources form and "
+                    + "submit it before choosing I Can Help."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Find the clicked button
+            */
+
+            const buttons =
+                document.querySelectorAll(".need button");
+
+
+            let clickedButton = null;
+
+
+            buttons.forEach(function(button) {
+
+                if (
+                    button.innerText.includes(resource)
+                    ||
+                    button.parentElement.innerText.includes(resource)
+                ) {
+
+                    clickedButton = button;
+
+                }
+
+            });
+
+
+            /*
+               Normal confirmation
+            */
+
+            alert(
+                "🤝 Thank you for offering help!\n\n"
+                + "Resource: "
+                + resource
+                + "\n\n"
+                + "A coordinator will connect you "
+                + "with the relevant relief center."
+            );
+
+
+            /*
+               Show green confirmation
+               under the selected request
+            */
+
+            if (clickedButton) {
+
+                const success =
+                    clickedButton.parentElement
+                    .querySelector(".help-success");
+
+
+                if (success) {
+
+                    success.style.display = "block";
+
+                    success.innerHTML =
+                        "✅ <strong>Help accepted!</strong><br>"
+                        + "A relief coordinator will contact you "
+                        + "on your registered number.";
+
+                }
+
+
+                /*
+                   Change button after selection
+                */
+
+                clickedButton.innerHTML =
+                    "✅ Help Accepted";
+
+                clickedButton.style.background =
+                    "#12b76a";
+
+                clickedButton.style.color =
+                    "white";
+
+                clickedButton.style.borderColor =
+                    "#12b76a";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
