@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Feedback | ResQLink</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #172033;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 70px;
+    background: #101828;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4d4d;
+}
+
+nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.contact-btn {
+    background: white;
+    color: #101828;
+
+    padding: 9px 14px;
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* HERO */
+
+.hero {
+    background: #101828;
+    color: white;
+
+    text-align: center;
+
+    padding: 50px 7%;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: #ff4d4d;
+}
+
+.hero p {
+    color: #d0d5dd;
+    font-size: 13px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 86%;
+    max-width: 900px;
+
+    margin: 35px auto;
+}
+
+/* FEEDBACK CARD */
+
+.feedback-card {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 30px;
+}
+
+/* RATING */
+
+.rating-title {
+    font-size: 14px;
+
+    margin-bottom: 12px;
+}
+
+.stars {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+.star {
+    font-size: 30px;
+
+    cursor: pointer;
+
+    color: #d0d5dd;
+
+    transition: 0.15s;
+}
+
+.star:hover {
+    transform: scale(1.1);
+}
+
+.star.active {
+    color: #fdb022;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 6px;
+
+    padding: 11px;
+
+    outline: none;
+
+    font-size: 11px;
+
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #175cd3;
+}
+
+.form-group textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+/* CHECKBOX */
+
+.checkbox {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.checkbox input {
+    width: 14px;
+    height: 14px;
+}
+
+.checkbox label {
+    font-size: 10px;
+
+    color: #667085;
+}
+
+/* BUTTON */
+
+.submit-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #175cd3;
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #1849a9;
+}
+
+/* SUCCESS */
+
+.success {
+    display: none;
+
+    background: #ecfdf3;
+
+    border: 1px solid #abefc6;
+
+    color: #067647;
+
+    border-radius: 7px;
+
+    padding: 14px;
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+/* INFO GRID */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.info-card {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 8px;
+
+    padding: 18px;
+
+    text-align: center;
+}
+
+.info-icon {
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+.info-card h3 {
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.info-card p {
+    color: #667085;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+/* FOOTER */
+
+footer {
+    background: #080c14;
+
+    color: #98a2b3;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .feedback-card {
+        padding: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ResQ<span>Link</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="map.html">
+                Live Map
+            </a>
+        </li>
+
+        <li>
+            <a href="requests.html">
+                Requests
+            </a>
+        </li>
+
+        <li>
+            <a href="alerts.html">
+                Alerts
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                About
+            </a>
+        </li>
+
+    </ul>
+
+    <a href="contact.html" class="contact-btn">
+        📞 Contact
+    </a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        ⭐ <span>Share</span> Your Feedback
+    </h1>
+
+    <p>
+        Your feedback helps us improve disaster
+        response coordination and the ResQLink platform.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- FEEDBACK FORM -->
+
+<section class="feedback-card">
+
+    <div id="successMessage" class="success">
+
+        ✅ Thank you for your feedback!
+        Your response has been recorded.
+
+    </div>
+
+
+    <h2 style="font-size:20px; margin-bottom:8px;">
+        Tell Us About Your Experience
+    </h2>
+
+    <p style="
+        color:#667085;
+        font-size:11px;
+        margin-bottom:25px;
+    ">
+
+        Whether you requested help, volunteered,
+        coordinated resources or simply explored
+        the platform, we would love to hear from you.
+
+    </p>
+
+
+    <!-- RATING -->
+
+    <div class="rating-title">
+
+        How would you rate your experience?
+
+    </div>
+
+
+    <div class="stars">
+
+        <span class="star" data-rating="1">★</span>
+
+        <span class="star" data-rating="2">★</span>
+
+        <span class="star" data-rating="3">★</span>
+
+        <span class="star" data-rating="4">★</span>
+
+        <span class="star" data-rating="5">★</span>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <form id="feedbackForm">
+
+
+        <div class="form-group">
+
+            <label>
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Your Role
+            </label>
+
+            <select id="role" required>
+
+                <option value="">
+                    Select your role
+                </option>
+
+                <option>
+                    Affected Citizen
+                </option>
+
+                <option>
+                    Volunteer
+                </option>
+
+                <option>
+                    NGO / Organization
+                </option>
+
+                <option>
+                    Emergency Responder
+                </option>
+
+                <option>
+                    Administrator
+                </option>
+
+                <option>
+                    General User
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Feedback Category
+            </label>
+
+            <select id="category" required>
+
+                <option value="">
+                    Select category
+                </option>
+
+                <option>
+                    Website Design
+                </option>
+
+                <option>
+                    Live Map
+                </option>
+
+                <option>
+                    Help Requests
+                </option>
+
+                <option>
+                    Volunteer System
+                </option>
+
+                <option>
+                    Resource Management
+                </option>
+
+                <option>
+                    Alerts
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Your Feedback
+            </label>
+
+            <textarea
+                id="message"
+                placeholder="Tell us what you liked, what could be improved, or what features you would like to see..."
+                required></textarea>
+
+        </div>
+
+
+        <div class="checkbox">
+
+            <input
+                type="checkbox"
+                id="permission">
+
+            <label for="permission">
+
+                I agree that my feedback may be used
+                to improve the ResQLink platform.
+
+            </label>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            Submit Feedback →
+
+        </button>
+
+
+    </form>
+
+
+</section>
+
+
+<!-- INFO -->
+
+<div class="info-grid">
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            💡
+        </div>
+
+        <h3>
+            Suggestions
+        </h3>
+
+        <p>
+            Tell us what new features
+            would make ResQLink better.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🐛
+        </div>
+
+        <h3>
+            Report a Problem
+        </h3>
+
+        <p>
+            Let us know if you encounter
+            something that does not work.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            ❤️
+        </div>
+
+        <h3>
+            Help Us Improve
+        </h3>
+
+        <p>
+            Every response helps improve
+            disaster relief coordination.
+        </p>
+
+    </div>
+
+
+</div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 ResQLink |
+Disaster Relief Coordination Platform
+
+</footer>
+
+
+<script>
+
+/* STAR RATING */
+
+const stars =
+    document.querySelectorAll(".star");
+
+let selectedRating = 0;
+
+
+stars.forEach(function(star) {
+
+    star.addEventListener("click", function() {
+
+        selectedRating =
+            Number(this.dataset.rating);
+
+        stars.forEach(function(item) {
+
+            if (
+                Number(item.dataset.rating)
+                <= selectedRating
+            ) {
+
+                item.classList.add("active");
+
+            } else {
+
+                item.classList.remove("active");
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* FORM SUBMISSION */
+
+document
+    .getElementById("feedbackForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        if (selectedRating === 0) {
+
+            alert(
+                "Please select a rating before submitting."
+            );
+
+            return;
+
+        }
+
+
+        const name =
+            document.getElementById("name").value;
+
+
+        const message =
+            document.getElementById("message").value;
+
+
+        if (!name || !message) {
+
+            alert(
+                "Please fill in the required fields."
+            );
+
+            return;
+
+        }
+
+
+        document
+            .getElementById("successMessage")
+            .style.display = "block";
+
+
+        this.reset();
+
+
+        stars.forEach(function(star) {
+
+            star.classList.remove("active");
+
+        });
+
+
+        selectedRating = 0;
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
