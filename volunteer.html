@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Volunteer Dashboard | ResQLink</title>
+    <title>Volunteer | ResQLink</title>
 
     <style>
 
@@ -21,7 +19,7 @@
             color: #172033;
         }
 
-        /* ================= NAVBAR ================= */
+        /* NAVBAR */
 
         nav {
             height: 70px;
@@ -44,435 +42,298 @@
             color: #ff4d4d;
         }
 
-        .back-btn {
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
             color: white;
             text-decoration: none;
-            border: 1px solid #475467;
-            padding: 9px 16px;
-            border-radius: 7px;
-        }
-
-        .back-btn:hover {
-            background: #1d2939;
-        }
-
-        /* ================= PAGE ================= */
-
-        .container {
-            width: 86%;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-
-        .page-title {
-            margin-bottom: 30px;
-        }
-
-        .page-title h1 {
-            font-size: 36px;
-            margin-bottom: 8px;
-        }
-
-        .page-title p {
-            color: #667085;
-        }
-
-        /* ================= VOLUNTEER DETAILS ================= */
-
-        .volunteer-section {
-            background: white;
-            padding: 30px;
-            border-radius: 14px;
-
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-
-            margin-bottom: 30px;
-        }
-
-        .volunteer-section h2 {
-            margin-bottom: 8px;
-        }
-
-        .section-description {
-            color: #667085;
-            margin-bottom: 25px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group select {
-            padding: 13px;
-
-            border: 1px solid #d0d5dd;
-
-            border-radius: 8px;
-
             font-size: 15px;
-
-            outline: none;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #e63946;
-        }
-
-        .full-width {
-            grid-column: 1 / -1;
-        }
-
-        /* ================= BECOME VOLUNTEER ================= */
-
-        .become-btn {
-            margin-top: 25px;
-
-            background: #e63946;
-
-            color: white;
-
-            border: none;
-
-            padding: 14px 25px;
-
-            border-radius: 8px;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        .become-btn:hover {
-            background: #c1121f;
-        }
-
-        /* ================= ACTIVE STATUS ================= */
-
-        .volunteer-active {
-            display: none;
-
-            margin-top: 20px;
-
-            padding: 15px;
-
-            border-radius: 8px;
-
-            background: #e8f8ef;
-
-            border: 1px solid #22a05a;
-
-            color: #16753f;
-
-            font-weight: bold;
-        }
-
-        /* ================= REQUESTS ================= */
-
-        .requests {
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 25px;
-        }
-
-        .request-card {
+        .home-btn {
             background: white;
-
-            padding: 25px;
-
-            border-radius: 14px;
-
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-
-            position: relative;
+            color: #101828;
+            padding: 10px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .request-card h3 {
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
             margin-bottom: 10px;
         }
 
-        .request-card p {
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: 35px auto;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .stat {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+        }
+
+        .stat h2 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .stat p {
             color: #667085;
+            font-size: 14px;
+        }
 
-            line-height: 1.5;
+        /* CONTENT */
 
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 25px;
+        }
+
+        /* REQUESTS */
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+        }
+
+        /* REQUEST CARD */
+
+        .request {
+            border: 1px solid #eaecf0;
+            border-radius: 10px;
+            padding: 18px;
             margin-bottom: 15px;
         }
 
-        .location {
-            font-weight: bold;
-
-            margin-bottom: 15px;
+        .request-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
-        .urgency {
-            display: inline-block;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            margin-bottom: 15px;
-        }
-
-        .critical {
-            background: #ffe4e6;
-            color: #d92d20;
+        .request h3 {
+            font-size: 17px;
         }
 
         .urgent {
-            background: #fff0dc;
+            background: #fee4e2;
+            color: #d92d20;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .medium {
+            background: #fff4e5;
             color: #b54708;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
         }
 
-        .normal {
-            background: #fff8cc;
-            color: #946200;
+        .request p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        /* ================= HELP BUTTON ================= */
+        .request-info {
+            margin-top: 10px;
+            color: #475467;
+            font-size: 13px;
+        }
 
         .help-btn {
             width: 100%;
+            margin-top: 15px;
+            padding: 11px;
 
-            padding: 13px;
-
-            border-radius: 8px;
+            background: #12b76a;
+            color: white;
 
             border: none;
-
-            background: #d0d5dd;
-
-            color: #667085;
-
-            font-size: 15px;
+            border-radius: 7px;
 
             font-weight: bold;
-
             cursor: pointer;
-
-            transition: 0.2s;
         }
 
         .help-btn:hover {
-            background: #bfc5ce;
+            background: #079455;
         }
 
-        /* ACTIVE HELP BUTTON */
+        /* REGISTRATION */
 
-        .help-btn.active {
-            background: #22a05a;
-
-            color: white;
-
-            cursor: pointer;
-        }
-
-        .help-btn.active:hover {
-            background: #168347;
-        }
-
-        /* ================= GREEN ARROW ================= */
-
-        .help-confirmation {
-            display: none;
-
-            position: absolute;
-
-            right: 20px;
-
-            top: 20px;
-
-            width: 45px;
-
-            height: 45px;
-
-            border-radius: 50%;
-
-            background: #22a05a;
-
-            color: white;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 25px;
-
-            font-weight: bold;
-
-            animation: arrowPop 0.3s ease;
-        }
-
-        @keyframes arrowPop {
-
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-        }
-
-        /* ================= ALERT ================= */
-
-        .custom-alert {
-            display: none;
-
-            position: fixed;
-
-            top: 25px;
-
-            right: 25px;
-
+        .register {
             background: white;
-
-            width: 350px;
-
-            padding: 20px;
-
+            padding: 25px;
             border-radius: 12px;
-
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-
-            z-index: 1000;
-
-            border-left: 5px solid #e63946;
+            border: 1px solid #eaecf0;
         }
 
-        .custom-alert h3 {
-            margin-bottom: 7px;
-        }
-
-        .custom-alert p {
-            color: #667085;
-
-            line-height: 1.4;
-        }
-
-        .close-alert {
-            margin-top: 12px;
-
-            background: #101828;
-
-            color: white;
-
-            border: none;
-
-            padding: 8px 14px;
-
-            border-radius: 6px;
-
-            cursor: pointer;
-        }
-
-        /* ================= SUCCESS ================= */
-
-        .success-message {
-            display: none;
-
-            position: fixed;
-
-            top: 50%;
-
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            background: white;
-
-            padding: 35px;
-
-            width: 350px;
-
-            max-width: 90%;
-
-            text-align: center;
-
-            border-radius: 15px;
-
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-
-            z-index: 900;
-        }
-
-        .success-icon {
-            width: 65px;
-            height: 65px;
-
-            margin: auto auto 15px;
-
-            border-radius: 50%;
-
-            background: #22a05a;
-
-            color: white;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 35px;
-
-            font-weight: bold;
-        }
-
-        .success-message h2 {
+        .register h2 {
             margin-bottom: 8px;
         }
 
-        .success-message p {
+        .register > p {
             color: #667085;
+            font-size: 14px;
+            margin-bottom: 22px;
+            line-height: 1.5;
         }
 
-        /* ================= MOBILE ================= */
+        .form-group {
+            margin-bottom: 17px;
+        }
 
-        @media (max-width: 800px) {
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
 
-            .form-grid {
-                grid-template-columns: 1fr;
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+
+            border: 1px solid #d0d5dd;
+            border-radius: 7px;
+
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #12b76a;
+        }
+
+        textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 13px;
+
+            background: #101828;
+            color: white;
+
+            border: none;
+            border-radius: 7px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background: #1d2939;
+        }
+
+        /* VOLUNTEER STATUS */
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+
+            background: #ecfdf3;
+
+            border-left: 4px solid #12b76a;
+
+            border-radius: 6px;
+
+            color: #027a48;
+
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                display: none;
             }
 
-            .requests {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
                 grid-template-columns: 1fr;
             }
 
             .container {
                 width: 92%;
             }
+        }
 
-            .page-title h1 {
-                font-size: 30px;
+        @media (max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
             }
 
+            .header h1 {
+                font-size: 28px;
+            }
         }
 
     </style>
@@ -483,663 +344,534 @@
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+    <!-- NAVIGATION -->
 
-<nav>
+    <nav>
 
-    <div class="logo">
-        ResQ<span>Link</span>
-    </div>
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
 
-    <a href="index.html" class="back-btn">
-        ← Home
-    </a>
+        <ul>
 
-</nav>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
 
 
+    <!-- HEADER -->
 
-<!-- ================= MAIN ================= -->
+    <section class="header">
 
-<div class="container">
-
-
-    <div class="page-title">
-
-        <h1>
-            Volunteer Dashboard
-        </h1>
+        <h1>🙋 Volunteer Dashboard</h1>
 
         <p>
-            Register yourself and help people affected by disasters.
+            Help people affected by disasters
+            and coordinate relief operations.
         </p>
-
-    </div>
-
-
-
-    <!-- ================= VOLUNTEER DETAILS ================= -->
-
-    <section class="volunteer-section">
-
-        <h2>
-            Become a Volunteer
-        </h2>
-
-        <p class="section-description">
-            Please provide your information before accepting relief requests.
-        </p>
-
-
-        <div class="form-grid">
-
-
-            <div class="form-group">
-
-                <label>
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="volunteerName"
-                    placeholder="Enter your name">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Phone Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="volunteerPhone"
-                    placeholder="Enter phone number">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="volunteerEmail"
-                    placeholder="Enter email">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Your Location
-                </label>
-
-                <input
-                    type="text"
-                    id="volunteerLocation"
-                    placeholder="City / State">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Volunteer Skill
-                </label>
-
-                <select id="volunteerSkill">
-
-                    <option value="">
-                        Select your skill
-                    </option>
-
-                    <option value="Medical">
-                        Medical Assistance
-                    </option>
-
-                    <option value="Rescue">
-                        Rescue
-                    </option>
-
-                    <option value="Food">
-                        Food Distribution
-                    </option>
-
-                    <option value="Transport">
-                        Transportation
-                    </option>
-
-                    <option value="General">
-                        General Support
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Availability
-                </label>
-
-                <select id="volunteerAvailability">
-
-                    <option value="">
-                        Select availability
-                    </option>
-
-                    <option value="Immediate">
-                        Available Immediately
-                    </option>
-
-                    <option value="Today">
-                        Available Today
-                    </option>
-
-                    <option value="Weekends">
-                        Weekends
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="become-btn"
-            onclick="becomeVolunteer()">
-
-            🤝 Become a Volunteer
-
-        </button>
-
-
-        <div
-            class="volunteer-active"
-            id="volunteerActive">
-
-            ✓ You are now registered as a volunteer.
-            You can accept relief requests below.
-
-        </div>
 
     </section>
 
 
-
-    <!-- ================= RELIEF REQUESTS ================= -->
-
-    <h2 style="margin-bottom:20px;">
-        Available Relief Requests
-    </h2>
+    <main class="container">
 
 
-    <div class="requests">
+        <!-- STATISTICS -->
 
+        <section class="stats">
 
-        <!-- REQUEST 1 -->
+            <div class="stat">
 
-        <div class="request-card">
+                <h2>248</h2>
 
-            <div class="help-confirmation">
-                ➜
+                <p>
+                    Active Volunteers
+                </p>
+
             </div>
 
-            <span class="urgency critical">
-                CRITICAL
-            </span>
 
-            <h3>
-                Medical Assistance Needed
-            </h3>
+            <div class="stat">
 
-            <p>
-                People affected by the disaster need
-                immediate medical assistance.
-            </p>
+                <h2>36</h2>
 
-            <div class="location">
-                📍 Guwahati, Assam
+                <p>
+                    Requests Nearby
+                </p>
+
             </div>
 
-            <button
-                class="help-btn"
-                onclick="canHelp(this)">
 
-                🤝 I CAN HELP
+            <div class="stat">
 
-            </button>
+                <h2>18</h2>
 
-        </div>
+                <p>
+                    Requests Resolved
+                </p>
 
-
-
-        <!-- REQUEST 2 -->
-
-        <div class="request-card">
-
-            <div class="help-confirmation">
-                ➜
             </div>
 
-            <span class="urgency urgent">
-                URGENT
-            </span>
 
-            <h3>
-                Food Distribution
-            </h3>
+            <div class="stat">
 
-            <p>
-                Volunteers are required to distribute
-                food packets to affected families.
-            </p>
+                <h2>12</h2>
 
-            <div class="location">
-                📍 Kolkata, West Bengal
+                <p>
+                    Relief Teams
+                </p>
+
             </div>
 
-            <button
-                class="help-btn"
-                onclick="canHelp(this)">
-
-                🤝 I CAN HELP
-
-            </button>
-
-        </div>
+        </section>
 
 
+        <!-- CONTENT -->
 
-        <!-- REQUEST 3 -->
+        <section class="content">
 
-        <div class="request-card">
 
-            <div class="help-confirmation">
-                ➜
+            <!-- AVAILABLE REQUESTS -->
+
+            <div class="section">
+
+                <h2>
+                    🆘 Help Needed Nearby
+                </h2>
+
+
+                <!-- REQUEST 1 -->
+
+                <div class="request" data-lat="26.1445" data-lng="91.7362">
+
+                    <div class="request-top">
+
+                        <h3>
+                            Drinking Water Required
+                        </h3>
+
+                        <span class="urgent">
+                            URGENT
+                        </span>
+
+                    </div>
+
+                    <p>
+                        A family affected by flooding
+                        requires drinking water and food.
+                    </p>
+
+                    <div class="request-info">
+
+                        📍 Guwahati, Assam
+                        <br>
+
+                        👥 5 people
+                        <br>
+
+                        📏 <span class="distance">calculating...</span>
+
+                    </div>
+
+
+                    <button class="help-btn" onclick="acceptRequest('Drinking Water Required')">
+
+                        🤝 I Can Help
+
+                    </button>
+
+                </div>
+
+
+                <!-- REQUEST 2 -->
+
+                <div class="request" data-lat="26.1433" data-lng="91.7898">
+
+                    <div class="request-top">
+
+                        <h3>
+                            Medical Assistance
+                        </h3>
+
+                        <span class="urgent">
+                            URGENT
+                        </span>
+
+                    </div>
+
+                    <p>
+                        An elderly person needs
+                        basic medical assistance.
+                    </p>
+
+                    <div class="request-info">
+
+                        📍 Dispur, Assam
+                        <br>
+
+                        👥 2 people
+                        <br>
+
+                        📏 <span class="distance">calculating...</span>
+
+                    </div>
+
+
+                    <button class="help-btn" onclick="acceptRequest('Medical Assistance')">
+
+                        🤝 I Can Help
+
+                    </button>
+
+                </div>
+
+
+                <!-- REQUEST 3 -->
+
+                <div class="request" data-lat="26.1667" data-lng="91.6528">
+
+                    <div class="request-top">
+
+                        <h3>
+                            Shelter Needed
+                        </h3>
+
+                        <span class="medium">
+                            MEDIUM
+                        </span>
+
+                    </div>
+
+                    <p>
+                        A family requires temporary
+                        shelter for tonight.
+                    </p>
+
+                    <div class="request-info">
+
+                        📍 Jalukbari, Assam
+                        <br>
+
+                        👥 3 people
+                        <br>
+
+                        📏 <span class="distance">calculating...</span>
+
+                    </div>
+
+
+                    <button class="help-btn" onclick="acceptRequest('Shelter Needed')">
+
+                        🤝 I Can Help
+
+                    </button>
+
+                </div>
+
             </div>
 
-            <span class="urgency urgent">
-                URGENT
-            </span>
 
-            <h3>
-                Rescue Support
-            </h3>
+            <!-- VOLUNTEER REGISTRATION -->
 
-            <p>
-                Rescue volunteers are needed to assist
-                people in an affected area.
-            </p>
+            <div>
 
-            <div class="location">
-                📍 Bhubaneswar, Odisha
+
+                <section class="register">
+
+                    <h2>
+                        🙋 Become a Volunteer
+                    </h2>
+
+                    <p>
+                        Register yourself to help
+                        people during emergencies.
+                    </p>
+
+
+                    <form onsubmit="registerVolunteer(event)">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
+
+                            <input type="text" placeholder="Enter your name" required="">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone Number
+                            </label>
+
+                            <input type="tel" placeholder="Enter phone number" required="">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <input type="text" placeholder="Your current location" required="">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                How can you help?
+                            </label>
+
+                            <select required="">
+
+                                <option value="">
+                                    Select skill
+                                </option>
+
+                                <option>
+                                    🚑 Medical Help
+                                </option>
+
+                                <option>
+                                    🚗 Transportation
+                                </option>
+
+                                <option>
+                                    🍚 Food Distribution
+                                </option>
+
+                                <option>
+                                    💧 Water Distribution
+                                </option>
+
+                                <option>
+                                    🏠 Shelter Support
+                                </option>
+
+                                <option>
+                                    🔧 Rescue / Technical Help
+                                </option>
+
+                                <option>
+                                    🧑‍🤝‍🧑 General Volunteer
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Availability
+                            </label>
+
+                            <select required="">
+
+                                <option value="">
+                                    Select availability
+                                </option>
+
+                                <option>
+                                    Available Now
+                                </option>
+
+                                <option>
+                                    Available Today
+                                </option>
+
+                                <option>
+                                    Available This Week
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Additional Information
+                            </label>
+
+                            <textarea placeholder="Tell us about your skills or vehicle, equipment, etc."></textarea>
+
+                        </div>
+
+
+                        <button type="submit" class="register-btn">
+
+                            Register as Volunteer
+
+                        </button>
+
+
+                    </form>
+
+
+                    <div id="status" class="status" style="display:none;">
+
+                        ✅ You are now registered
+                        as a volunteer!
+
+                    </div>
+
+                </section>
+
             </div>
 
-            <button
-                class="help-btn"
-                onclick="canHelp(this)">
+        </section>
 
-                🤝 I CAN HELP
+    </main>
 
-            </button>
 
-        </div>
+    <!-- FOOTER -->
 
+    <footer>
 
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
 
-        <!-- REQUEST 4 -->
+    </footer>
 
-        <div class="request-card">
 
-            <div class="help-confirmation">
-                ➜
-            </div>
+    <script>
 
-            <span class="urgency normal">
-                NORMAL
-            </span>
+        function acceptRequest(requestName) {
 
-            <h3>
-                Supply Distribution
-            </h3>
-
-            <p>
-                Volunteers are needed to organize and
-                distribute essential supplies.
-            </p>
-
-            <div class="location">
-                📍 Kochi, Kerala
-            </div>
-
-            <button
-                class="help-btn"
-                onclick="canHelp(this)">
-
-                🤝 I CAN HELP
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= ALERT ================= -->
-
-<div
-    class="custom-alert"
-    id="customAlert">
-
-    <h3>
-        ⚠️ Information Required
-    </h3>
-
-    <p>
-        First put your information in the
-        "Become a Volunteer" section to become
-        a volunteer.
-    </p>
-
-    <button
-        class="close-alert"
-        onclick="closeAlert()">
-
-        OK
-
-    </button>
-
-</div>
-
-
-
-<!-- ================= SUCCESS ================= -->
-
-<div
-    class="success-message"
-    id="successMessage">
-
-    <div class="success-icon">
-        ✓
-    </div>
-
-    <h2>
-        Successfully Registered!
-    </h2>
-
-    <p>
-        You are now a ResQLink volunteer.
-    </p>
-
-</div>
-
-
-
-<script>
-
-
-/* ==========================================
-   VOLUNTEER STATUS
-========================================== */
-
-let isVolunteer = false;
-
-
-/* ==========================================
-   BECOME VOLUNTEER
-========================================== */
-
-function becomeVolunteer() {
-
-    const name =
-        document.getElementById("volunteerName").value.trim();
-
-    const phone =
-        document.getElementById("volunteerPhone").value.trim();
-
-    const email =
-        document.getElementById("volunteerEmail").value.trim();
-
-    const location =
-        document.getElementById("volunteerLocation").value.trim();
-
-    const skill =
-        document.getElementById("volunteerSkill").value;
-
-    const availability =
-        document.getElementById("volunteerAvailability").value;
-
-
-    /* CHECK ALL DETAILS */
-
-    if (
-        name === "" ||
-        phone === "" ||
-        email === "" ||
-        location === "" ||
-        skill === "" ||
-        availability === ""
-    ) {
-
-        alert(
-            "Please fill in all your information first to become a volunteer."
-        );
-
-        return;
-
-    }
-
-
-    /* ACTIVATE VOLUNTEER */
-
-    isVolunteer = true;
-
-
-    /* SAVE STATUS */
-
-    localStorage.setItem(
-        "resqlinkVolunteer",
-        "true"
-    );
-
-
-    localStorage.setItem(
-        "resqlinkVolunteerName",
-        name
-    );
-
-
-    /* SHOW GREEN STATUS */
-
-    document.getElementById(
-        "volunteerActive"
-    ).style.display = "block";
-
-
-    /* SHOW SUCCESS */
-
-    document.getElementById(
-        "successMessage"
-    ).style.display = "block";
-
-
-    setTimeout(function() {
-
-        document.getElementById(
-            "successMessage"
-        ).style.display = "none";
-
-    }, 2000);
-
-
-    /* ACTIVATE ALL HELP BUTTONS */
-
-    activateHelpButtons();
-
-}
-
-
-
-/* ==========================================
-   ACTIVATE HELP BUTTONS
-========================================== */
-
-function activateHelpButtons() {
-
-    const buttons =
-        document.querySelectorAll(".help-btn");
-
-
-    buttons.forEach(function(button) {
-
-        button.classList.add("active");
-
-        button.innerHTML =
-            "🤝 I CAN HELP";
-
-    });
-
-}
-
-
-
-/* ==========================================
-   CHECK VOLUNTEER BEFORE HELPING
-========================================== */
-
-function canHelp(button) {
-
-
-    /* NOT A VOLUNTEER */
-
-    if (!isVolunteer) {
-
-        showAlert();
-
-        return;
-
-    }
-
-
-    /* ALREADY ACCEPTED */
-
-    if (button.dataset.accepted === "true") {
-
-        return;
-
-    }
-
-
-    /* MARK ACCEPTED */
-
-    button.dataset.accepted = "true";
-
-
-    button.innerHTML =
-        "✓ HELP ACCEPTED";
-
-
-    button.style.background =
-        "#16753f";
-
-
-    /* SHOW GREEN ARROW */
-
-    const card =
-        button.closest(".request-card");
-
-
-    const arrow =
-        card.querySelector(".help-confirmation");
-
-
-    arrow.style.display =
-        "flex";
-
-
-}
-
-
-
-/* ==========================================
-   SHOW ALERT
-========================================== */
-
-function showAlert() {
-
-    document.getElementById(
-        "customAlert"
-    ).style.display = "block";
-
-}
-
-
-/* ==========================================
-   CLOSE ALERT
-========================================== */
-
-function closeAlert() {
-
-    document.getElementById(
-        "customAlert"
-    ).style.display = "none";
-
-}
-
-
-
-/* ==========================================
-   CHECK SAVED VOLUNTEER STATUS
-========================================== */
-
-window.addEventListener(
-    "load",
-    function() {
-
-        const savedStatus =
-            localStorage.getItem(
-                "resqlinkVolunteer"
+            alert(
+                "Thank you! You have accepted the request: "
+                + requestName
             );
-
-
-        if (savedStatus === "true") {
-
-            isVolunteer = true;
-
-
-            document.getElementById(
-                "volunteerActive"
-            ).style.display = "block";
-
-
-            activateHelpButtons();
 
         }
 
-    }
-);
 
-</script>
+        function registerVolunteer(event) {
+
+            event.preventDefault();
+
+            document.getElementById("status").style.display =
+                "block";
+
+            event.target.reset();
+
+        }
 
 
-</body>
+        // ---- REAL DISTANCE CALCULATION ----
 
-</html>
+        // Haversine formula: returns distance in km between two lat/lng points
+        function getDistanceKm(lat1, lng1, lat2, lng2) {
+
+            const R = 6371; // Earth's radius in km
+
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) *
+                Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return R * c;
+
+        }
+
+        function updateDistances(userLat, userLng) {
+
+            document.querySelectorAll(".request").forEach(function (card) {
+
+                const lat = parseFloat(card.dataset.lat);
+                const lng = parseFloat(card.dataset.lng);
+                const span = card.querySelector(".distance");
+
+                if (!span || isNaN(lat) || isNaN(lng)) return;
+
+                const dist = getDistanceKm(userLat, userLng, lat, lng);
+                span.textContent = dist.toFixed(1) + " km away";
+
+            });
+
+        }
+
+        function showDistanceError(message) {
+
+            document.querySelectorAll(".distance").forEach(function (span) {
+                span.textContent = message;
+            });
+
+        }
+
+        function initDistances() {
+
+            if (!navigator.geolocation) {
+                showDistanceError("location not supported");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+
+                function (position) {
+                    updateDistances(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    );
+                },
+
+                function (error) {
+                    showDistanceError("enable location to see distance");
+                },
+
+                {
+                    enableHighAccuracy: true,
+                    timeout: 8000,
+                    maximumAge: 60000
+                }
+
+            );
+
+        }
+
+        initDistances();
+
+    </script>
+
+
+
+
+</body></html>
