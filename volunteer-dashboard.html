@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Volunteer Dashboard | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .profile-btn {
+            background: white;
+            color: #101828;
+
+            padding: 9px 14px;
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+
+            padding: 35px 7%;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+            font-size: 14px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: 30px auto;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+
+            margin-bottom: 28px;
+        }
+
+        .stat {
+            background: white;
+
+            border: 1px solid #eaecf0;
+            border-radius: 10px;
+
+            padding: 20px;
+        }
+
+        .stat-icon {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .blue {
+            color: #175cd3;
+        }
+
+        .green {
+            color: #12b76a;
+        }
+
+        .orange {
+            color: #f79009;
+        }
+
+        .red {
+            color: #d92d20;
+        }
+
+        /* SECTION TITLE */
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 20px;
+        }
+
+        .section-title p {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        /* MISSION GRID */
+
+        .missions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
+
+        .mission {
+            background: white;
+
+            border: 1px solid #eaecf0;
+            border-radius: 11px;
+
+            padding: 20px;
+        }
+
+        .mission:hover {
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
+
+        .mission-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            margin-bottom: 15px;
+        }
+
+        .mission-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 9px;
+
+            background: #f2f4f7;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .priority {
+            padding: 5px 9px;
+            border-radius: 15px;
+
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .high {
+            background: #fee4e2;
+            color: #b42318;
+        }
+
+        .medium {
+            background: #fff4e5;
+            color: #b54708;
+        }
+
+        .low {
+            background: #ecfdf3;
+            color: #027a48;
+        }
+
+        .mission h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .mission-description {
+            color: #667085;
+
+            font-size: 12px;
+            line-height: 1.5;
+
+            margin-bottom: 16px;
+        }
+
+        .mission-detail {
+            display: flex;
+            gap: 8px;
+
+            color: #475467;
+
+            font-size: 11px;
+
+            margin-bottom: 8px;
+        }
+
+        .mission-detail span:first-child {
+            width: 18px;
+        }
+
+        .mission-footer {
+            border-top: 1px solid #eaecf0;
+
+            margin-top: 15px;
+            padding-top: 15px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accept-btn {
+            border: none;
+
+            background: #175cd3;
+            color: white;
+
+            padding: 9px 15px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .accept-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* ACTIVE TASK */
+
+        .active-task {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-left: 4px solid #175cd3;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            margin-top: 30px;
+            margin-bottom: 28px;
+        }
+
+        .active-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 18px;
+        }
+
+        .active-header h2 {
+            font-size: 19px;
+        }
+
+        .active-status {
+            background: #eef4ff;
+            color: #175cd3;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .task-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+        .task-info-item {
+            background: #f9fafb;
+
+            padding: 14px;
+
+            border-radius: 7px;
+        }
+
+        .task-info-item small {
+            color: #667085;
+
+            display: block;
+
+            font-size: 10px;
+
+            margin-bottom: 5px;
+        }
+
+        .task-info-item strong {
+            font-size: 12px;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 18px;
+        }
+
+        .task-btn {
+            padding: 10px 15px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            border: 1px solid #d0d5dd;
+
+            background: white;
+        }
+
+        .task-btn.complete {
+            background: #12b76a;
+            color: white;
+            border-color: #12b76a;
+        }
+
+        .task-btn.map {
+            background: #175cd3;
+            color: white;
+            border-color: #175cd3;
+        }
+
+        /* GUIDELINES */
+
+        .guidelines {
+            background: white;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 10px;
+
+            padding: 22px;
+
+            margin-top: 25px;
+        }
+
+        .guidelines h2 {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .guideline-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .guideline {
+            background: #f9fafb;
+
+            border-radius: 8px;
+
+            padding: 15px;
+        }
+
+        .guideline-icon {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .guideline h3 {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .guideline p {
+            color: #667085;
+
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .missions {
+                grid-template-columns: 1fr;
+            }
+
+            .task-info {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .guideline-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .task-info {
+                grid-template-columns: 1fr;
+            }
+
+            .task-actions {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="map.html">
+                    Live Map
+                </a>
+            </li>
+
+            <li>
+                <a href="requests.html">
+                    Requests
+                </a>
+            </li>
+
+            <li>
+                <a href="alerts.html">
+                    Alerts
+                </a>
+            </li>
+
+            <li>
+                <a href="notifications.html">
+                    Notifications
+                </a>
+            </li>
+
+        </ul>
+
+        <a href="profile.html"
+           class="profile-btn">
+
+            👤 Profile
+
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            🙋 Volunteer Dashboard
+        </h1>
+
+        <p>
+            Find relief missions, help affected
+            communities and track your contributions.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🎯
+                </div>
+
+                <div class="stat-number blue">
+                    12
+                </div>
+
+                <div class="stat-label">
+                    Missions Completed
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🚨
+                </div>
+
+                <div class="stat-number orange">
+                    2
+                </div>
+
+                <div class="stat-label">
+                    Active Missions
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    ⏱️
+                </div>
+
+                <div class="stat-number green">
+                    48
+                </div>
+
+                <div class="stat-label">
+                    Hours Volunteered
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🏆
+                </div>
+
+                <div class="stat-number red">
+                    Gold
+                </div>
+
+                <div class="stat-label">
+                    Volunteer Level
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- AVAILABLE MISSIONS -->
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    Available Relief Missions
+                </h2>
+
+                <p>
+                    Choose a mission where you can help.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <section class="missions">
+
+
+            <!-- MISSION 1 -->
+
+            <div class="mission">
+
+                <div class="mission-top">
+
+                    <div class="mission-icon">
+                        💧
+                    </div>
+
+                    <span class="priority high">
+                        HIGH PRIORITY
+                    </span>
+
+                </div>
+
+                <h3>
+                    Water Distribution
+                </h3>
+
+                <p class="mission-description">
+                    Distribute drinking water to
+                    families affected by flooding.
+                </p>
+
+                <div class="mission-detail">
+                    <span>📍</span>
+                    <span>Dispur, Guwahati</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>👥</span>
+                    <span>Approx. 80 families</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>⏰</span>
+                    <span>Today • 9:00 AM - 2:00 PM</span>
+                </div>
+
+                <div class="mission-footer">
+
+                    <span>
+                        🚗 Transport available
+                    </span>
+
+                    <button
+                        class="accept-btn"
+                        onclick="acceptMission('Water Distribution')">
+
+                        Accept Mission
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MISSION 2 -->
+
+            <div class="mission">
+
+                <div class="mission-top">
+
+                    <div class="mission-icon">
+                        🍚
+                    </div>
+
+                    <span class="priority high">
+                        HIGH PRIORITY
+                    </span>
+
+                </div>
+
+                <h3>
+                    Food Supply Distribution
+                </h3>
+
+                <p class="mission-description">
+                    Help distribute cooked meals and
+                    essential food supplies.
+                </p>
+
+                <div class="mission-detail">
+                    <span>📍</span>
+                    <span>Jalukbari, Guwahati</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>👥</span>
+                    <span>Approx. 120 people</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>⏰</span>
+                    <span>Today • 11:00 AM - 4:00 PM</span>
+                </div>
+
+                <div class="mission-footer">
+
+                    <span>
+                        🚗 Transport available
+                    </span>
+
+                    <button
+                        class="accept-btn"
+                        onclick="acceptMission('Food Supply Distribution')">
+
+                        Accept Mission
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MISSION 3 -->
+
+            <div class="mission">
+
+                <div class="mission-top">
+
+                    <div class="mission-icon">
+                        🏕️
+                    </div>
+
+                    <span class="priority medium">
+                        MEDIUM
+                    </span>
+
+                </div>
+
+                <h3>
+                    Shelter Assistance
+                </h3>
+
+                <p class="mission-description">
+                    Assist families with registration
+                    and accommodation at a relief shelter.
+                </p>
+
+                <div class="mission-detail">
+                    <span>📍</span>
+                    <span>Basistha Relief Center</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>👥</span>
+                    <span>Approx. 60 families</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>⏰</span>
+                    <span>Tomorrow • 8:00 AM - 1:00 PM</span>
+                </div>
+
+                <div class="mission-footer">
+
+                    <span>
+                        🏕️ On-site
+                    </span>
+
+                    <button
+                        class="accept-btn"
+                        onclick="acceptMission('Shelter Assistance')">
+
+                        Accept Mission
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MISSION 4 -->
+
+            <div class="mission">
+
+                <div class="mission-top">
+
+                    <div class="mission-icon">
+                        🩺
+                    </div>
+
+                    <span class="priority low">
+                        NORMAL
+                    </span>
+
+                </div>
+
+                <h3>
+                    Medical Camp Support
+                </h3>
+
+                <p class="mission-description">
+                    Assist medical teams with basic
+                    camp organization and registration.
+                </p>
+
+                <div class="mission-detail">
+                    <span>📍</span>
+                    <span>Maligaon Community Hall</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>👥</span>
+                    <span>Medical team + volunteers</span>
+                </div>
+
+                <div class="mission-detail">
+                    <span>⏰</span>
+                    <span>Tomorrow • 10:00 AM - 3:00 PM</span>
+                </div>
+
+                <div class="mission-footer">
+
+                    <span>
+                        🩺 Training provided
+                    </span>
+
+                    <button
+                        class="accept-btn"
+                        onclick="acceptMission('Medical Camp Support')">
+
+                        Accept Mission
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ACTIVE TASK -->
+
+        <section class="active-task">
+
+            <div class="active-header">
+
+                <h2>
+                    🎯 Current Active Mission
+                </h2>
+
+                <span class="active-status">
+                    IN PROGRESS
+                </span>
+
+            </div>
+
+
+            <div class="task-info">
+
+
+                <div class="task-info-item">
+
+                    <small>
+                        Mission
+                    </small>
+
+                    <strong>
+                        Emergency Supply Delivery
+                    </strong>
+
+                </div>
+
+
+                <div class="task-info-item">
+
+                    <small>
+                        Location
+                    </small>
+
+                    <strong>
+                        Sonapur, Assam
+                    </strong>
+
+                </div>
+
+
+                <div class="task-info-item">
+
+                    <small>
+                        Assigned
+                    </small>
+
+                    <strong>
+                        Today, 7:30 AM
+                    </strong>
+
+                </div>
+
+
+                <div class="task-info-item">
+
+                    <small>
+                        Team
+                    </small>
+
+                    <strong>
+                        6 Volunteers
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="task-actions">
+
+                <button
+                    class="task-btn map"
+                    onclick="openMap()">
+
+                    📍 Open Location
+
+                </button>
+
+
+                <button
+                    class="task-btn"
+                    onclick="contactCoordinator()">
+
+                    📞 Contact Coordinator
+
+                </button>
+
+
+                <button
+                    class="task-btn complete"
+                    onclick="completeMission()">
+
+                    ✓ Mark Completed
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- VOLUNTEER GUIDELINES -->
+
+        <section class="guidelines">
+
+            <h2>
+                🛡️ Volunteer Safety Guidelines
+            </h2>
+
+
+            <div class="guideline-grid">
+
+
+                <div class="guideline">
+
+                    <div class="guideline-icon">
+                        🦺
+                    </div>
+
+                    <h3>
+                        Stay Protected
+                    </h3>
+
+                    <p>
+                        Wear appropriate safety equipment
+                        and follow instructions from
+                        response coordinators.
+                    </p>
+
+                </div>
+
+
+                <div class="guideline">
+
+                    <div class="guideline-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Stay Connected
+                    </h3>
+
+                    <p>
+                        Keep your phone charged and
+                        maintain communication with
+                        your assigned team.
+                    </p>
+
+                </div>
+
+
+                <div class="guideline">
+
+                    <div class="guideline-icon">
+                        🚫
+                    </div>
+
+                    <h3>
+                        Don't Take Risks
+                    </h3>
+
+                    <p>
+                        Never enter dangerous areas
+                        without authorization from
+                        trained responders.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </footer>
+
+
+    <script>
+
+
+        function acceptMission(mission) {
+
+            let confirmMission =
+                confirm(
+                    "Accept this mission?\n\n"
+                    + mission
+                );
+
+            if (confirmMission) {
+
+                alert(
+                    "✅ Mission accepted!\n\n"
+                    + mission
+                    + "\n\n"
+                    + "The coordinator will contact you "
+                    + "with further instructions."
+                );
+
+            }
+
+        }
+
+
+        function openMap() {
+
+            window.location.href =
+                "map.html";
+
+        }
+
+
+        function contactCoordinator() {
+
+            alert(
+                "📞 Coordinator Contact\n\n"
+                + "Coordinator: ResQLink Emergency Team\n"
+                + "Contact system will be connected "
+                + "to the backend later."
+            );
+
+        }
+
+
+        function completeMission() {
+
+            let confirmComplete =
+                confirm(
+                    "Have you completed this mission?"
+                );
+
+            if (confirmComplete) {
+
+                alert(
+                    "🎉 Mission marked as completed!\n\n"
+                    + "Thank you for helping the community."
+                );
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
