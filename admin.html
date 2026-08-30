@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+            padding: 10px 17px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1250px;
+            margin: 35px auto;
+        }
+
+        /* ALERT */
+
+        .alert {
+            background: #fff4e5;
+            border-left: 5px solid #f79009;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .alert strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .alert p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .stat h2 {
+            font-size: 27px;
+            margin-bottom: 6px;
+        }
+
+        .stat p {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eaecf0;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+        }
+
+        /* REQUEST TABLE */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 13px 10px;
+            border-bottom: 1px solid #eaecf0;
+            font-size: 13px;
+        }
+
+        th {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .urgent {
+            color: #d92d20;
+            font-weight: bold;
+        }
+
+        .medium {
+            color: #b54708;
+            font-weight: bold;
+        }
+
+        .resolved {
+            color: #027a48;
+            font-weight: bold;
+        }
+
+        /* BUTTONS */
+
+        button {
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .view {
+            background: #eef4ff;
+            color: #175cd3;
+        }
+
+        .resolve {
+            background: #ecfdf3;
+            color: #027a48;
+        }
+
+        .danger {
+            background: #fee4e2;
+            color: #b42318;
+        }
+
+        /* ACTIVITY */
+
+        .activity {
+            border-bottom: 1px solid #eaecf0;
+            padding: 14px 0;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+        }
+
+        .activity strong {
+            font-size: 14px;
+        }
+
+        .activity p {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* PEOPLE */
+
+        .person {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .person:last-child {
+            border-bottom: none;
+        }
+
+        .person-name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .person-type {
+            color: #667085;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .online {
+            color: #027a48;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:1000px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+            <li>
+                <a href="ngo.html">NGO</a>
+            </li>
+
+            <li>
+                <a href="supplier.html">Supplier</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>
+            🛡️ Disaster Coordinator Dashboard
+        </h1>
+
+        <p>
+            Monitor and coordinate the complete
+            disaster relief operation.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- ALERT -->
+
+        <div class="alert">
+
+            <strong>
+                ⚠️ Active Disaster Alert
+            </strong>
+
+            <p>
+                Flooding reported across multiple
+                areas. Immediate relief coordination
+                is required.
+            </p>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <h2>42</h2>
+
+                <p>
+                    Active Requests
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>248</h2>
+
+                <p>
+                    Volunteers
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>18</h2>
+
+                <p>
+                    NGOs
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>36</h2>
+
+                <p>
+                    Supply Centers
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>86</h2>
+
+                <p>
+                    Families Helped
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="grid">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <!-- REQUEST MANAGEMENT -->
+
+                <section class="card">
+
+                    <h2>
+                        🆘 Emergency Requests
+                    </h2>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Request
+                                    </th>
+
+                                    <th>
+                                        Location
+                                    </th>
+
+                                    <th>
+                                        People
+                                    </th>
+
+                                    <th>
+                                        Priority
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <tr>
+
+                                    <td>
+                                        Food & Water
+                                    </td>
+
+                                    <td>
+                                        Guwahati
+                                    </td>
+
+                                    <td>
+                                        25
+                                    </td>
+
+                                    <td class="urgent">
+                                        URGENT
+                                    </td>
+
+                                    <td>
+                                        Pending
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="view"
+                                            onclick="viewRequest('Food & Water')">
+
+                                            View
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Medical Help
+                                    </td>
+
+                                    <td>
+                                        Dispur
+                                    </td>
+
+                                    <td>
+                                        8
+                                    </td>
+
+                                    <td class="urgent">
+                                        URGENT
+                                    </td>
+
+                                    <td>
+                                        Assigned
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="view"
+                                            onclick="viewRequest('Medical Help')">
+
+                                            View
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Shelter
+                                    </td>
+
+                                    <td>
+                                        Jalukbari
+                                    </td>
+
+                                    <td>
+                                        12
+                                    </td>
+
+                                    <td class="medium">
+                                        MEDIUM
+                                    </td>
+
+                                    <td>
+                                        Pending
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="view"
+                                            onclick="viewRequest('Shelter')">
+
+                                            View
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Blankets
+                                    </td>
+
+                                    <td>
+                                        Khanapara
+                                    </td>
+
+                                    <td>
+                                        18
+                                    </td>
+
+                                    <td class="medium">
+                                        MEDIUM
+                                    </td>
+
+                                    <td class="resolved">
+                                        Resolved
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="resolve"
+                                            onclick="showMessage('Already resolved')">
+
+                                            ✓ Done
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ACTIVITY -->
+
+                <section class="card">
+
+                    <h2>
+                        📊 Recent Activity
+                    </h2>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            🚑 Medical team assigned
+                        </strong>
+
+                        <p>
+                            A medical volunteer team was
+                            assigned to an emergency request
+                            in Dispur.
+                        </p>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            📦 New supply available
+                        </strong>
+
+                        <p>
+                            500 food packets were added by
+                            a local supplier.
+                        </p>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            🙋 Volunteer registered
+                        </strong>
+
+                        <p>
+                            A new volunteer joined the
+                            relief operation.
+                        </p>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            🏕️ Shelter capacity updated
+                        </strong>
+
+                        <p>
+                            Relief shelter capacity was
+                            updated to 73 / 100.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div>
+
+
+                <!-- VOLUNTEERS -->
+
+                <section class="card">
+
+                    <h2>
+                        🙋 Volunteers
+                    </h2>
+
+
+                    <div class="person">
+
+                        <div>
+
+                            <div class="person-name">
+                                Rahul Sharma
+                            </div>
+
+                            <div class="person-type">
+                                🚗 Transportation
+                            </div>
+
+                        </div>
+
+                        <div class="online">
+                            ● Online
+                        </div>
+
+                    </div>
+
+
+                    <div class="person">
+
+                        <div>
+
+                            <div class="person-name">
+                                Priya Das
+                            </div>
+
+                            <div class="person-type">
+                                🚑 Medical
+                            </div>
+
+                        </div>
+
+                        <div class="online">
+                            ● Online
+                        </div>
+
+                    </div>
+
+
+                    <div class="person">
+
+                        <div>
+
+                            <div class="person-name">
+                                Arjun Singh
+                            </div>
+
+                            <div class="person-type">
+                                📦 Distribution
+                            </div>
+
+                        </div>
+
+                        <div class="online">
+                            ● Online
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="card">
+
+                    <h2>
+                        ⚡ Quick Actions
+                    </h2>
+
+
+                    <button
+                        class="view"
+                        style="width:100%;margin-bottom:10px;"
+                        onclick="openPage('map.html')">
+
+                        🗺️ Open Live Map
+
+                    </button>
+
+
+                    <button
+                        class="view"
+                        style="width:100%;margin-bottom:10px;"
+                        onclick="openPage('requests.html')">
+
+                        🆘 View All Requests
+
+                    </button>
+
+
+                    <button
+                        class="view"
+                        style="width:100%;margin-bottom:10px;"
+                        onclick="openPage('volunteer.html')">
+
+                        🙋 Manage Volunteers
+
+                    </button>
+
+
+                    <button
+                        class="view"
+                        style="width:100%;"
+                        onclick="openPage('supplier.html')">
+
+                        📦 Manage Supplies
+
+                    </button>
+
+                </section>
+
+
+                <!-- SYSTEM STATUS -->
+
+                <section class="card">
+
+                    <h2>
+                        🟢 System Status
+                    </h2>
+
+                    <p style="color:#027a48;font-weight:bold;">
+                        ● All systems operational
+                    </p>
+
+                    <br>
+
+                    <p style="color:#667085;font-size:13px;">
+                        Last updated:
+                        Just now
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function viewRequest(name) {
+
+            alert(
+                "Emergency Request:\n\n"
+                + name
+                + "\n\nCoordinator can assign volunteers and resources here."
+            );
+
+        }
+
+
+        function showMessage(message) {
+
+            alert(message);
+
+        }
+
+
+        function openPage(page) {
+
+            window.location.href = page;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
