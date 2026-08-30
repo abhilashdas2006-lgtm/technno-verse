@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Help Center | ResQLink</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #172033;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 70px;
+    background: #101828;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4d4d;
+}
+
+nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.contact-btn {
+    background: white;
+    color: #101828;
+
+    padding: 9px 14px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* HERO */
+
+.hero {
+    background: #101828;
+    color: white;
+
+    text-align: center;
+
+    padding: 55px 7%;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: #ff4d4d;
+}
+
+.hero p {
+    color: #d0d5dd;
+
+    font-size: 13px;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 1.6;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 86%;
+    max-width: 1050px;
+
+    margin: 35px auto;
+}
+
+/* EMERGENCY */
+
+.emergency {
+    background: #fff1f0;
+
+    border: 1px solid #fecdca;
+
+    border-left: 5px solid #d92d20;
+
+    border-radius: 9px;
+
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.emergency h3 {
+    color: #b42318;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+.emergency p {
+    color: #667085;
+
+    font-size: 10px;
+}
+
+.call-btn {
+    background: #d92d20;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* QUICK HELP */
+
+.quick-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 30px;
+}
+
+.quick-card {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 9px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: #172033;
+
+    transition: 0.2s;
+}
+
+.quick-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #175cd3;
+}
+
+.quick-icon {
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+.quick-card h3 {
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.quick-card p {
+    color: #667085;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+.section h2 {
+    font-size: 20px;
+
+    margin-bottom: 7px;
+}
+
+.subtitle {
+    color: #667085;
+
+    font-size: 11px;
+
+    margin-bottom: 20px;
+}
+
+/* HELP CARDS */
+
+.help-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.help-card {
+    border: 1px solid #eaecf0;
+
+    border-radius: 8px;
+
+    padding: 18px;
+}
+
+.help-card h3 {
+    font-size: 13px;
+
+    margin-bottom: 7px;
+}
+
+.help-card p {
+    color: #667085;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+    margin-bottom: 12px;
+}
+
+.help-card a {
+    color: #175cd3;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+/* STEPS */
+
+.steps {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.step {
+    text-align: center;
+
+    padding: 15px;
+}
+
+.number {
+    width: 38px;
+    height: 38px;
+
+    background: #175cd3;
+
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: auto auto 10px;
+
+    font-weight: bold;
+}
+
+.step h3 {
+    font-size: 12px;
+
+    margin-bottom: 6px;
+}
+
+.step p {
+    color: #667085;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+/* CONTACT */
+
+.contact {
+    background: #101828;
+
+    color: white;
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 21px;
+
+    margin-bottom: 8px;
+}
+
+.contact p {
+    color: #d0d5dd;
+
+    font-size: 11px;
+
+    margin-bottom: 18px;
+}
+
+.contact a {
+    display: inline-block;
+
+    background: #175cd3;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+    background: #080c14;
+
+    color: #98a2b3;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .quick-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .emergency {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ResQ<span>Link</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="map.html">
+                Live Map
+            </a>
+        </li>
+
+        <li>
+            <a href="requests.html">
+                Requests
+            </a>
+        </li>
+
+        <li>
+            <a href="alerts.html">
+                Alerts
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                About
+            </a>
+        </li>
+
+    </ul>
+
+    <a href="contact.html" class="contact-btn">
+        📞 Contact
+    </a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        🆘 <span>Help</span> Center
+    </h1>
+
+    <p>
+        Get quick guidance on requesting assistance,
+        volunteering, using the live map and coordinating
+        disaster relief through ResQLink.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- EMERGENCY -->
+
+<section class="emergency">
+
+    <div>
+
+        <h3>
+            🚨 Immediate Danger?
+        </h3>
+
+        <p>
+            For a life-threatening emergency,
+            contact official emergency services immediately.
+        </p>
+
+    </div>
+
+    <a href="tel:112" class="call-btn">
+        📞 CALL 112
+    </a>
+
+</section>
+
+
+<!-- QUICK HELP -->
+
+<div class="quick-grid">
+
+
+    <a href="requests.html" class="quick-card">
+
+        <div class="quick-icon">
+            🆘
+        </div>
+
+        <h3>
+            Request Help
+        </h3>
+
+        <p>
+            Submit an emergency or
+            relief assistance request.
+        </p>
+
+    </a>
+
+
+    <a href="map.html" class="quick-card">
+
+        <div class="quick-icon">
+            🗺️
+        </div>
+
+        <h3>
+            Live Map
+        </h3>
+
+        <p>
+            View disaster areas,
+            requests and relief locations.
+        </p>
+
+    </a>
+
+
+    <a href="volunteer-dashboard.html" class="quick-card">
+
+        <div class="quick-icon">
+            👥
+        </div>
+
+        <h3>
+            Volunteer
+        </h3>
+
+        <p>
+            Join the response network
+            and help affected communities.
+        </p>
+
+    </a>
+
+
+    <a href="faq.html" class="quick-card">
+
+        <div class="quick-icon">
+            ❓
+        </div>
+
+        <h3>
+            FAQ
+        </h3>
+
+        <p>
+            Find answers to frequently
+            asked questions.
+        </p>
+
+    </a>
+
+
+</div>
+
+
+<!-- GETTING STARTED -->
+
+<section class="section">
+
+    <h2>
+        🚀 Getting Started
+    </h2>
+
+    <p class="subtitle">
+        Follow these simple steps to use ResQLink.
+    </p>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="number">
+                1
+            </div>
+
+            <h3>
+                Create Your Profile
+            </h3>
+
+            <p>
+                Provide basic information so the
+                platform can identify your role.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">
+                2
+            </div>
+
+            <h3>
+                Choose Your Action
+            </h3>
+
+            <p>
+                Request assistance, volunteer,
+                report an issue or coordinate resources.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">
+                3
+            </div>
+
+            <h3>
+                Stay Updated
+            </h3>
+
+            <p>
+                Monitor alerts, request status
+                and important disaster information.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- COMMON HELP -->
+
+<section class="section">
+
+    <h2>
+        📚 Common Help Topics
+    </h2>
+
+    <p class="subtitle">
+        Select a topic to get more information.
+    </p>
+
+
+    <div class="help-grid">
+
+
+        <div class="help-card">
+
+            <h3>
+                🆘 How do I request help?
+            </h3>
+
+            <p>
+                Open the Help Request page, select the
+                type of assistance required, provide your
+                location and submit the request.
+            </p>
+
+            <a href="requests.html">
+                Request Help →
+            </a>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <h3>
+                📍 How do I share my location?
+            </h3>
+
+            <p>
+                Location can be provided through the
+                request form or map interface when
+                location access is available.
+            </p>
+
+            <a href="map.html">
+                Open Map →
+            </a>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <h3>
+                👥 How do I become a volunteer?
+            </h3>
+
+            <p>
+                Register as a volunteer and provide
+                information about your skills,
+                availability and preferred activities.
+            </p>
+
+            <a href="volunteer-dashboard.html">
+                Volunteer →
+            </a>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <h3>
+                📦 How are resources coordinated?
+            </h3>
+
+            <p>
+                Relief organizations can record available
+                supplies and coordinate their distribution
+                to affected locations.
+            </p>
+
+            <a href="resources.html">
+                View Resources →
+            </a>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <h3>
+                🔔 Where can I see alerts?
+            </h3>
+
+            <p>
+                Important emergency announcements,
+                evacuation information and response
+                updates are displayed in the alerts section.
+            </p>
+
+            <a href="alerts.html">
+                View Alerts →
+            </a>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <h3>
+                🔐 How is my information handled?
+            </h3>
+
+            <p>
+                Read the privacy policy to understand
+                how information submitted through the
+                platform is intended to be handled.
+            </p>
+
+            <a href="privacy.html">
+                Privacy Policy →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+    <h2>
+        Still Need Help?
+    </h2>
+
+    <p>
+        Contact the ResQLink support team if you
+        cannot find the information you need.
+    </p>
+
+    <a href="contact.html">
+        Contact Support →
+    </a>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 ResQLink |
+Disaster Relief Coordination Platform
+
+</footer>
+
+
+</body>
+
+</html>
