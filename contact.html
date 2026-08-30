@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Emergency Contact | ResQLink</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #172033;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 70px;
+    background: #101828;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4d4d;
+}
+
+nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.profile {
+    background: white;
+    color: #101828;
+
+    padding: 9px 14px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* HEADER */
+
+.header {
+    background: #101828;
+    color: white;
+
+    padding: 35px 7%;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #d0d5dd;
+    font-size: 14px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 86%;
+    max-width: 1100px;
+
+    margin: 30px auto;
+}
+
+/* EMERGENCY BANNER */
+
+.emergency-banner {
+    background: #fff1f0;
+
+    border: 1px solid #fecdca;
+
+    border-left: 5px solid #d92d20;
+
+    border-radius: 10px;
+
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.banner-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.banner-icon {
+    font-size: 28px;
+}
+
+.banner-title {
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #b42318;
+
+    margin-bottom: 4px;
+}
+
+.banner-text {
+    color: #667085;
+
+    font-size: 10px;
+}
+
+.call-btn {
+    background: #d92d20;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 22px;
+
+    margin-bottom: 25px;
+}
+
+.section h2 {
+    font-size: 19px;
+
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #667085;
+
+    font-size: 11px;
+
+    margin-bottom: 20px;
+}
+
+/* CONTACT GRID */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.contact-card {
+    border: 1px solid #eaecf0;
+
+    border-radius: 9px;
+
+    padding: 17px;
+
+    text-align: center;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+
+    background: #f2f4f7;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    margin: 0 auto 10px;
+}
+
+.contact-card h3 {
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.contact-card p {
+    color: #667085;
+
+    font-size: 10px;
+
+    margin-bottom: 12px;
+
+    line-height: 1.5;
+}
+
+.contact-number {
+    display: block;
+
+    background: #eef4ff;
+
+    color: #175cd3;
+
+    text-decoration: none;
+
+    padding: 8px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* TWO COLUMN */
+
+.two-column {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 6px;
+
+    padding: 10px;
+
+    font-size: 11px;
+
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #175cd3;
+}
+
+textarea {
+    height: 100px;
+
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+
+    background: #175cd3;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* SUPPORT */
+
+.support-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #eaecf0;
+}
+
+.support-item:last-child {
+    border-bottom: none;
+}
+
+.support-icon {
+    width: 38px;
+    height: 38px;
+
+    background: #f2f4f7;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+.support-name {
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 3px;
+}
+
+.support-text {
+    color: #667085;
+
+    font-size: 10px;
+}
+
+.support-link {
+    margin-left: auto;
+
+    color: #175cd3;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+    background: #080c14;
+
+    color: #98a2b3;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .emergency-banner {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ResQ<span>Link</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="map.html">
+                Live Map
+            </a>
+        </li>
+
+        <li>
+            <a href="requests.html">
+                Requests
+            </a>
+        </li>
+
+        <li>
+            <a href="alerts.html">
+                Alerts
+            </a>
+        </li>
+
+        <li>
+            <a href="reports.html">
+                Reports
+            </a>
+        </li>
+
+    </ul>
+
+    <a href="profile.html" class="profile">
+        👤 Profile
+    </a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="header">
+
+    <h1>
+        📞 Emergency Contact
+    </h1>
+
+    <p>
+        Quickly connect with emergency services,
+        authorities and relief organizations.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- EMERGENCY BANNER -->
+
+<section class="emergency-banner">
+
+    <div class="banner-left">
+
+        <div class="banner-icon">
+            🚨
+        </div>
+
+        <div>
+
+            <div class="banner-title">
+                LIFE-THREATENING EMERGENCY?
+            </div>
+
+            <div class="banner-text">
+                If you are in immediate danger,
+                contact emergency services directly.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a href="tel:112" class="call-btn">
+        📞 CALL 112
+    </a>
+
+</section>
+
+
+<!-- EMERGENCY SERVICES -->
+
+<section class="section">
+
+    <h2>
+        🚨 Emergency Services
+    </h2>
+
+    <p class="subtitle">
+        Important emergency numbers available in India.
+    </p>
+
+
+    <div class="contact-grid">
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🚨
+            </div>
+
+            <h3>
+                Emergency
+            </h3>
+
+            <p>
+                National emergency response number
+                for immediate assistance.
+            </p>
+
+            <a href="tel:112" class="contact-number">
+                📞 112
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🚒
+            </div>
+
+            <h3>
+                Fire & Rescue
+            </h3>
+
+            <p>
+                Contact fire and rescue services
+                during fire emergencies.
+            </p>
+
+            <a href="tel:101" class="contact-number">
+                📞 101
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🚑
+            </div>
+
+            <h3>
+                Ambulance
+            </h3>
+
+            <p>
+                Request emergency medical
+                transportation and assistance.
+            </p>
+
+            <a href="tel:108" class="contact-number">
+                📞 108
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                👮
+            </div>
+
+            <h3>
+                Police
+            </h3>
+
+            <p>
+                Contact police services
+                for security emergencies.
+            </p>
+
+            <a href="tel:100" class="contact-number">
+                📞 100
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🌊
+            </div>
+
+            <h3>
+                Disaster Management
+            </h3>
+
+            <p>
+                Contact disaster-management
+                authorities for disaster assistance.
+            </p>
+
+            <a href="tel:1078" class="contact-number">
+                📞 1078
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🧑‍⚕️
+            </div>
+
+            <h3>
+                Medical Help
+            </h3>
+
+            <p>
+                Get assistance for urgent
+                medical situations.
+            </p>
+
+            <a href="tel:108" class="contact-number">
+                📞 108
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- TWO COLUMNS -->
+
+<div class="two-column">
+
+
+<!-- CONTACT FORM -->
+
+<section class="section">
+
+    <h2>
+        ✉️ Contact ResQLink
+    </h2>
+
+    <p class="subtitle">
+        Send a message to the ResQLink response team.
+    </p>
+
+
+    <form onsubmit="sendMessage(event)">
+
+
+        <div class="form-group">
+
+            <label>
+                YOUR NAME
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                PHONE NUMBER
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter phone number"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                TYPE OF ISSUE
+            </label>
+
+            <select id="issue">
+
+                <option>
+                    Emergency Assistance
+                </option>
+
+                <option>
+                    Relief Request
+                </option>
+
+                <option>
+                    Volunteer Support
+                </option>
+
+                <option>
+                    Supply Issue
+                </option>
+
+                <option>
+                    Technical Problem
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                MESSAGE
+            </label>
+
+            <textarea
+                id="message"
+                placeholder="Describe your situation..."
+                required></textarea>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            📤 Send Message
+
+        </button>
+
+
+    </form>
+
+</section>
+
+
+<!-- SUPPORT TEAM -->
+
+<section class="section">
+
+    <h2>
+        🤝 Support Network
+    </h2>
+
+    <p class="subtitle">
+        Connect with the appropriate response team.
+    </p>
+
+
+    <div class="support-item">
+
+        <div class="support-icon">
+            🏢
+        </div>
+
+        <div>
+
+            <div class="support-name">
+                Relief Coordination Team
+            </div>
+
+            <div class="support-text">
+                General disaster coordination
+            </div>
+
+        </div>
+
+        <a href="tel:112"
+           class="support-link">
+
+            Call
+
+        </a>
+
+    </div>
+
+
+    <div class="support-item">
+
+        <div class="support-icon">
+            🏥
+        </div>
+
+        <div>
+
+            <div class="support-name">
+                Medical Response Team
+            </div>
+
+            <div class="support-text">
+                Medical emergencies and camps
+            </div>
+
+        </div>
+
+        <a href="tel:108"
+           class="support-link">
+
+            Call
+
+        </a>
+
+    </div>
+
+
+    <div class="support-item">
+
+        <div class="support-icon">
+            📦
+        </div>
+
+        <div>
+
+            <div class="support-name">
+                Supply Coordination
+            </div>
+
+            <div class="support-text">
+                Food, water and relief materials
+            </div>
+
+        </div>
+
+        <a href="requests.html"
+           class="support-link">
+
+            Open
+
+        </a>
+
+    </div>
+
+
+    <div class="support-item">
+
+        <div class="support-icon">
+            👥
+        </div>
+
+        <div>
+
+            <div class="support-name">
+                Volunteer Coordination
+            </div>
+
+            <div class="support-text">
+                Volunteer deployment and assistance
+            </div>
+
+        </div>
+
+        <a href="volunteer-dashboard.html"
+           class="support-link">
+
+            Open
+
+        </a>
+
+    </div>
+
+
+    <div class="support-item">
+
+        <div class="support-icon">
+            🛠️
+        </div>
+
+        <div>
+
+            <div class="support-name">
+                Technical Support
+            </div>
+
+            <div class="support-text">
+                Problems with the ResQLink platform
+            </div>
+
+        </div>
+
+        <a href="mailto:support@resqlink.org"
+           class="support-link">
+
+            Email
+
+        </a>
+
+    </div>
+
+
+</section>
+
+
+</div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 ResQLink |
+Disaster Relief Coordination Platform
+
+</footer>
+
+
+<script>
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    const issue =
+        document.getElementById("issue").value;
+
+    alert(
+        "✅ Message Sent!\n\n"
+        + "Thank you, " + name + ".\n\n"
+        + "Issue: " + issue
+        + "\n\n"
+        + "The response team will review your message."
+    );
+
+    event.target.reset();
+
+}
+
+</script>
+
+
+</body>
+
+</html>
