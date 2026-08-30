@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Requests | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+            padding: 10px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #101828;
+            color: white;
+            padding: 40px 7%;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #d0d5dd;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        /* TOP BUTTON */
+
+        .create-btn {
+            display: inline-block;
+
+            background: #e63946;
+            color: white;
+
+            padding: 14px 22px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            margin-bottom: 30px;
+        }
+
+        .create-btn:hover {
+            background: #c92f3b;
+        }
+
+        /* REQUEST GRID */
+
+        .requests {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 20px;
+        }
+
+        /* REQUEST CARD */
+
+        .request-card {
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            border: 1px solid #eaecf0;
+
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .request-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .request-card h2 {
+            font-size: 20px;
+        }
+
+        /* URGENCY */
+
+        .urgent {
+            background: #fee4e2;
+            color: #d92d20;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .medium {
+            background: #fff4e5;
+            color: #b54708;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .normal {
+            background: #dcfae6;
+            color: #027a48;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        /* INFO */
+
+        .info {
+            margin: 12px 0;
+
+            color: #475467;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .needs {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin: 15px 0;
+        }
+
+        .need {
+            background: #f2f4f7;
+
+            padding: 7px 10px;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+        }
+
+        /* ACTION */
+
+        .action-btn {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 11px;
+
+            background: #101828;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: none;
+
+            border-radius: 7px;
+
+            margin-top: 15px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            font-family: inherit;
+
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: #1d2939;
+        }
+
+        /* FIELD VALIDATION TICK */
+
+        .field-check {
+            color: #12b76a;
+            font-weight: bold;
+            margin-left: 6px;
+            font-size: 14px;
+        }
+
+        input.valid,
+        select.valid,
+        textarea.valid {
+            border-color: #12b76a;
+        }
+
+        /* SUCCESS MESSAGE */
+
+        .success-message {
+            display: none;
+
+            align-items: center;
+            gap: 10px;
+
+            background: #ecfdf3;
+            color: #027a48;
+
+            border: 1px solid #a6f4c5;
+            border-radius: 8px;
+
+            padding: 14px 18px;
+
+            font-weight: bold;
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+
+        /* FORM */
+
+        .form-section {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            margin-top: 40px;
+
+            border: 1px solid #eaecf0;
+        }
+
+        .form-section h2 {
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #e63946;
+        }
+
+        textarea {
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+        .submit-btn {
+
+            width: 100%;
+
+            padding: 14px;
+
+            background: #e63946;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #c92f3b;
+        }
+
+        /* FOOTER */
+
+        footer {
+
+            background: #080c14;
+
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .header {
+                padding: 30px 5%;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="map.html">Live Map</a>
+            </li>
+
+            <li>
+                <a href="requests.html">Requests</a>
+            </li>
+
+            <li>
+                <a href="volunteer.html">Volunteer</a>
+            </li>
+
+        </ul>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <h1>🆘 Emergency Requests</h1>
+
+        <p>
+            View people who currently need
+            emergency assistance.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- CREATE REQUEST -->
+
+        <a href="#requestForm" class="create-btn">
+            + Create Emergency Request
+        </a>
+
+
+        <!-- REQUESTS -->
+
+        <section class="requests">
+
+
+            <!-- REQUEST 1 -->
+
+            <div class="request-card" data-lat="26.1445" data-lng="91.7362">
+
+                <div class="request-top">
+
+                    <h2>🚨 Urgent Help Needed</h2>
+
+                    <span class="urgent">
+                        URGENT
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    📍 Guwahati, Assam
+                    <br>
+
+                    📏 <span class="dist-text">Calculating distance...</span>
+                    <br>
+
+                    👥 5 people affected
+                    <br>
+
+                    🕐 Reported 15 minutes ago
+
+                </div>
+
+
+                <div class="needs">
+
+                    <span class="need">
+                        💧 Drinking Water
+                    </span>
+
+                    <span class="need">
+                        🍚 Food
+                    </span>
+
+                    <span class="need">
+                        💊 Medicine
+                    </span>
+
+                </div>
+
+
+                <p class="info">
+
+                    Flood water has entered the house.
+                    Five people need immediate food,
+                    drinking water and basic medicine.
+
+                </p>
+
+
+                <button type="button" class="action-btn" onclick="openDirections(this)">
+                    🗺️ Get Directions
+                </button>
+
+            </div>
+
+
+            <!-- REQUEST 2 -->
+
+            <div class="request-card" data-lat="26.1618" data-lng="91.6624">
+
+                <div class="request-top">
+
+                    <h2>🏠 Shelter Required</h2>
+
+                    <span class="medium">
+                        MEDIUM
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    📍 Jalukbari, Assam
+                    <br>
+
+                    📏 <span class="dist-text">Calculating distance...</span>
+                    <br>
+
+                    👥 3 people affected
+                    <br>
+
+                    🕐 Reported 32 minutes ago
+
+                </div>
+
+
+                <div class="needs">
+
+                    <span class="need">
+                        🏕️ Shelter
+                    </span>
+
+                    <span class="need">
+                        🧣 Blankets
+                    </span>
+
+                </div>
+
+
+                <p class="info">
+
+                    Family has been evacuated
+                    and requires temporary shelter
+                    for the night.
+
+                </p>
+
+
+                <button type="button" class="action-btn" onclick="openDirections(this)">
+                    🗺️ Get Directions
+                </button>
+
+            </div>
+
+
+            <!-- REQUEST 3 -->
+
+            <div class="request-card" data-lat="26.1433" data-lng="91.7898">
+
+                <div class="request-top">
+
+                    <h2>💊 Medical Assistance</h2>
+
+                    <span class="normal">
+                        NORMAL
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    📍 Dispur, Assam
+                    <br>
+
+                    📏 <span class="dist-text">Calculating distance...</span>
+                    <br>
+
+                    👥 2 people affected
+                    <br>
+
+                    🕐 Reported 1 hour ago
+
+                </div>
+
+
+                <div class="needs">
+
+                    <span class="need">
+                        💊 Medicine
+                    </span>
+
+                    <span class="need">
+                        👨‍⚕️ Doctor
+                    </span>
+
+                </div>
+
+
+                <p class="info">
+
+                    Elderly person requires
+                    basic medical assistance
+                    and medicines.
+
+                </p>
+
+
+                <button type="button" class="action-btn" onclick="openDirections(this)">
+                    🗺️ Get Directions
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- CREATE REQUEST FORM -->
+
+        <section class="form-section" id="requestForm">
+
+            <h2>
+                📝 Create Emergency Request
+            </h2>
+
+
+            <div class="success-message" id="successMsg">
+                ✅ Emergency request submitted successfully!
+            </div>
+
+
+            <form onsubmit="submitRequest(event)">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Your Name <span class="field-check" id="check-name"></span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reqName"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Location <span class="field-check" id="check-location"></span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reqLocation"
+                        placeholder="Enter your location"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Number of People <span class="field-check" id="check-people"></span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="reqPeople"
+                        min="1"
+                        placeholder="Number of people affected"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        What do you need? <span class="field-check" id="check-need"></span>
+                    </label>
+
+                    <select id="reqNeed" required>
+
+                        <option value="">
+                            Select assistance
+                        </option>
+
+                        <option>
+                            Food
+                        </option>
+
+                        <option>
+                            Drinking Water
+                        </option>
+
+                        <option>
+                            Medicine
+                        </option>
+
+                        <option>
+                            Shelter
+                        </option>
+
+                        <option>
+                            Rescue
+                        </option>
+
+                        <option>
+                            Multiple Items
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Urgency Level <span class="field-check" id="check-urgency"></span>
+                    </label>
+
+                    <select id="reqUrgency" required>
+
+                        <option value="">
+                            Select urgency
+                        </option>
+
+                        <option>
+                            🔴 Urgent
+                        </option>
+
+                        <option>
+                            🟠 Medium
+                        </option>
+
+                        <option>
+                            🟢 Normal
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Describe the Situation <span class="field-check" id="check-description"></span>
+                    </label>
+
+                    <textarea
+                        id="reqDescription"
+                        placeholder="Tell us what happened and what help you need..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    🚨 Submit Emergency Request
+
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ResQLink | Disaster Relief Coordination Platform
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        // ===== REAL DISTANCE =====
+
+        const EARTH_RADIUS_KM = 6371;
+
+        function toRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+
+        function getDistanceKm(lat1, lng1, lat2, lng2) {
+
+            const dLat = toRadians(lat2 - lat1);
+            const dLng = toRadians(lng2 - lng1);
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return EARTH_RADIUS_KM * c;
+        }
+
+        function updateRequestDistances(userLat, userLng) {
+
+            document.querySelectorAll(".request-card").forEach(function(card) {
+
+                const lat = parseFloat(card.dataset.lat);
+                const lng = parseFloat(card.dataset.lng);
+                const distEl = card.querySelector(".dist-text");
+
+                if (!distEl || isNaN(lat) || isNaN(lng)) {
+                    return;
+                }
+
+                const dist = getDistanceKm(userLat, userLng, lat, lng);
+                distEl.textContent = dist.toFixed(1) + " km from your location";
+
+            });
+
+        }
+
+        function loadRealDistances() {
+
+            if (!navigator.geolocation) {
+
+                document.querySelectorAll(".dist-text").forEach(function(el) {
+                    el.textContent = "Location not supported";
+                });
+
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+                    updateRequestDistances(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    );
+                },
+
+                function() {
+                    document.querySelectorAll(".dist-text").forEach(function(el) {
+                        el.textContent = "Enable location for distance";
+                    });
+                }
+            );
+
+        }
+
+        window.addEventListener("DOMContentLoaded", loadRealDistances);
+
+
+        // ===== DIRECTIONS =====
+
+        function openDirections(button) {
+
+            const card = button.closest(".request-card");
+            const lat = parseFloat(card.dataset.lat);
+            const lng = parseFloat(card.dataset.lng);
+
+            if (isNaN(lat) || isNaN(lng)) {
+                window.location.href = "map.html";
+                return;
+            }
+
+            function goToMaps(originLat, originLng) {
+
+                let url = "https://www.google.com/maps/dir/?api=1"
+                    + "&destination=" + lat + "," + lng
+                    + "&travelmode=driving";
+
+                if (originLat !== undefined && originLng !== undefined) {
+                    url += "&origin=" + originLat + "," + originLng;
+                }
+
+                window.open(url, "_blank");
+            }
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(
+
+                    function(position) {
+                        goToMaps(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        );
+                    },
+
+                    function() {
+                        // user denied location, still open directions to the request location
+                        goToMaps();
+                    }
+                );
+
+            } else {
+                goToMaps();
+            }
+
+        }
+
+
+        // ===== FIELD VALIDATION TICKS =====
+
+        function setupFieldChecks() {
+
+            const fields = [
+                { input: "reqName", check: "check-name" },
+                { input: "reqLocation", check: "check-location" },
+                { input: "reqPeople", check: "check-people" },
+                { input: "reqNeed", check: "check-need" },
+                { input: "reqUrgency", check: "check-urgency" },
+                { input: "reqDescription", check: "check-description" }
+            ];
+
+            fields.forEach(function(field) {
+
+                const inputEl = document.getElementById(field.input);
+                const checkEl = document.getElementById(field.check);
+
+                if (!inputEl || !checkEl) {
+                    return;
+                }
+
+                function updateCheck() {
+
+                    if (inputEl.value && inputEl.value.trim() !== "") {
+                        checkEl.textContent = "✅";
+                        inputEl.classList.add("valid");
+                    } else {
+                        checkEl.textContent = "";
+                        inputEl.classList.remove("valid");
+                    }
+
+                }
+
+                inputEl.addEventListener("input", updateCheck);
+                inputEl.addEventListener("change", updateCheck);
+
+            });
+
+        }
+
+        window.addEventListener("DOMContentLoaded", setupFieldChecks);
+
+
+        // ===== FORM SUBMIT =====
+
+        function submitRequest(event) {
+
+            event.preventDefault();
+
+            const successMsg = document.getElementById("successMsg");
+
+            successMsg.classList.add("show");
+
+            successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            event.target.reset();
+
+            document.querySelectorAll(".field-check").forEach(function(el) {
+                el.textContent = "";
+            });
+
+            document.querySelectorAll("input.valid, select.valid, textarea.valid")
+                .forEach(function(el) {
+                    el.classList.remove("valid");
+                });
+
+            setTimeout(function() {
+                successMsg.classList.remove("show");
+            }, 4000);
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
