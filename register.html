@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | ResQLink</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #172033;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: #101828;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+        }
+
+        .home-btn {
+            background: white;
+            color: #101828;
+
+            text-decoration: none;
+
+            padding: 10px 17px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+        }
+
+        /* PAGE */
+
+        .page {
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
+        }
+
+        .register-box {
+            width: 100%;
+            max-width: 850px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+        }
+
+        /* LEFT */
+
+        .left {
+            background: #101828;
+            color: white;
+
+            padding: 40px 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .left h1 span {
+            color: #ff4d4d;
+        }
+
+        .left > p {
+            color: #d0d5dd;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .benefit-icon {
+            font-size: 22px;
+        }
+
+        .benefit h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .benefit p {
+            color: #98a2b3;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        /* RIGHT */
+
+        .right {
+            padding: 35px;
+        }
+
+        .right h2 {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .subtitle {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        /* ROLE */
+
+        .role-title {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 9px;
+        }
+
+        .roles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .role {
+            border: 1px solid #d0d5dd;
+
+            background: white;
+
+            border-radius: 7px;
+
+            padding: 10px 5px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            font-size: 11px;
+        }
+
+        .role:hover {
+            border-color: #175cd3;
+        }
+
+        .role.selected {
+            border: 2px solid #175cd3;
+            background: #eef4ff;
+        }
+
+        .role-icon {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        /* FORM */
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #d0d5dd;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #175cd3;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 8px;
+
+            margin: 5px 0 18px;
+
+            color: #667085;
+
+            font-size: 11px;
+
+            line-height: 1.4;
+        }
+
+        .terms input {
+            width: auto;
+            margin-top: 2px;
+        }
+
+        .terms span {
+            color: #175cd3;
+        }
+
+        .register-btn {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #d92d20;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            opacity: 0.9;
+        }
+
+        .login {
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #667085;
+
+            font-size: 12px;
+        }
+
+        .login a {
+            color: #175cd3;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080c14;
+            color: #98a2b3;
+
+            text-align: center;
+
+            padding: 20px;
+
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 750px) {
+
+            .register-box {
+                grid-template-columns: 1fr;
+            }
+
+            .left {
+                display: none;
+            }
+
+            .roles {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .right {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ResQ<span>Link</span>
+        </div>
+
+        <a href="index.html"
+           class="home-btn">
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- PAGE -->
+
+    <main class="page">
+
+        <div class="register-box">
+
+
+            <!-- LEFT SIDE -->
+
+            <section class="left">
+
+                <h1>
+                    Join ResQ<span>Link</span>
+                </h1>
+
+                <p>
+                    Create an account and become part
+                    of a connected disaster response
+                    community.
+                </p>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        🚨
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Get Emergency Alerts
+                        </h3>
+
+                        <p>
+                            Receive important disaster
+                            and safety notifications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        🆘
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Request Help
+                        </h3>
+
+                        <p>
+                            Ask for emergency assistance
+                            when you need it.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        🤝
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Help Others
+                        </h3>
+
+                        <p>
+                            Volunteer and contribute
+                            resources during disasters.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+
+            <section class="right">
+
+                <h2>
+                    Create Account
+                </h2>
+
+                <p class="subtitle">
+                    Register to access ResQLink services.
+                </p>
+
+
+                <!-- ROLE -->
+
+                <div class="role-title">
+                    I want to register as
+                </div>
+
+
+                <div class="roles">
+
+
+                    <div class="role selected"
+                         onclick="selectRole(this,'Citizen')">
+
+                        <span class="role-icon">
+                            👤
+                        </span>
+
+                        Citizen
+
+                    </div>
+
+
+                    <div class="role"
+                         onclick="selectRole(this,'Volunteer')">
+
+                        <span class="role-icon">
+                            🙋
+                        </span>
+
+                        Volunteer
+
+                    </div>
+
+
+                    <div class="role"
+                         onclick="selectRole(this,'NGO')">
+
+                        <span class="role-icon">
+                            🏢
+                        </span>
+
+                        NGO
+
+                    </div>
+
+
+                    <div class="role"
+                         onclick="selectRole(this,'Admin')">
+
+                        <span class="role-icon">
+                            🛡️
+                        </span>
+
+                        Admin
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <form onsubmit="register(event)">
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                First Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                required
+                                placeholder="First name">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Last Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                required
+                                placeholder="Last name">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email Address *
+                        </label>
+
+                        <input
+                            type="email"
+                            required
+                            placeholder="example@email.com">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number *
+                        </label>
+
+                        <input
+                            type="tel"
+                            required
+                            placeholder="Enter phone number">
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                State
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Select State
+                                </option>
+
+                                <option>
+                                    Assam
+                                </option>
+
+                                <option>
+                                    Meghalaya
+                                </option>
+
+                                <option>
+                                    Tripura
+                                </option>
+
+                                <option>
+                                    West Bengal
+                                </option>
+
+                                <option>
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Your city">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Password *
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            required
+                            minlength="6"
+                            placeholder="Minimum 6 characters">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Confirm Password *
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            required
+                            minlength="6"
+                            placeholder="Re-enter password">
+
+                    </div>
+
+
+                    <label class="terms">
+
+                        <input
+                            type="checkbox"
+                            required>
+
+                        <span>
+                            I agree to the ResQLink terms,
+                            privacy policy and responsible
+                            use of emergency services.
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="register-btn">
+
+                        🚀 Create My Account
+
+                    </button>
+
+
+                </form>
+
+
+                <div class="login">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Sign In
+                    </a>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </footer>
+
+
+    <script>
+
+        let selectedRole = "Citizen";
+
+
+        function selectRole(element, role) {
+
+            document
+                .querySelectorAll(".role")
+                .forEach(function(item) {
+
+                    item.classList.remove("selected");
+
+                });
+
+            element.classList.add("selected");
+
+            selectedRole = role;
+
+        }
+
+
+        function register(event) {
+
+            event.preventDefault();
+
+
+            let password =
+                document.getElementById("password").value;
+
+
+            let confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+
+            if (password !== confirmPassword) {
+
+                alert(
+                    "❌ Passwords do not match!"
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "🎉 ACCOUNT CREATED!\n\n"
+                + "Role: "
+                + selectedRole
+                + "\n\n"
+                + "Registration is currently a frontend demo."
+            );
+
+
+            event.target.reset();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
