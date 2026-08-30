@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>ResQLink - Disaster Relief Coordination</title>
+
 
     <style>
 
@@ -16,178 +19,88 @@
             font-family: Arial, sans-serif;
         }
 
+
         body {
             background: #f5f7fa;
             color: #172033;
         }
 
 
-        /* =========================
-           NAVBAR
-        ========================= */
+        /* ================= NAVBAR ================= */
 
         nav {
             height: 70px;
+
             background: #101828;
+
             color: white;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding: 0 7%;
-
-            position: relative;
-            z-index: 100;
         }
+
 
         .logo {
             font-size: 25px;
             font-weight: bold;
         }
 
+
         .logo span {
             color: #ff4d4d;
         }
 
+
         nav ul {
             display: flex;
+
             list-style: none;
-            gap: 30px;
+
+            gap: 25px;
         }
+
 
         nav ul li a {
             color: white;
+
             text-decoration: none;
+
             font-size: 15px;
         }
+
 
         nav ul li a:hover {
             color: #ff4d4d;
         }
 
+
         .login-btn {
             background: white;
+
             color: #101828;
+
             padding: 10px 18px;
+
             border-radius: 7px;
+
             text-decoration: none;
+
             font-weight: bold;
         }
 
-        .login-btn:hover {
-            background: #f0f0f0;
-        }
 
-
-        /* =========================
-           EXPLORE BUTTON
-        ========================= */
-
-        .explore-container {
-            position: relative;
-        }
-
-        .explore-btn {
-            background: transparent;
-            border: 1px solid #475467;
-            color: white;
-
-            padding: 9px 14px;
-
-            border-radius: 7px;
-
-            cursor: pointer;
-
-            font-size: 14px;
-        }
-
-        .explore-btn:hover {
-            border-color: #ff4d4d;
-        }
-
-
-        /* =========================
-           EXPLORE DROPDOWN
-        ========================= */
-
-        .explore-menu {
-
-            display: none;
-
-            position: absolute;
-
-            right: 0;
-            top: 48px;
-
-            width: 280px;
-
-            background: white;
-
-            color: #172033;
-
-            border-radius: 12px;
-
-            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
-
-            padding: 18px;
-
-            max-height: 75vh;
-
-            overflow-y: auto;
-        }
-
-        .explore-menu.show {
-            display: block;
-        }
-
-        .menu-section {
-            margin-bottom: 18px;
-        }
-
-        .menu-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .menu-section h4 {
-            color: #667085;
-
-            font-size: 12px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 8px;
-        }
-
-        .menu-section a {
-            display: block;
-
-            color: #172033;
-
-            text-decoration: none;
-
-            padding: 8px 10px;
-
-            border-radius: 6px;
-
-            font-size: 14px;
-        }
-
-        .menu-section a:hover {
-            background: #f2f4f7;
-
-            color: #e63946;
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
+        /* ================= HERO ================= */
 
         .hero {
             min-height: 500px;
 
             display: flex;
+
             align-items: center;
 
             padding: 60px 7%;
@@ -201,31 +114,42 @@
             color: white;
         }
 
+
         .hero-content {
             max-width: 650px;
         }
 
+
         .hero h1 {
             font-size: 55px;
+
             line-height: 1.1;
+
             margin-bottom: 20px;
         }
+
 
         .hero h1 span {
             color: #ff4d4d;
         }
 
+
         .hero p {
             font-size: 19px;
+
             line-height: 1.7;
+
             color: #d0d5dd;
+
             margin-bottom: 30px;
         }
+
 
         .emergency-btn {
             display: inline-block;
 
             background: #e63946;
+
             color: white;
 
             padding: 16px 28px;
@@ -235,32 +159,38 @@
             text-decoration: none;
 
             font-weight: bold;
+
             font-size: 17px;
         }
+
 
         .emergency-btn:hover {
             background: #c1121f;
         }
 
 
-        /* =========================
-           QUICK ACTIONS
-        ========================= */
+        /* ================= QUICK ACTIONS ================= */
 
         .actions {
             padding: 60px 7%;
+
             text-align: center;
         }
 
+
         .actions h2 {
             font-size: 32px;
+
             margin-bottom: 10px;
         }
 
+
         .actions > p {
             color: #667085;
+
             margin-bottom: 35px;
         }
+
 
         .cards {
             display: grid;
@@ -270,6 +200,7 @@
             gap: 25px;
         }
 
+
         .card {
             background: white;
 
@@ -277,87 +208,240 @@
 
             border-radius: 12px;
 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.08);
 
             transition: 0.3s;
         }
+
 
         .card:hover {
             transform: translateY(-5px);
         }
 
+
         .card-icon {
             font-size: 45px;
+
             margin-bottom: 15px;
         }
 
+
         .card h3 {
             margin-bottom: 10px;
+
             font-size: 22px;
         }
 
+
         .card p {
             color: #667085;
+
             line-height: 1.5;
+
             margin-bottom: 20px;
         }
 
+
         .card a {
             text-decoration: none;
+
             font-weight: bold;
+
             color: #e63946;
         }
 
-        .card a:hover {
-            color: #c1121f;
+
+        /* ================= EXPLORE ================= */
+
+        .explore {
+            padding: 65px 7%;
+
+            background: #ffffff;
+
+            text-align: center;
         }
 
 
-        /* =========================
-           LIVE STATUS
-        ========================= */
+        .explore h2 {
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .explore-intro {
+            color: #667085;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* CATEGORY TITLE */
+
+        .explore-category {
+            text-align: left;
+
+            margin-top: 35px;
+
+            margin-bottom: 15px;
+
+            font-size: 22px;
+
+            color: #101828;
+
+            border-left: 4px solid #e63946;
+
+            padding-left: 12px;
+        }
+
+
+        .explore-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+
+            text-align: center;
+        }
+
+
+        .explore-card {
+            background: #f5f7fa;
+
+            border: 1px solid #eaecf0;
+
+            border-radius: 12px;
+
+            padding: 28px 20px;
+
+            text-decoration: none;
+
+            color: #172033;
+
+            transition: 0.3s;
+
+            display: block;
+        }
+
+
+        .explore-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.10);
+
+            border-color: #e63946;
+        }
+
+
+        .explore-icon {
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .explore-card h3 {
+            font-size: 19px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .explore-card p {
+            color: #667085;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        .explore-button {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            background: #101828;
+
+            color: white;
+
+            padding: 14px 24px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        .explore-button:hover {
+            background: #1d2939;
+        }
+
+
+        /* ================= LIVE STATUS ================= */
 
         .status {
             padding: 50px 7%;
+
             background: #101828;
+
             color: white;
         }
 
+
         .status h2 {
             text-align: center;
+
             margin-bottom: 35px;
+
             font-size: 30px;
         }
+
 
         .status-cards {
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
+
             gap: 20px;
         }
 
+
         .status-card {
             background: #1d2939;
+
             padding: 25px;
+
             border-radius: 10px;
+
             text-align: center;
         }
 
+
         .status-card h3 {
             font-size: 30px;
+
             margin-bottom: 8px;
         }
+
 
         .status-card p {
             color: #d0d5dd;
         }
 
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* ================= FOOTER ================= */
 
         footer {
             background: #080c14;
+
             color: #98a2b3;
 
             text-align: center;
@@ -366,40 +450,19 @@
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* ================= TABLET ================= */
 
         @media (max-width: 1000px) {
 
-            nav {
-                padding: 0 4%;
-            }
-
             nav ul {
-                gap: 15px;
+                gap: 12px;
             }
 
-        }
 
-
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 0 5%;
+            .explore-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            nav ul {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
 
             .status-cards {
                 grid-template-columns: repeat(2, 1fr);
@@ -408,18 +471,32 @@
         }
 
 
-        @media (max-width: 500px) {
+        /* ================= MOBILE ================= */
 
-            .status-cards {
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+
+            .cards {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                padding: 50px 7%;
+
+            .explore-grid {
+                grid-template-columns: 1fr;
             }
 
-            .hero h1 {
-                font-size: 35px;
+
+            .status-cards {
+                grid-template-columns: repeat(2, 1fr);
             }
 
         }
@@ -432,504 +509,879 @@
 <body>
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
 
-    <nav>
-
-        <div class="logo">
-            ResQ<span>Link</span>
-        </div>
+<nav>
 
 
-        <ul>
+    <div class="logo">
 
-            <li>
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
+        ResQ<span>Link</span>
 
-            <li>
-                <a href="requests.html">
-                    Live Relief
-                </a>
-            </li>
-
-            <li>
-                <a href="map.html">
-                    Map
-                </a>
-            </li>
-
-            <li>
-                <a href="alerts.html">
-                    Alerts
-                </a>
-            </li>
-
-            <li>
-                <a href="about.html">
-                    About
-                </a>
-            </li>
-
-        </ul>
+    </div>
 
 
-        <div style="display:flex; align-items:center; gap:10px;">
+    <ul>
 
-            <a
-                href="login.html"
-                class="login-btn">
 
-                Login
-
+        <li>
+            <a href="index.html">
+                Home
             </a>
+        </li>
 
 
-            <div class="explore-container">
-
-                <button
-                    class="explore-btn"
-                    onclick="toggleExplore()">
-
-                    ☰ Explore
-
-                </button>
+        <li>
+            <a href="map.html">
+                Live Map
+            </a>
+        </li>
 
 
-                <div
-                    class="explore-menu"
-                    id="exploreMenu">
+        <li>
+            <a href="requests.html">
+                Requests
+            </a>
+        </li>
 
 
-                    <!-- FOR PEOPLE -->
-
-                    <div class="menu-section">
-
-                        <h4>
-                            For People
-                        </h4>
-
-                        <a href="emergency.html">
-                            🆘 Emergency Request
-                        </a>
-
-                        <a href="map.html">
-                            📍 Find Relief
-                        </a>
-
-                        <a href="alerts.html">
-                            🚨 Disaster Alerts
-                        </a>
-
-                        <a href="requests.html">
-                            📋 My Requests
-                        </a>
-
-                    </div>
+        <li>
+            <a href="volunteer.html">
+                Volunteer
+            </a>
+        </li>
 
 
-                    <!-- FOR HELPERS -->
-
-                    <div class="menu-section">
-
-                        <h4>
-                            For Helpers
-                        </h4>
-
-                        <a href="volunteer.html">
-                            🤝 Volunteer
-                        </a>
-
-                        <a href="ngo.html">
-                            🏢 NGOs
-                        </a>
-
-                        <a href="supplier.html">
-                            📦 Supplies
-                        </a>
-
-                        <a href="donate.html">
-                            ❤️ Donate
-                        </a>
-
-                    </div>
+        <li>
+            <a href="#explore">
+                Explore
+            </a>
+        </li>
 
 
-                    <!-- MANAGEMENT -->
-
-                    <div class="menu-section">
-
-                        <h4>
-                            Management
-                        </h4>
-
-                        <a href="dashboard.html">
-                            📊 Dashboard
-                        </a>
-
-                        <a href="admin.html">
-                            🛠️ Admin
-                        </a>
-
-                        <a href="admin-dashboard.html">
-                            📈 Admin Dashboard
-                        </a>
-
-                        <a href="report.html">
-                            📝 Reports
-                        </a>
-
-                    </div>
+    </ul>
 
 
-                    <!-- INFORMATION -->
+    <a href="login.html"
+       class="login-btn">
 
-                    <div class="menu-section">
+        Login
 
-                        <h4>
-                            Information
-                        </h4>
-
-                        <a href="about.html">
-                            ℹ️ About
-                        </a>
-
-                        <a href="contact.html">
-                            📞 Contact
-                        </a>
-
-                        <a href="faq.html">
-                            ❓ FAQ
-                        </a>
-
-                        <a href="feedback.html">
-                            💬 Feedback
-                        </a>
-
-                    </div>
+    </a>
 
 
-                    <!-- ACCOUNT -->
-
-                    <div class="menu-section">
-
-                        <h4>
-                            Account
-                        </h4>
-
-                        <a href="login.html">
-                            🔐 Login
-                        </a>
-
-                        <a href="login.html">
-                            👤 Create Account
-                        </a>
-
-                    </div>
+</nav>
 
 
-                </div>
 
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <h1>
+
+            Help should reach people
+
+            <span>
+                when they need it most.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            ResQLink connects disaster-affected people,
+            volunteers, NGOs and supply providers on one
+            coordinated platform.
+
+        </p>
+
+
+        <a href="emergency.html"
+           class="emergency-btn">
+
+            🆘 I NEED HELP
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK ACTIONS
+====================================================== -->
+
+<section class="actions">
+
+
+    <h2>
+        How can you help?
+    </h2>
+
+
+    <p>
+        Choose an action and become part of the relief network.
+    </p>
+
+
+    <div class="cards">
+
+
+        <!-- I NEED HELP -->
+
+        <div class="card">
+
+
+            <div class="card-icon">
+                🆘
             </div>
 
-        </div>
 
-    </nav>
-
-
-
-    <!-- =========================
-         HERO SECTION
-    ========================= -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <h1>
-
-                Help should reach people
-
-                <span>
-                    when they need it most.
-                </span>
-
-            </h1>
+            <h3>
+                I Need Help
+            </h3>
 
 
             <p>
 
-                ResQLink connects disaster-affected people,
-                volunteers, NGOs and supply providers on one
-                coordinated platform.
+                Request emergency food, water,
+                medicine, shelter or rescue assistance.
 
             </p>
 
 
-            <a
-                href="emergency.html"
-                class="emergency-btn">
+            <a href="emergency.html">
 
-                🆘 I NEED HELP
+                Request Help →
 
             </a>
 
+
         </div>
 
-    </section>
 
 
+        <!-- I WANT TO HELP -->
 
-    <!-- =========================
-         QUICK ACTIONS
-    ========================= -->
-
-    <section class="actions">
-
-        <h2>
-            How can you help?
-        </h2>
+        <div class="card">
 
 
-        <p>
-
-            Choose an action and become part of the relief network.
-
-        </p>
-
-
-        <div class="cards">
-
-
-            <!-- NEED HELP -->
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🆘
-                </div>
-
-                <h3>
-                    I Need Help
-                </h3>
-
-                <p>
-
-                    Request emergency food, water,
-                    medicine, shelter or rescue assistance.
-
-                </p>
-
-                <a href="emergency.html">
-
-                    Request Help →
-
-                </a>
-
+            <div class="card-icon">
+                🙋
             </div>
 
 
-
-            <!-- VOLUNTEER -->
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🙋
-                </div>
-
-                <h3>
-                    I Want to Help
-                </h3>
-
-                <p>
-
-                    Volunteer your time and skills
-                    to help people affected by disasters.
-
-                </p>
-
-                <a href="volunteer.html">
-
-                    Become a Volunteer →
-
-                </a>
-
-            </div>
+            <h3>
+                I Want to Help
+            </h3>
 
 
+            <p>
 
-            <!-- SUPPLIES -->
+                Volunteer your time and skills
+                to help people affected by disasters.
 
-            <div class="card">
+            </p>
 
-                <div class="card-icon">
-                    📦
-                </div>
 
-                <h3>
-                    I Have Supplies
-                </h3>
+            <a href="volunteer.html">
 
-                <p>
+                Become a Volunteer →
 
-                    Share available food, water,
-                    medicine and other essential resources.
-
-                </p>
-
-                <a href="supplier.html">
-
-                    Provide Supplies →
-
-                </a>
-
-            </div>
+            </a>
 
 
         </div>
 
-    </section>
 
 
+        <!-- I HAVE SUPPLIES -->
 
-    <!-- =========================
-         LIVE RELIEF NETWORK
-    ========================= -->
-
-    <section class="status">
-
-        <h2>
-            Live Relief Network
-        </h2>
+        <div class="card">
 
 
-        <div class="status-cards">
-
-
-            <div class="status-card">
-
-                <h3>
-                    247
-                </h3>
-
-                <p>
-                    Active Requests
-                </p>
-
+            <div class="card-icon">
+                📦
             </div>
 
 
-            <div class="status-card">
-
-                <h3>
-                    89
-                </h3>
-
-                <p>
-                    Active Volunteers
-                </p>
-
-            </div>
+            <h3>
+                I Have Supplies
+            </h3>
 
 
-            <div class="status-card">
+            <p>
 
-                <h3>
-                    14
-                </h3>
+                Share available food, water,
+                medicine and other essential resources.
 
-                <p>
-                    Supply Centers
-                </p>
-
-            </div>
+            </p>
 
 
-            <div class="status-card">
+            <a href="supplier.html">
 
-                <h3>
-                    31
-                </h3>
+                Provide Supplies →
 
-                <p>
-                    Critical Requests
-                </p>
-
-            </div>
+            </a>
 
 
         </div>
 
-    </section>
+
+    </div>
+
+
+</section>
 
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+<!-- =====================================================
+     EXPLORE ALL RESQLINK PAGES
+====================================================== -->
 
-    <footer>
-
-        <p>
-
-            © 2026 ResQLink |
-            Disaster Relief Coordination Platform
-
-        </p>
-
-    </footer>
+<section class="explore"
+         id="explore">
 
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
-
-    <script>
-
-        function toggleExplore() {
-
-            const menu =
-                document.getElementById("exploreMenu");
-
-            menu.classList.toggle("show");
-
-        }
+    <h2>
+        Explore ResQLink
+    </h2>
 
 
-        /* Close menu when clicking outside */
+    <p class="explore-intro">
 
-        document.addEventListener(
-            "click",
-            function(event) {
+        Find every important section of ResQLink
+        in one place.
 
-                const menu =
-                    document.getElementById("exploreMenu");
-
-                const button =
-                    document.querySelector(".explore-btn");
+    </p>
 
 
-                if (
-                    !menu.contains(event.target) &&
-                    !button.contains(event.target)
-                ) {
 
-                    menu.classList.remove("show");
+    <!-- =================================================
+         FOR PEOPLE
+    ================================================== -->
 
-                }
+    <h3 class="explore-category">
+        👥 For People
+    </h3>
 
-            }
-        );
 
-    </script>
+    <div class="explore-grid">
+
+
+        <!-- 1 EMERGENCY REQUEST -->
+
+        <a href="emergency.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                🆘
+            </div>
+
+
+            <h3>
+                Emergency Request
+            </h3>
+
+
+            <p>
+
+                Send an emergency request
+                for immediate assistance.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 2 FIND RELIEF -->
+
+        <a href="map.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📍
+            </div>
+
+
+            <h3>
+                Find Relief
+            </h3>
+
+
+            <p>
+
+                Find nearby relief locations,
+                shelters and assistance.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 3 DISASTER ALERTS -->
+
+        <a href="alerts.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                🚨
+            </div>
+
+
+            <h3>
+                Disaster Alerts
+            </h3>
+
+
+            <p>
+
+                Check important disaster
+                warnings and alerts.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 4 MY REQUESTS -->
+
+        <a href="requests.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📋
+            </div>
+
+
+            <h3>
+                My Requests
+            </h3>
+
+
+            <p>
+
+                View and track your
+                submitted assistance requests.
+
+            </p>
+
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOR HELPERS
+    ================================================== -->
+
+    <h3 class="explore-category">
+        🤝 For Helpers
+    </h3>
+
+
+    <div class="explore-grid">
+
+
+        <!-- 5 VOLUNTEER -->
+
+        <a href="volunteer.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                🤝
+            </div>
+
+
+            <h3>
+                Volunteer
+            </h3>
+
+
+            <p>
+
+                Register as a volunteer
+                and help affected people.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 6 NGO -->
+
+        <a href="ngo.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                🏢
+            </div>
+
+
+            <h3>
+                NGOs
+            </h3>
+
+
+            <p>
+
+                Build and coordinate
+                your NGO for relief work.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 7 SUPPLIES -->
+
+        <a href="supplier.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📦
+            </div>
+
+
+            <h3>
+                Supplies
+            </h3>
+
+
+            <p>
+
+                Provide food, water,
+                medicine and essential supplies.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 8 DONATE -->
+
+        <a href="donate.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                ❤️
+            </div>
+
+
+            <h3>
+                Donate
+            </h3>
+
+
+            <p>
+
+                Support disaster relief
+                through donations.
+
+            </p>
+
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         MANAGEMENT
+    ================================================== -->
+
+    <h3 class="explore-category">
+        ⚙️ Management
+    </h3>
+
+
+    <div class="explore-grid">
+
+
+        <!-- 9 DASHBOARD -->
+
+        <a href="dashboard.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📊
+            </div>
+
+
+            <h3>
+                Dashboard
+            </h3>
+
+
+            <p>
+
+                View overall relief
+                activity and information.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 10 ADMIN -->
+
+        <a href="admin.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                🛠️
+            </div>
+
+
+            <h3>
+                Admin
+            </h3>
+
+
+            <p>
+
+                Manage platform operations
+                and system controls.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 11 ADMIN DASHBOARD -->
+
+        <a href="admin-dashboard.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📈
+            </div>
+
+
+            <h3>
+                Admin Dashboard
+            </h3>
+
+
+            <p>
+
+                Monitor requests, volunteers,
+                NGOs and relief operations.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 12 REPORTS -->
+
+        <a href="reports.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📝
+            </div>
+
+
+            <h3>
+                Reports
+            </h3>
+
+
+            <p>
+
+                View and manage disaster
+                relief reports.
+
+            </p>
+
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         INFORMATION
+    ================================================== -->
+
+    <h3 class="explore-category">
+        ℹ️ Information
+    </h3>
+
+
+    <div class="explore-grid">
+
+
+        <!-- 13 ABOUT -->
+
+        <a href="about.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                ℹ️
+            </div>
+
+
+            <h3>
+                About
+            </h3>
+
+
+            <p>
+
+                Learn about ResQLink
+                and its mission.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 14 CONTACT -->
+
+        <a href="contact.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                📞
+            </div>
+
+
+            <h3>
+                Contact
+            </h3>
+
+
+            <p>
+
+                Contact the ResQLink
+                support team.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 15 FAQ -->
+
+        <a href="faq.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                ❓
+            </div>
+
+
+            <h3>
+                FAQ
+            </h3>
+
+
+            <p>
+
+                Find answers to
+                frequently asked questions.
+
+            </p>
+
+
+        </a>
+
+
+
+        <!-- 16 FEEDBACK -->
+
+        <a href="feedback.html"
+           class="explore-card">
+
+
+            <div class="explore-icon">
+                💬
+            </div>
+
+
+            <h3>
+                Feedback
+            </h3>
+
+
+            <p>
+
+                Share your suggestions
+                and feedback with us.
+
+            </p>
+
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- NGO SYSTEM BUTTON -->
+
+    <a href="ngo.html"
+       class="explore-button">
+
+        🏢 Explore NGO System →
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     LIVE RELIEF NETWORK
+====================================================== -->
+
+<section class="status">
+
+
+    <h2>
+        Live Relief Network
+    </h2>
+
+
+    <div class="status-cards">
+
+
+        <div class="status-card">
+
+            <h3>
+                247
+            </h3>
+
+            <p>
+                Active Requests
+            </p>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <h3>
+                89
+            </h3>
+
+            <p>
+                Active Volunteers
+            </p>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <h3>
+                14
+            </h3>
+
+            <p>
+                Supply Centers
+            </p>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <h3>
+                31
+            </h3>
+
+            <p>
+                Critical Requests
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <p>
+
+        © 2026 ResQLink |
+        Disaster Relief Coordination Platform
+
+    </p>
+
+</footer>
 
 
 </body>
-
 </html>
