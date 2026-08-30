@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reports & Analytics | ResQLink</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #172033;
+}
+
+/* ================= NAVBAR ================= */
+
+nav {
+    height: 70px;
+    background: #101828;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4d4d;
+}
+
+nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+nav ul a:hover {
+    color: #ff4d4d;
+}
+
+.profile {
+    background: white;
+    color: #101828;
+
+    padding: 9px 14px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    background: #101828;
+    color: white;
+
+    padding: 35px 7%;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #d0d5dd;
+    font-size: 14px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    width: 86%;
+    max-width: 1200px;
+
+    margin: 30px auto;
+}
+
+/* ================= ACTION BUTTONS ================= */
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.report-disaster-btn {
+    background: #d92d20;
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    display: inline-block;
+}
+
+.report-disaster-btn:hover {
+    background: #b42318;
+}
+
+/* ================= FILTER ================= */
+
+.filter {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+.filter-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.filter label {
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+select {
+    border: 1px solid #d0d5dd;
+
+    padding: 8px 12px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    background: white;
+}
+
+.download {
+    background: #175cd3;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.download:hover {
+    background: #124ea3;
+}
+
+/* ================= STATISTICS ================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 19px;
+}
+
+.icon {
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+.number {
+    font-size: 26px;
+
+    font-weight: bold;
+
+    margin-bottom: 4px;
+}
+
+.label {
+    color: #667085;
+
+    font-size: 11px;
+}
+
+.blue {
+    color: #175cd3;
+}
+
+.green {
+    color: #12b76a;
+}
+
+.red {
+    color: #d92d20;
+}
+
+.orange {
+    color: #f79009;
+}
+
+/* ================= SECTION ================= */
+
+.section {
+    background: white;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 10px;
+
+    padding: 22px;
+
+    margin-bottom: 25px;
+}
+
+.section h2 {
+    font-size: 19px;
+
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #667085;
+
+    font-size: 11px;
+
+    margin-bottom: 20px;
+}
+
+/* ================= BAR CHART ================= */
+
+.chart {
+    height: 250px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-around;
+
+    border-bottom: 1px solid #d0d5dd;
+
+    padding: 10px 10px 0;
+}
+
+.bar-container {
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    width: 11%;
+}
+
+.bar {
+    width: 45px;
+
+    background: #175cd3;
+
+    border-radius: 5px 5px 0 0;
+
+    transition: height 0.4s ease;
+}
+
+.bar-label {
+    font-size: 10px;
+
+    color: #667085;
+
+    margin-top: 8px;
+}
+
+.bar-value {
+    font-size: 10px;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+/* ================= TWO COLUMN ================= */
+
+.two-column {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+/* ================= RESPONSE METRICS ================= */
+
+.metric {
+    margin-bottom: 18px;
+}
+
+.metric-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+}
+
+.metric-name {
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.metric-value {
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.progress {
+    height: 8px;
+
+    background: #eaecf0;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: #175cd3;
+
+    border-radius: 10px;
+}
+
+/* ================= IMPACT ================= */
+
+.impact {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.impact-card {
+    background: #f9fafb;
+
+    border: 1px solid #eaecf0;
+
+    border-radius: 8px;
+
+    padding: 16px;
+}
+
+.impact-number {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.impact-label {
+    color: #667085;
+
+    font-size: 10px;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+
+    background: #f9fafb;
+
+    color: #667085;
+
+    font-size: 10px;
+
+    padding: 11px;
+}
+
+td {
+    padding: 13px 11px;
+
+    border-top: 1px solid #eaecf0;
+
+    font-size: 11px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.badge {
+    padding: 5px 9px;
+
+    border-radius: 15px;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+.success {
+    background: #ecfdf3;
+    color: #027a48;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #080c14;
+
+    color: #98a2b3;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+
+    font-size: 12px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 850px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .filter {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .chart {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        gap: 20px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        ResQ<span>Link</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="map.html">
+                Live Map
+            </a>
+        </li>
+
+        <li>
+            <a href="requests.html">
+                Requests
+            </a>
+        </li>
+
+        <li>
+            <a href="ngo-dashboard.html">
+                NGOs
+            </a>
+        </li>
+
+        <li>
+            <a href="alerts.html">
+                Alerts
+            </a>
+        </li>
+
+    </ul>
+
+    <a href="admin-dashboard.html"
+       class="profile">
+
+        🛠️ Admin
+
+    </a>
+
+</nav>
+
+
+<!-- ================= HEADER ================= -->
+
+<section class="header">
+
+    <h1>
+        📊 Reports & Analytics
+    </h1>
+
+    <p>
+        Analyze disaster response performance,
+        resources and community impact.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- ================= MAIN ACTION ================= -->
+
+<div class="action-buttons">
+
+    <a href="reportdisaster.html"
+       class="report-disaster-btn">
+
+        🚨 Report a Disaster
+
+    </a>
+
+</div>
+
+
+<!-- ================= FILTER ================= -->
+
+<section class="filter">
+
+    <div class="filter-left">
+
+        <label>
+            REPORT PERIOD:
+        </label>
+
+        <select id="periodSelect"
+                onchange="changePeriod(this.value)">
+
+            <option value="Today">
+                Today
+            </option>
+
+            <option value="Last 7 Days">
+                Last 7 Days
+            </option>
+
+            <option value="Last 30 Days">
+                Last 30 Days
+            </option>
+
+            <option value="This Year">
+                This Year
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button
+        class="download"
+        onclick="downloadReport()">
+
+        ⬇ Download Report Card
+
+    </button>
+
+</section>
+
+
+<!-- ================= MAIN STATISTICS ================= -->
+
+<section class="stats">
+
+
+    <div class="stat">
+
+        <div class="icon">
+            🆘
+        </div>
+
+        <div class="number red">
+            1,284
+        </div>
+
+        <div class="label">
+            Total Help Requests
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="icon">
+            ✓
+        </div>
+
+        <div class="number green">
+            1,096
+        </div>
+
+        <div class="label">
+            Requests Resolved
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="icon">
+            ❤️
+        </div>
+
+        <div class="number blue">
+            18,642
+        </div>
+
+        <div class="label">
+            People Assisted
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="icon">
+            📦
+        </div>
+
+        <div class="number orange">
+            32,480
+        </div>
+
+        <div class="label">
+            Relief Items Distributed
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- ================= REQUEST ANALYTICS ================= -->
+
+<section class="section">
+
+    <h2>
+        📈 Help Requests
+    </h2>
+
+    <p class="subtitle">
+        Number of disaster-relief requests received each day.
+    </p>
+
+
+    <div class="chart">
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                42
+            </div>
+
+            <div class="bar"
+                 style="height:42%">
+            </div>
+
+            <div class="bar-label">
+                Mon
+            </div>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                68
+            </div>
+
+            <div class="bar"
+                 style="height:68%">
+            </div>
+
+            <div class="bar-label">
+                Tue
+            </div>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                54
+            </div>
+
+            <div class="bar"
+                 style="height:54%">
+            </div>
+
+            <div class="bar-label">
+                Wed
+            </div>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                81
+            </div>
+
+            <div class="bar"
+                 style="height:81%">
+            </div>
+
+            <div class="bar-label">
+                Thu
+            </div>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                73
+            </div>
+
+            <div class="bar"
+                 style="height:73%">
+            </div>
+
+            <div class="bar-label">
+                Fri
+            </div>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                91
+            </div>
+
+            <div class="bar"
+                 style="height:91%">
+            </div>
+
+            <div class="bar-label">
+                Sat
+            </div>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div class="bar-value">
+                64
+            </div>
+
+            <div class="bar"
+                 style="height:64%">
+            </div>
+
+            <div class="bar-label">
+                Sun
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= TWO COLUMN ================= -->
+
+<div class="two-column">
+
+
+<!-- ================= RESPONSE PERFORMANCE ================= -->
+
+<section class="section">
+
+    <h2>
+        ⚡ Response Performance
+    </h2>
+
+    <p class="subtitle">
+        How efficiently the platform is handling requests.
+    </p>
+
+
+    <div class="metric">
+
+        <div class="metric-top">
+
+            <span class="metric-name">
+                Requests Resolved
+            </span>
+
+            <span class="metric-value">
+                85%
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div class="progress-bar"
+                 style="width:85%">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <div class="metric-top">
+
+            <span class="metric-name">
+                Volunteer Deployment
+            </span>
+
+            <span class="metric-value">
+                78%
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div class="progress-bar"
+                 style="width:78%">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <div class="metric-top">
+
+            <span class="metric-name">
+                Supply Fulfillment
+            </span>
+
+            <span class="metric-value">
+                72%
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div class="progress-bar"
+                 style="width:72%">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <div class="metric-top">
+
+            <span class="metric-name">
+                Emergency Response
+            </span>
+
+            <span class="metric-value">
+                91%
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div class="progress-bar"
+                 style="width:91%">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMMUNITY IMPACT ================= -->
+
+<section class="section">
+
+    <h2>
+        ❤️ Community Impact
+    </h2>
+
+    <p class="subtitle">
+        People and resources supported through ResQLink.
+    </p>
+
+
+    <div class="impact">
+
+
+        <div class="impact-card">
+
+            <div class="impact-number blue">
+                18,642
+            </div>
+
+            <div class="impact-label">
+                People Assisted
+            </div>
+
+        </div>
+
+
+        <div class="impact-card">
+
+            <div class="impact-number green">
+                6,284
+            </div>
+
+            <div class="impact-label">
+                Families Supported
+            </div>
+
+        </div>
+
+
+        <div class="impact-card">
+
+            <div class="impact-number orange">
+                42
+            </div>
+
+            <div class="impact-label">
+                Relief Centers
+            </div>
+
+        </div>
+
+
+        <div class="impact-card">
+
+            <div class="impact-number red">
+                326
+            </div>
+
+            <div class="impact-label">
+                Volunteers Deployed
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- ================= DISASTER REPORT ================= -->
+
+<section class="section">
+
+    <h2>
+        🌊 Disaster Response Summary
+    </h2>
+
+    <p class="subtitle">
+        Response activity by disaster type.
+    </p>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        DISASTER
+                    </th>
+
+                    <th>
+                        REQUESTS
+                    </th>
+
+                    <th>
+                        RESOLVED
+                    </th>
+
+                    <th>
+                        PEOPLE HELPED
+                    </th>
+
+                    <th>
+                        STATUS
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                <tr>
+
+                    <td class="bold">
+                        🌊 Flood
+                    </td>
+
+                    <td>
+                        624
+                    </td>
+
+                    <td>
+                        541
+                    </td>
+
+                    <td>
+                        9,842
+                    </td>
+
+                    <td>
+
+                        <span class="badge success">
+                            ACTIVE
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="bold">
+                        🌪️ Storm
+                    </td>
+
+                    <td>
+                        286
+                    </td>
+
+                    <td>
+                        247
+                    </td>
+
+                    <td>
+                        4,620
+                    </td>
+
+                    <td>
+
+                        <span class="badge success">
+                            ACTIVE
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="bold">
+                        🔥 Fire
+                    </td>
+
+                    <td>
+                        198
+                    </td>
+
+                    <td>
+                        182
+                    </td>
+
+                    <td>
+                        2,890
+                    </td>
+
+                    <td>
+
+                        <span class="badge success">
+                            STABLE
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="bold">
+                        ⛰️ Landslide
+                    </td>
+
+                    <td>
+                        176
+                    </td>
+
+                    <td>
+                        126
+                    </td>
+
+                    <td>
+                        1,290
+                    </td>
+
+                    <td>
+
+                        <span class="badge success">
+                            MONITORING
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+© 2026 ResQLink |
+Disaster Relief Coordination Platform
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   CHANGE REPORT PERIOD
+========================================= */
+
+function changePeriod(period) {
+
+    alert(
+        "📊 Report period changed to: "
+        + period
+        + "\n\n"
+        + "The report is now showing data for "
+        + period
+        + "."
+    );
+
+}
+
+
+/* =========================================
+   DOWNLOAD REPORT CARD
+========================================= */
+
+function downloadReport() {
+
+    const period =
+        document.getElementById("periodSelect").value;
+
+
+    const reportDate =
+        new Date().toLocaleDateString();
+
+
+    const reportHTML = `
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>ResQLink Disaster Report</title>
+
+<style>
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    padding: 40px;
+
+    color: #172033;
+
+    background: #f5f7fa;
+
+}
+
+.report {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ddd;
+
+}
+
+h1 {
+
+    color: #101828;
+
+    margin-bottom: 5px;
+
+}
+
+.subtitle {
+
+    color: #667085;
+
+    margin-bottom: 25px;
+
+}
+
+.info {
+
+    background: #f9fafb;
+
+    padding: 15px;
+
+    margin-bottom: 25px;
+
+    border-radius: 8px;
+
+}
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+}
+
+.card {
+
+    border: 1px solid #ddd;
+
+    padding: 18px;
+
+    border-radius: 8px;
+
+}
+
+.number {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+
+}
+
+.label {
+
+    color: #667085;
+
+    font-size: 13px;
+
+}
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 25px;
+
+}
+
+th {
+
+    background: #101828;
+
+    color: white;
+
+    padding: 12px;
+
+    text-align: left;
+
+}
+
+td {
+
+    border-bottom: 1px solid #ddd;
+
+    padding: 12px;
+
+}
+
+.footer {
+
+    margin-top: 30px;
+
+    color: #667085;
+
+    font-size: 12px;
+
+    text-align: center;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="report">
+
+
+<h1>
+📊 ResQLink Disaster Response Report
+</h1>
+
+
+<div class="subtitle">
+
+Disaster Relief Coordination Platform
+
+</div>
+
+
+<div class="info">
+
+<strong>Report Period:</strong>
+${period}
+
+<br><br>
+
+<strong>Generated On:</strong>
+${reportDate}
+
+</div>
+
+
+<h2>
+Response Statistics
+</h2>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="number">
+1,284
+</div>
+
+<div class="label">
+Total Help Requests
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+1,096
+</div>
+
+<div class="label">
+Requests Resolved
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+18,642
+</div>
+
+<div class="label">
+People Assisted
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+32,480
+</div>
+
+<div class="label">
+Relief Items Distributed
+</div>
+
+</div>
+
+
+</div>
+
+
+<h2 style="margin-top:30px;">
+
+Disaster Response Summary
+
+</h2>
+
+
+<table>
+
+<tr>
+
+<th>
+Disaster
+</th>
+
+<th>
+Requests
+</th>
+
+<th>
+Resolved
+</th>
+
+<th>
+People Helped
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+🌊 Flood
+</td>
+
+<td>
+624
+</td>
+
+<td>
+541
+</td>
+
+<td>
+9,842
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+🌪️ Storm
+</td>
+
+<td>
+286
+</td>
+
+<td>
+247
+</td>
+
+<td>
+4,620
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+🔥 Fire
+</td>
+
+<td>
+198
+</td>
+
+<td>
+182
+</td>
+
+<td>
+2,890
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+⛰️ Landslide
+</td>
+
+<td>
+176
+</td>
+
+<td>
+126
+</td>
+
+<td>
+1,290
+</td>
+
+</tr>
+
+
+</table>
+
+
+<div class="footer">
+
+ResQLink © 2026<br>
+
+Disaster Relief Coordination Platform
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>
+
+`;
+
+
+    const blob =
+        new Blob(
+            [reportHTML],
+            { type: "text/html" }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+
+    link.download =
+        "ResQLink-Disaster-Report-"
+        + period.replaceAll(" ", "-")
+        + ".html";
+
+
+    document.body.appendChild(link);
+
+
+    link.click();
+
+
+    document.body.removeChild(link);
+
+
+    URL.revokeObjectURL(url);
+
+
+    alert(
+        "✅ Report downloaded successfully!"
+        + "\n\n"
+        + "Period: "
+        + period
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
